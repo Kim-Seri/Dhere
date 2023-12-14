@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.springstudy.dhere.mapper.StoryMapper" >
+		
+	<select id="storyList" resultType="Story">
+	    SELECT
+	        story_no as storyNo,
+	        title,
+	        content,
+	        email,
+	        reg_date as regDate,
+	        category_no as categoryNo,
+	        read_count as readCount,
+	        thank,
+	        nickname
+	    FROM
+	        story
+	    ORDER BY
+	        story_no DESC
+	</select>
+<!--  -->
+	<resultMap id="storyResultMap" type="Story" >
+		<id property="no" column="no" />
+		<result property="storyNo" column="story_no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="email" column="email" />		
+		<result property="regDate" column="reg_date" />
+		<result property="categoryNo" column="category_no" />
+		<result property="readCount" column="read_count" />
+		<result property="thank" column="thank" />
+		<result property="nickname" column="nickname" />
+	</resultMap>
+	
+
+</mapper>
