@@ -28,7 +28,7 @@ public class StoryServiceImpl implements StoryService {
 	// 게시물 가져오기
 	@Override
 	public Story getStory(int no) {
-		return storydao.getStory(no);
+		return storyDao.getStory(no);
 	}
 
 }
