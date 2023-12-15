@@ -13,19 +13,16 @@ import com.springstudy.dhere.service.StoryService;
 
 @Controller
 public class StoryController {
-	
+
 	@Autowired
 	private StoryService storyService;
-	
-	@RequestMapping(value = {"/", "/main"}, method = RequestMethod.GET)
+
+	@RequestMapping(value = { "/", "/main" }, method = RequestMethod.GET)
 	public String Main(Model model) {
-		
+
 		model.addAllAttributes(storyService.getStoryList());
-		
-	
+
 		return "main";
 	}
-	
-	
-	
+
 }
