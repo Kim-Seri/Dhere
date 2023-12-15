@@ -24,9 +24,9 @@ public class MemberServiceImpl implements MemberService {
 	
 	//아이디 중복확인 메서드
 		@Override
-		public boolean overEmailCheck(String id) {
+		public boolean overEmailCheck(String email) {
 			boolean result=false;
-			Member m=memberDao.getMember(id);
+			Member m=memberDao.getMember(email);
 			if(m==null) {
 				result=true;
 			}

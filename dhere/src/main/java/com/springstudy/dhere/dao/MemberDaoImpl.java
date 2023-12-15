@@ -21,7 +21,7 @@ public class MemberDaoImpl implements MemberDao {
 	
 	// 회원정보 가져오기
 		@Override
-		public Member getMember(String id) {
-			return sqlSession.selectOne(NAME_SPACE+".getMember",id);
+		public Member getMember(String email) {
+			return sqlSession.selectOne(NAME_SPACE+".getMember",email);
 		}
 }

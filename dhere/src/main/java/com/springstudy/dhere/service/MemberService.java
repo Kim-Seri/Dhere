@@ -8,5 +8,5 @@ public interface MemberService {
 	public abstract void addMember(Member m);
 	
 	//아이디 중복확인 메서드
-	public abstract boolean overEmailCheck(String id);
+	public abstract boolean overEmailCheck(String email);
 }

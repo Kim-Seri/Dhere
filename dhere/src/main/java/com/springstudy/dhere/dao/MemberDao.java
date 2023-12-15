@@ -8,5 +8,5 @@ public interface MemberDao {
 	public abstract void addMember(Member m);
 	
 	
-	public abstract Member getMember(String id);
+	public abstract Member getMember(String email);
 }
