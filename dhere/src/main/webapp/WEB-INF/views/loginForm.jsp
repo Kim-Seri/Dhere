@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="resources/css/login.css">
 <style>
+
 </style>
 <div class="row align-items-center h-100">
 	<div class="col">

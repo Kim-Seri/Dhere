@@ -6,3 +6,7 @@ body {
   background-image: url("../images/loginBackground.png");
   background-size: cover;
 }
+
+#header {
+    display: none;
+}
