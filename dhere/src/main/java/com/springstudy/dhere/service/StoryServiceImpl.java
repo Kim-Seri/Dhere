@@ -25,4 +25,10 @@ public class StoryServiceImpl implements StoryService {
 		return param;
 	}
 
+	// 게시물 가져오기
+	@Override
+	public Story getStory(int no) {
+		return storydao.getStory(no);
+	}
+
 }

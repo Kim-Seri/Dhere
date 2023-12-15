@@ -22,4 +22,10 @@ public class StoryDaoImpl implements StoryDao {
 		return sqlSession.selectList(NAME_SPACE + ".getStoryList");
 	}
 
+	// 게시물 가져오기
+	@Override
+	public Story getStory(int no) {
+		return sqlSession.selectOne(NAME_SPACE + ".getStory", no);
+	}
+
 }
