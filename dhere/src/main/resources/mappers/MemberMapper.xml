@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.springstudy.dhere.mappers.MemberMapper" >
+	
+	<insert id="addMember" parameterType="Member">
+	    INSERT INTO member (email, name, nickname, pass, zipcode, address1, address2, job, phone, picture, role)
+	    VALUES (#{email}, #{name}, #{nickname}, #{pass}, #{zipcode}, #{address1}, #{address2}, #{job}, #{phone}, #{picture},
+	    <choose>
+	        <when test="role != null">
+	            #{role}
+	        </when>
+	        <otherwise>
+	            'user'
+	        </otherwise>
+	    </choose>
+	    )
+	</insert>
+	
+	<select id="getMember" resultType="Member">
+		SELECT * FROM member WHERE email=#{email}
+	</select>
+
+	
+</mapper>
