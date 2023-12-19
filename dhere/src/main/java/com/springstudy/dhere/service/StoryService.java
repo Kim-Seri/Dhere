@@ -1,5 +1,6 @@
 package com.springstudy.dhere.service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -12,5 +13,6 @@ public interface StoryService {
 
 	// 게시물 가져오기
 	public abstract Story getStory(int no);
+
 
 }

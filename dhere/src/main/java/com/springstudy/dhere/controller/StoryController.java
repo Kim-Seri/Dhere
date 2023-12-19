@@ -20,9 +20,16 @@ public class StoryController {
 	@RequestMapping(value = { "/", "/main" }, method = RequestMethod.GET)
 	public String Main(Model model) {
 
+
 		model.addAllAttributes(storyService.getStoryList());
 
 		return "main";
 	}
+	
+	
+	
+	
+	
+	
 
 }

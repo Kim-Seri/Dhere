@@ -27,5 +27,6 @@ public class StoryDaoImpl implements StoryDao {
 	public Story getStory(int no) {
 		return sqlSession.selectOne(NAME_SPACE + ".getStory", no);
 	}
+	
 
 }

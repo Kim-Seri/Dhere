@@ -29,6 +29,7 @@
 	<view-controller path="/" view-name="redirect:main"/>
 	<view-controller path="/loginForm" view-name="loginForm"/>
 	<view-controller path="/joinForm" view-name="joinForm"/>
+	<view-controller path="/scrap" view-name="scrap" />
 	
 	
 	

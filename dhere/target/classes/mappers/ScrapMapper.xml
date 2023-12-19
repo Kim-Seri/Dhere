@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.springstudy.dhere.mappers.ScrapMapper">
+	<select id="scrap" resultMap="ScrapResultMap">
+		SELECT *
+		FROM scrap
+	</select>
+	
+	<resultMap id="ScrapResultMap" type="Scrap">
+		<id property="scrapNo" column="scrap_no" />
+		<id property="email" column="email" />
+		<id property="storyNo" column="story_no" />
+		<id property="scrapDate" column="scrap_date" />		
+	</resultMap>
+</mapper>

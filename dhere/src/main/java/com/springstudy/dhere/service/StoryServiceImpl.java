@@ -15,7 +15,9 @@ public class StoryServiceImpl implements StoryService {
 	
 	@Autowired
 	private StoryDao storyDao;
+	
 
+	
 	// 게시물 리스트 가져오기
 	@Override
 	public Map<String,Object> getStoryList() {

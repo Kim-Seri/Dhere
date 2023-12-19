@@ -8,7 +8,6 @@
 		    SELECT *
 		    FROM story
 		</select>
-
 		
 		<resultMap id="StoryResultMap" type="Story">
 			<id property="storyNo" column="story_no" />
