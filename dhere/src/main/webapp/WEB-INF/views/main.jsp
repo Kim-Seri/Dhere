@@ -59,6 +59,9 @@
 					</div>	
 				</form>
 			</div>
+			<div class="col">
+				<input type="button" class="btn btn-primary" onclick="location.href='postWriteForm'" value="글쓰기"/>
+			</div>
 		</div>
 		<!-- 검색창 끝 -->
 		<!-- 게시글 타이틀 시작 -->

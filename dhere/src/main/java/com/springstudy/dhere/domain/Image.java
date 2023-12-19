@@ -12,6 +12,10 @@ public class Image {
 		this.storyNo = storyNo;
 	}
 
+	public Image() {
+		
+	}
+
 	public int getImageNo() {
 		return imageNo;
 	}

@@ -13,7 +13,7 @@
 		<a href="#" class="text-decoration-none text-white">Product</a>
 		<a href="#" class="text-decoration-none text-white">About</a>
 		<a href="#" class="text-decoration-none text-white">Notice</a>
-		<a href="#" class="text-decoration-none text-white">Login</a>
+		<a href="loginForm" class="text-decoration-none text-white">Login</a>
 	</div>
 </div>
 

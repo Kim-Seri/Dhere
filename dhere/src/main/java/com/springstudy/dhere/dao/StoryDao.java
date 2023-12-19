@@ -12,4 +12,6 @@ public interface StoryDao {
 	// 게시물 가져오기
 	public abstract Story getStory(int no);
 
+	public abstract void postWrite(Story story);
+
 }

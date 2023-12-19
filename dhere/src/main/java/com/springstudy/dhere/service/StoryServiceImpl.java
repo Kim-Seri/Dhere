@@ -15,6 +15,12 @@ public class StoryServiceImpl implements StoryService {
 	
 	@Autowired
 	private StoryDao storyDao;
+	
+	//게시글 작성하기(story)
+	@Override
+	public void postWrite(Story story) {
+		storyDao.postWrite(story);
+	}
 
 	// 게시물 리스트 가져오기
 	@Override
