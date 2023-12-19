@@ -3,14 +3,44 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 	<mapper namespace="com.springstudy.dhere.mappers.StoryMapper">
-		
-		<select id="getStoryList" resultMap="StoryResultMap">
-		    SELECT *
-		    FROM story
+	
+		<select id="getStoryList" resultType="Story">
+		    SELECT
+		        story_no as storyNo,
+		        title,
+		        content,
+		        email,
+		        reg_date as regDate,
+		        category_no as categoryNo,
+		        read_count as readCount,
+		        thank,
+		        nickname
+	        FROM story
 		</select>
+		
 
 		
-		<resultMap id="StoryResultMap" type="Story">
+		<select id="getStoryDetail" resultType="Story">
+		    SELECT 
+		        s.story_no as storyNo,
+		        s.title,
+		        s.content,
+		        s.email,
+		        s.reg_date as regDate,
+		        s.category_no as categoryNo,
+		        s.read_count as readCount,
+		        s.thank,
+		        s.nickname,
+		        i.image_no as imageNo,
+		        i.file_name as fileName
+		    FROM story s
+		    LEFT JOIN image i ON s.story_no = i.story_no
+		    WHERE s.story_no = #{storyNo}
+		</select>
+		
+		
+		
+		<!-- <resultMap id="StoryResultMap" type="Story">
 			<id property="storyNo" column="story_no" />
 			<result property="title" column="title" />
 			<result property="content" column="content" />
@@ -20,6 +50,6 @@
 			<result property="readCount" column="read_count" />
 			<result property="thank" column="thank" />
 			<result property="nickname" column="nickname" />
-		</resultMap>
+		</resultMap> -->
 	
 	</mapper>

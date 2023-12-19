@@ -9,6 +9,11 @@
 	<title>Home</title>
 </head>
 <body>
+
+
+
+
+
 <div class="row">
 	<div class="col">
 		<!-- 캐러셀 시작 -->
@@ -42,10 +47,6 @@
 		<div class="row bg-primary">
 			<div class="col">
 				category
-				 <c:forEach var="s" items="${sList}">
-		            ${s.title}
-		            ${s.content}
-		        </c:forEach>
 			</div>
 		</div>
 		<!-- 카테고리 끝 -->
@@ -74,50 +75,74 @@
 			</div>
 		</div>
 		<!-- 게시글 타이틀 끝 -->
-		<!-- 게시글리스트 시작 -->
-		<div class="row my-3 p-5">
+		<!-- 게시글리스트 전체 영역 시작 -->
+		<div class="row bg-danger" >		
 			<div class="col">
-				<div class="row">
-					<div class="col">
-						<img src="resources/images/DeskSetUpSample00.png">
-					</div>
+			
+			<!-- 게시글 양식 시작 -->
+				<div class="row p-1">
+					<c:forEach var="s" items="${sList}">
+					
+					
+					
+						<div class="col-4 border border-info p-3">
+							<!-- 데스크셋업 이미지 -->
+							<div class="row">
+								<div class="col">
+									<a href="storyDetail?storyNo=${s.storyNo }">
+										<input type="button" class="bg-black text-white" value="More">
+									</a>
+									<img src="http://via.placeholder.com/400x200">
+								</div>
+							</div>
+							<!-- 사진 하단 부분 전체 영역 시작 -->
+							<div class="row bg-secondary">
+								<div class="col">
+												<!-- 프로필 이미지, 닉네임, 좋아요, 공감 -->
+												<div class="row py-3">
+													<div class="col">
+														<img src="http://via.placeholder.com/50x50">
+													</div>
+													<div class="col">
+														${s.nickname} (닉네임)
+													</div>
+													<div class="col text-end">
+														${s.readCount} (조회수)
+													</div>
+													<div class="col text-end">
+														${s.thank} (좋아요)
+													</div>
+												</div>
+												<!-- 타이틀 -->
+												<div class="row border-bottom py-3">
+													<div class="col">
+														${s.title}
+													</div>
+												</div>
+												<!-- 태그 -->
+												<div class="row py-5">
+													<div class="col">
+														tag, tag_post 테이블 참조 ..
+													</div>
+												</div>
+												<div class="row py-3 text-end">
+													<div class="col">
+														${s.regDate}
+													</div>
+												</div>
+											</div>
+								</div>				
+							</div>		
+							<!-- 사진 하단 부분 전체 영역 끝 -->			
+					</c:forEach>
 				</div>
-				<div class="row">
-					<div class="col">
-						<img src="resources/images/userIcon.png">
-						닉네임
-					</div>
-					<div class="col">
-						<img src="resources/images/likeIcon.png">
-					</div>
-					<div class="col">
-						라이크-카운트
-					</div>
-					<div class="col">
-						하트
-					</div>
-					<div class="col">
-						하트-카운트
-					</div>
-				</div>
-				<div class="row border-bottom">
-					<div class="col">
-						title
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						#content#content#content#content
-					</div>
-				</div>
-				<div class="row text-end">
-					<div class="col">
-						date
-					</div>
-				</div>
+				<!-- 게시글 양식 끝 -->
 			</div>
 		</div>
-		<!-- 게시글리스트 시작 -->
+		<!-- 게시글 리스트 전체 영역 끝 -->
+		
+		
+	
 	</div>
 </div>
 	

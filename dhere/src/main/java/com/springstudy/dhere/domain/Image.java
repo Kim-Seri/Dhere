@@ -6,10 +6,12 @@ public class Image {
 	private String fileName;
 	private int storyNo;
 	
+	public Image() {}
+
 	public Image(int imageNo, String fileName, int storyNo) {
-		this.imageNo = imageNo;
-		this.fileName = fileName;
-		this.storyNo = storyNo;
+	    this.imageNo = imageNo;
+	    this.fileName = fileName;
+	    this.storyNo = storyNo;
 	}
 
 	public int getImageNo() {

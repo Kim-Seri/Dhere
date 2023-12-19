@@ -7,5 +7,7 @@ public interface MemberService {
 	public abstract int login(String email,String pass);
 
 	public abstract Member getMember(String email);
+	
+
 
 }

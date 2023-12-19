@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springstudy.dhere.dao.StoryDao;
+import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Story;
 
 @Service
@@ -25,10 +26,10 @@ public class StoryServiceImpl implements StoryService {
 		return param;
 	}
 
-	// 게시물 가져오기
 	@Override
-	public Story getStory(int no) {
-		return storyDao.getStory(no);
+	public List<Story> getStoryDetail(int storyNo) {
+	    return storyDao.getStoryDetail(storyNo);
 	}
-
+	
+	
 }

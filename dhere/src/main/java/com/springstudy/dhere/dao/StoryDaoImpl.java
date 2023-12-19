@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Story;
 
 @Repository
@@ -23,9 +24,9 @@ public class StoryDaoImpl implements StoryDao {
 	}
 
 	// 게시물 가져오기
-	@Override
-	public Story getStory(int no) {
-		return sqlSession.selectOne(NAME_SPACE + ".getStory", no);
+	public List<Story> getStoryDetail(int storyNo) {
+	    return sqlSession.selectList(NAME_SPACE + ".getStoryDetail", storyNo);
 	}
+	
 
 }
