@@ -1,6 +1,7 @@
 package com.springstudy.dhere.domain;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Story {
 	
@@ -13,7 +14,8 @@ public class Story {
 	private int readCount;
 	private int thank;
 	private String nickname;
-	
+	private String thumbnail; // Image domain의 file_name
+	private String profile; // Member domain의 picture
 	
 	public Story() {}
 
@@ -105,6 +107,26 @@ public class Story {
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
+
+	public String getProfile() {
+		return profile;
+	}
+
+
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 	
 	

@@ -42,10 +42,6 @@
 		<div class="row bg-primary">
 			<div class="col">
 				category
-				 <c:forEach var="s" items="${sList}">
-		            ${s.title}
-		            ${s.content}
-		        </c:forEach>
 			</div>
 		</div>
 		<!-- 카테고리 끝 -->
@@ -76,48 +72,54 @@
 		<!-- 게시글 타이틀 끝 -->
 		<!-- 게시글리스트 시작 -->
 		<div class="row my-3 p-5">
-			<div class="col">
+		
+			<c:forEach var="s" items="${sList}">
+			<div class="col-4">
+				<!-- 데스크셋업 이미지 -->
 				<div class="row">
 					<div class="col">
-						<img src="resources/images/DeskSetUpSample00.png">
+						<img src="resources/images/desk/${s.thumbnail}" alt="400*200 size image" style="width: 400px; height: 200px; object-fit: cover;">
 					</div>
 				</div>
-				<div class="row">
-					<div class="col">
-						<img src="resources/images/userIcon.png">
-						닉네임
+				<!-- 프로필 이미지, 닉네임, 좋아요, 공감 -->
+				<div class="row my-3">
+					<div class="col-2">
+						<img src="resources/images/profile/${s.profile}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%;">
 					</div>
-					<div class="col">
-						<img src="resources/images/likeIcon.png">
+					<div class="col-4">
+						${s.nickname} (닉네임)
 					</div>
-					<div class="col">
-						라이크-카운트
+					<div class="col text-end">
+						${s.readCount} (조회수)
 					</div>
-					<div class="col">
-						하트
-					</div>
-					<div class="col">
-						하트-카운트
+					<div class="col text-end">
+						${s.thank} (좋아요)
 					</div>
 				</div>
-				<div class="row border-bottom">
+				<!-- 타이틀 -->
+				<div class="row border-bottom py-3">
 					<div class="col">
-						title
+						${s.title}
 					</div>
 				</div>
-				<div class="row">
+				<!-- 태그 -->
+				<div class="row py-3">
 					<div class="col">
-						#content#content#content#content
+						tag, tag_post 테이블 참조 ..
 					</div>
 				</div>
-				<div class="row text-end">
+				<div class="row text-end py-3">
 					<div class="col">
-						date
+					${s.regDate}
 					</div>
 				</div>
+				
 			</div>
+			</c:forEach>
+			
 		</div>
-		<!-- 게시글리스트 시작 -->
+		
+
 	</div>
 </div>
 	

@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 Manifest-Version: 1.0
-Built-By: baek-un
-Build-Jdk: 11.0.11
-Created-By: Maven Integration for Eclipse
-
-=======
-Manifest-Version: 1.0
-Built-By: seo
+Built-By: seri
 Build-Jdk: 1.8.0_202
 Created-By: Maven Integration for Eclipse
 
->>>>>>> 89de61cb20bfcfd80a4139b2542cd3e16185f23c
