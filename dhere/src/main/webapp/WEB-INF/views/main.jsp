@@ -122,11 +122,7 @@
 			
 		</div>
 		
-
-	</div>
-</div>
-	
-<!-- 경진 -->
+		<!-- 경진 -->
 <div class="row justify-content-center">
 	<c:forEach var="p" items="${pList}">
 	<div class="col-3 border border-3 m-3 p-3" style="width: 300px;" onclick="location.href='productDetail?productNo=${p.productNo}'">
@@ -147,6 +143,15 @@
 	</div>
 	</c:forEach>
 	</div>
+		
+		
+		
+		
+
+	</div>
+</div>
+	
+
 
 </body>
 </html>

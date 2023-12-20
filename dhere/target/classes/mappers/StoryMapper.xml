@@ -48,11 +48,11 @@
 			INSERT INTO story(title,content,email,reg_date,category_no,nickname)
 			VALUES(#{title},#{content},#{email},SYSDAYE(),#{categoryNo},#{nickname})
 		
-		<selectKey keyProperty="storyNo" order="AFTER"
-			resultType="int">
-			SELECT LAST_INSERT_ID()
-		</selectKey>
-	</insert>
+			<selectKey keyProperty="storyNo" order="AFTER"
+				resultType="int">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+		</insert>
 
 	
 	<!-- 스토리 이미지 작성 쿼리 -->
