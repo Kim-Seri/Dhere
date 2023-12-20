@@ -14,7 +14,7 @@ public class Story {
 	private int readCount;
 	private int thank;
 	private String nickname;
-	private String profile; // Member domain의 picture
+	private String picture; 
 	private int imageNo;
 	private String fileName;
 	
@@ -109,13 +109,13 @@ public class Story {
 		this.nickname = nickname;
 	}
 
-	public String getProfile() {
-		return profile;
+	public String getPicture() {
+		return picture;
 	}
 
 
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 	
 	public int getImageNo() {

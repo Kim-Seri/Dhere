@@ -86,13 +86,13 @@
 				<!-- 데스크셋업 이미지 -->
 				<div class="row">
 					<div class="col">
-						<img src="resources/images/desk/${s.thumbnail}" alt="400*200 size image" style="width: 400px; height: 200px; object-fit: cover;">
+						<img src="resources/images/desk/${s.fileName}" alt="400*200 size image" style="width: 400px; height: 200px; object-fit: cover;">
 					</div>
 				</div>
 				<!-- 프로필 이미지, 닉네임, 좋아요, 공감 -->
 				<div class="row my-3">
 					<div class="col-2">
-						<img src="resources/images/profile/${s.profile}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%;">
+						<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%;">
 					</div>
 					<div class="col-4">
 						${s.nickname} (닉네임)
@@ -107,10 +107,7 @@
 				<!-- 타이틀 -->
 				<div class="row border-bottom py-3">
 					<div class="col">
-						<a href="storyDetail?storyNo=${s.storyNo }">
-							<input type="button" class="bg-black text-white" value="More">${s.title}
-						</a>
-						${s.title}
+						<a href="storyDetail?storyNo=${s.storyNo }">${s.title}</a>
 					</div>
 				</div>
 				<!-- 태그 -->

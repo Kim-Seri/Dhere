@@ -39,8 +39,8 @@
 				<result property="readCount" column="read_count" />
 				<result property="thank" column="thank" />
 				<result property="nickname" column="nickname" />
-				<result property="thumbnail" column="file_name" />
-				<result property="profile" column="picture" />
+				<result property="fileName" column="file_name" />
+				<result property="picture" column="picture" />
 		</resultMap>
 
 	<!-- 스토리 게시글 작성 쿼리 -->
