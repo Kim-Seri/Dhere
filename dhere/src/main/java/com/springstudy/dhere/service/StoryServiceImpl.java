@@ -26,4 +26,10 @@ public class StoryServiceImpl implements StoryService {
 		return storyDao.getStoryList();
 	}
 
+	//게시글 작성하기(story)
+	@Override
+	public void postWrite(Story story) {
+		storyDao.postWrite(story);
+	}
+
 }

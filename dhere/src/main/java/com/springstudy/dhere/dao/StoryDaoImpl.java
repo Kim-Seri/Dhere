@@ -16,6 +16,11 @@ public class StoryDaoImpl implements StoryDao {
 	private SqlSessionTemplate sqlSession;
 	private static final String NAME_SPACE = "com.springstudy.dhere.mappers.StoryMapper";
 	
+	@Override
+	public void postWrite (Story story) {
+		sqlSession.insert(NAME_SPACE+".postWrite",story);
+	}
+	
 
 	// 게시물 리스트 가져오기
 	@Override

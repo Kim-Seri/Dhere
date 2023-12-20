@@ -13,4 +13,6 @@ public interface StoryService {
 	public abstract List<Story> getStoryList();
 
 
+	public abstract void postWrite(Story story);
+
 }
