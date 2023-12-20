@@ -33,7 +33,7 @@
 	<view-controller path="/joinForm" view-name="joinForm"/>
 	<view-controller path="/scrap" view-name="scrap" />
 	<view-controller path="/postWriteForm" view-name="postWriteForm"/>
-	
+	<view-controller path="/productDetail" view-name="productDetail"/>
 	
 	
 </beans:beans>

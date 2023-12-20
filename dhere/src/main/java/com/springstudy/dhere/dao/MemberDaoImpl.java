@@ -18,4 +18,10 @@ public class MemberDaoImpl implements MemberDao {
 	public Member getMember(String email) {
 		return sqlSession.selectOne(NAME_SPACE+".getMember",email);
 	}
+
+	// 회원가입
+	public void addMember(Member m) {
+		sqlSession.insert(NAME_SPACE + ".addMember", m);
+	}
+	
 }

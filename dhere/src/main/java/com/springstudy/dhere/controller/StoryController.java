@@ -28,6 +28,7 @@ public class StoryController {
 	@Autowired
 	private StoryService storyService;
 	
+	// 데스크 셋업 리스트 출력 (메인)
 	@RequestMapping(value= {"/", "/main"}, method=RequestMethod.GET)
 	public String Main(Model model, @RequestParam(defaultValue="1") int storyNo) {
 		
@@ -37,6 +38,7 @@ public class StoryController {
 		return "main";
 	}
 	
+	// 게시물 쓰기 
 	@RequestMapping(value="/postWrite",method=RequestMethod.POST)
 	public String postWrite(HttpServletRequest request , HttpServletResponse response , Model model ,String title,String content ,@RequestParam(value="category",required=false)int categoryNo,HttpSession session,
 			@RequestParam(value="fileName", required=false) MultipartFile multipartFile) throws IOException{
@@ -72,6 +74,18 @@ public class StoryController {
 		return "redirect:main";
 	}
 
+	// 제품 리스트 출력 (메인)
+	@RequestMapping("/productDetail")
+	public String productDetail(Model model, int productNo) {
+		
+		System.out.println(productNo);
+		
+		Product product = productService.getProduct(productNo);
+		
+		model.addAttribute("product", product);
+		
+		return "productDetail";
+	}
 	
 	
 	

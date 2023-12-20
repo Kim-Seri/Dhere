@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <script src="resources/js/formcheck.js"></script>
+<script src="resources/js/member.js"></script>
 	<title>title</title>
 </head>
 <body>

@@ -41,10 +41,28 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 	
-	//회원 정보 가져오
+	//회원 정보 가져오기
 	@Override
 	public Member getMember (String email) {
 		return memberDao.getMember(email);
 	}
+
+	// 회원가입
+	public void addMember(Member m) {
+		m.setPass(passwordEncoder.encode(m.getPass()));
+		System.out.println(m.getPass());
+		memberDao.addMember(m);
+	}
+	
+		//아이디 중복확인 메서드
+		@Override
+		public boolean overEmailCheck(String email) {
+			boolean result=false;
+			Member m=memberDao.getMember(email);
+			if(m==null) {
+				result=true;
+			}
+			return result;
+		}
 	
 }
