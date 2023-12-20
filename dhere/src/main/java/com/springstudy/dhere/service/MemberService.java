@@ -9,6 +9,8 @@ public interface MemberService {
 
 	// 회원정보 가져오기
 	public abstract Member getMember(String email);
+	
+
 
 	// 회원가입
 	public abstract void addMember(Member m);

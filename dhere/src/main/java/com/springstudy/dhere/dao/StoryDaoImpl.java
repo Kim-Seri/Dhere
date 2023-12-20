@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.springstudy.dhere.domain.Image;
+import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Story;
 
 @Repository
@@ -26,6 +27,11 @@ public class StoryDaoImpl implements StoryDao {
 	@Override
 	public List<Story> getStoryList() {
 		return sqlSession.selectList(NAME_SPACE + ".getStoryList");
+	}
+
+	// 게시물 가져오기
+	public List<Story> getStoryDetail(int storyNo) {
+	    return sqlSession.selectList(NAME_SPACE + ".getStoryDetail", storyNo);
 	}
 
 }

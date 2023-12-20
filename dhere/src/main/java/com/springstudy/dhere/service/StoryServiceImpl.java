@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.springstudy.dhere.dao.StoryDao;
 import com.springstudy.dhere.domain.Image;
+import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Story;
 
 @Service
@@ -31,5 +32,11 @@ public class StoryServiceImpl implements StoryService {
 	public void postWrite(Story story) {
 		storyDao.postWrite(story);
 	}
-
+	
+	// 게시물 상세보기 
+	@Override
+	public List<Story> getStoryDetail(int storyNo) {
+	    return storyDao.getStoryDetail(storyNo);
+	}
+	
 }

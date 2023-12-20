@@ -9,6 +9,11 @@
 	<title>Home</title>
 </head>
 <body>
+
+
+
+
+
 <div class="row">
 	<div class="col">
 		<!-- 캐러셀 시작 -->
@@ -102,6 +107,9 @@
 				<!-- 타이틀 -->
 				<div class="row border-bottom py-3">
 					<div class="col">
+						<a href="storyDetail?storyNo=${s.storyNo }">
+							<input type="button" class="bg-black text-white" value="More">${s.title}
+						</a>
 						${s.title}
 					</div>
 				</div>

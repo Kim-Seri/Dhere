@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,58 +46,13 @@ public class StoryController {
 
 		return "main";
 	}
-	
-	// 게시물 쓰기 
-	@RequestMapping(value="/postWrite",method=RequestMethod.POST)
-	public String postWrite(HttpServletRequest request , HttpServletResponse response , Model model ,String title,String content ,@RequestParam(value="category",required=false)int categoryNo,HttpSession session,
-			@RequestParam(value="fileName", required=false) MultipartFile multipartFile) throws IOException{
-		
-		String nickname=(String) session.getAttribute("nickname");
-		Member member=(Member) session.getAttribute("member");
-		String email=member.getEmail();
-		
-		System.out.println("originName : " + multipartFile.getOriginalFilename());
-		System.out.println("name : " + multipartFile.getName());
-		
-		Story story=new Story();
-		
-		story.setTitle(title);
-		story.setContent(content);
-		story.setCategoryNo(categoryNo);
-		story.setEmail(email);
-		story.setNickname(nickname);
-		
-		
-		storyService.postWrite(story);
-		
-		if(! multipartFile.isEmpty()) {
-			Image image=new Image();
-			image.setFileName(multipartFile.getOriginalFilename());
-			image.setStoryNo(story.getStoryNo());
-			
-		}
-		
-		
-		
-		
-		return "redirect:main";
-	}
 
-	// 제품 리스트 출력 (메인)
-	@RequestMapping("/productDetail")
-	public String productDetail(Model model, int productNo) {
-		
-		System.out.println(productNo);
-		
-		Product product = productService.getProduct(productNo);
-		
-		model.addAttribute("product", product);
-		
-		return "productDetail";
+	@RequestMapping("storyDetail")
+	public String storyDetail(Model model, @RequestParam int storyNo) {
+	    List<Story> story = storyService.getStoryDetail(storyNo);
+	    model.addAttribute("story", story);
+
+	    return "storyDetail";
 	}
-	
-	
-	
-	
 
 }

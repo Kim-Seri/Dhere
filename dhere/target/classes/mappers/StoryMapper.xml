@@ -60,5 +60,24 @@
         INSERT INTO image (file_name, story_no)
         VALUES (#{fileName}, #{storyNo})
     </insert>
+
+	<!-- 게시물 상세보기 쿼리 -->
+	<select id="getStoryDetail" resultType="Story">
+		    SELECT 
+		        s.story_no as storyNo,
+		        s.title,
+		        s.content,
+		        s.email,
+		        s.reg_date as regDate,
+		        s.category_no as categoryNo,
+		        s.read_count as readCount,
+		        s.thank,
+		        s.nickname,
+		        i.image_no as imageNo,
+		        i.file_name as fileName
+		    FROM story s
+		    LEFT JOIN image i ON s.story_no = i.story_no
+		    WHERE s.story_no = #{storyNo}
+		</select>
 		
 	</mapper>
