@@ -12,25 +12,26 @@ import com.springstudy.dhere.domain.Scrap;
 @Repository
 public class ScrapDaoImpl implements ScrapDao {
 	
-	private final String NAME_SPACE = "com.springstudy.dhere.mappers.ScrapMapper";
+	
+	private static final String NAME_SPACE = "com.springstudy.dhere.mappers.ScrapMapper";
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	@Autowired
 	public void setSqlSession(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}
 	
+	// 프로필 가져오기
+	@Override
+	public Scrap getScrap(String email) {
+		return sqlSession.selectOne(NAME_SPACE + ".getScrap", email);
+	}
+
+	// 스크랩한 게시물 가져오기
 	@Override
 	public List<Scrap> getScrapList() {
 		return sqlSession.selectList(NAME_SPACE + ".scrap");
 	}
-
-	@Override
-	public Scrap getScrap(int scrap_no) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 
 }
