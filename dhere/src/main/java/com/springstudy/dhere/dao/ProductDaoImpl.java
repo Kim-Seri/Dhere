@@ -16,10 +16,11 @@ public class ProductDaoImpl implements ProductDao {
 	
 	private static final String NAME_SPACE = "com.springstudy.dhere.mappers.ProductMapper";
 
+	// 카테고리 별 제품 리스트 출력
 	@Override
-	public List<Product> productList() {
+	public List<Product> productList(String productCategory) {
 		
-		return sqlSession.selectList(NAME_SPACE + ".productList");
+		return sqlSession.selectList(NAME_SPACE + ".productList", productCategory);
 	}
 	
 	@Override

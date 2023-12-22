@@ -35,13 +35,14 @@ public class StoryController {
 	private ProductService productService;
 	
 	// 데스크 셋업 리스트 출력 (메인)
+	// 카테고리 별 제품 리스트 출력
 	@RequestMapping(value= {"/", "/main"}, method=RequestMethod.GET)
-	public String Main(Model model, @RequestParam(defaultValue="1") int storyNo) {
+	public String Main(Model model, @RequestParam(defaultValue="1") int storyNo,  @RequestParam(required=false, defaultValue="All") String productCategory) {
 		
 		List<Story> sList = storyService.getStoryList();
 		model.addAttribute("sList", sList);
 		
-		List<Product> pList = productService.productList();
+		List<Product> pList = productService.productList(productCategory);
 	    model.addAttribute("pList", pList);
 
 		return "main";
@@ -54,6 +55,19 @@ public class StoryController {
 	    model.addAttribute("story", story);
 
 	    return "storyDetail";
+	}
+	
+	// 제품 디테일
+	@RequestMapping("/productDetail")
+	public String productDetail(Model model, int productNo) {
+		
+		System.out.println(productNo);
+		
+		Product product = productService.getProduct(productNo);
+		
+		model.addAttribute("product", product);
+		
+		return "productDetail";
 	}
 
 }

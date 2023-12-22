@@ -47,6 +47,7 @@ public class MemberController {
 			out.print("alert('비밀번호가 틀립니다.');");
 			out.print("history.back();");
 			out.print("</script>");
+			return null;
 		}
 
 		Member member = memberService.getMember(email);
