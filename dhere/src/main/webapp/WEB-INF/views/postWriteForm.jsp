@@ -62,8 +62,8 @@
 
 			<div class="row ">
 				<div class="col"  id="imageContainer">
-				</div>
 				
+				</div>
 			</div>
 			<div class="row my-5">
 				<div class="col text-center">
