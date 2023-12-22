@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/* 스토리 디테일 */
+
+
+
+#profile{
+	width: 100px; 
+	height: 100px; 
+	object-fit: cover; 
+	border-radius: 70%;
+}
+
+#title {
+	font-weight: 700;
+}
+
+#nickname {
+	font-size: 30px;
+	font-weight: 700;
+	color: #5E5E5E;
+}
+
+#regDate {
+	font-size: 15px;
+	color: #5E5E5E;
+}
+
+#count_num, #heart_num {
+	font-size: 22px;
+	font-weight: 500;
+	color: #5E5E5E;
+}
+
+#icon_count, #icon_heart {
+	alt: 30*30 size image;
+	style: width: 30px; 
+	height: 30px;
+}

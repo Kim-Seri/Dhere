@@ -88,6 +88,10 @@
 		        s.content2,
 		        s.content3,
 		        s.content4,
+		        s.content1,
+		        s.content2,
+		        s.content3,
+		        s.content4,
 		        s.email,
 		        s.reg_date as regDate,
 		        s.category_no as categoryNo,
@@ -95,9 +99,11 @@
 		        s.thank,
 		        s.nickname,
 		        i.image_no as imageNo,
-		        i.file_name as fileName
+		        i.file_name as fileName,
+		        m.picture 
 		    FROM story s
 		    LEFT JOIN image i ON s.story_no = i.story_no
+		    LEFT JOIN member m ON s.email = m.email
 		    WHERE s.story_no = #{storyNo}
 		</select>
 		
