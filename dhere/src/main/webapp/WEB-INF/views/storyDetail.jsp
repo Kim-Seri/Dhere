@@ -12,7 +12,10 @@
             <c:if test="${status.index == 0}">
                 ${a.storyNo }<br>
                 ${a.title }<br>
-                ${a.content }<br>
+                ${a.content1 }<br>
+                ${a.content2 }<br>
+                ${a.content3 }<br>
+                ${a.content4 }<br>
                 ${a.email }<br>
                 ${a.regDate }<br>
                 ${a.categoryNo }<br>
