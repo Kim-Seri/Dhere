@@ -5,6 +5,8 @@ public class Job {
 	private int categoryNo;
 	private String categoryName;
 	
+	public Job() {}
+	
 	public Job(int categoryNo, String categoryName) {
 		this.categoryNo = categoryNo;
 		this.categoryName = categoryName;

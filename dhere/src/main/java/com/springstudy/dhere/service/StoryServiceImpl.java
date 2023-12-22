@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.springstudy.dhere.dao.StoryDao;
 import com.springstudy.dhere.domain.Image;
+import com.springstudy.dhere.domain.Job;
 import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Story;
 import com.springstudy.dhere.domain.Tag;
@@ -38,5 +39,18 @@ public class StoryServiceImpl implements StoryService {
 	public List<Story> getStoryDetail(int storyNo) {
 	    return storyDao.getStoryDetail(storyNo);
 	}
-
+	
+	//직종 리스트 가져오기
+	@Override
+	public List<Job> getJobList(){
+		List<Job> jList=storyDao.getJobList();
+		System.out.println(jList);
+		return storyDao.getJobList();
+	}
+	
+	//게시물 이미지 추가하기
+	@Override
+	public void insertImage(Image image) {
+		storyDao.insertImage(image);
+	}	
 }
