@@ -4,7 +4,8 @@
 	
 <mapper namespace="com.springstudy.dhere.mappers.ProductMapper" >
 
-	<select id="productList" resultType="Product">
+	<!-- 카테고리 별 제품 리스트 출력 -->
+	<select id="productList" resultType="Product" parameterType="String">
 		SELECT 
 		product_no as productNo,
 		product_name as productName,
@@ -13,7 +14,17 @@
 		product_category as productCategory,
 		product_link as productLink,
 		product_image as productImage 
-		FROM product ORDER BY product_no
+		FROM product 
+		<where>
+			<if test="productCategory == 'Others' and productCategory != 'All'">
+				not (product_category ='Lap-top' or product_category ='Monitor' or product_category ='Mouse' or product_category ='Keyboard')
+			</if>
+			<if test="productCategory != 'Others' and productCategory != 'All'">
+				product_category = #{productCategory}
+			</if>
+		</where>
+		ORDER BY product_no
+		
 	</select>
 	
 	<select id="productDetail" resultType="Product" >

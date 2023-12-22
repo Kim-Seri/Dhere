@@ -14,10 +14,11 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDao productDao;
 
+	// 카테고리 별 제품 리스트 출력
 	@Override
-	public List<Product> productList() {
+	public List<Product> productList(String productCategory) {
 		
-		return productDao.productList();
+		return productDao.productList(productCategory);
 	}
 	
 	@Override
