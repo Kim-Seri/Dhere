@@ -3,15 +3,46 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.springstudy.dhere.mappers.ScrapMapper">
-	<select id="scrap" resultMap="ScrapResultMap">
-		SELECT *
-		FROM scrap
+
+	
+<!-- 프로필 -->
+	<select id="getScrap" resultType="Scrap">
+			SELECT 
+				email,
+				nickname,
+				picture,
+				job
+				FROM member
+			WHERE email = #{email}
 	</select>
 	
+	
+	
+<!-- 스크랩 -->
+ 	<select id="ScrapList" resultMap="ScrapResultMap">
+		 	SELECT 
+				sc.scrap_no,
+			    sc.scrap_date,
+			    m.email,
+			    m.nickname,
+			    m.job,
+			    m.pass
+			FROM
+				scrap sc
+			LEFT JOIN
+				member m ON sc.email = m.email
+			WHERE
+				sc.email = #{eamil}
+ 	</select>
+	 
+	
 	<resultMap id="ScrapResultMap" type="Scrap">
-		<id property="scrapNo" column="scrap_no" />
 		<id property="email" column="email" />
-		<id property="storyNo" column="story_no" />
-		<id property="scrapDate" column="scrap_date" />		
+		<result property="scrap_no" column="scrap_no" />
+		<result property="storyNo" column="story_no" />
+		<result property="scrap_date" column="scrap_date" />
+		<result property="nickname" column="nickname" />
+		<result property="job" column="job" />		
+		<result property="picture" column="picture" />
 	</resultMap>
 </mapper>

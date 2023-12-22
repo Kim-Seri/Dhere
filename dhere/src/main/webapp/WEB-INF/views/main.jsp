@@ -9,11 +9,6 @@
 	<title>Home</title>
 </head>
 <body>
-
-
-
-
-
 <div class="row">
 	<div class="col">
 		<!-- 캐러셀 시작 -->
