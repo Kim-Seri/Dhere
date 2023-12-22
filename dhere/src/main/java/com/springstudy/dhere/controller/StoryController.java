@@ -22,6 +22,7 @@ import com.mysql.cj.Session;
 import com.springstudy.dhere.domain.Member;
 import com.springstudy.dhere.domain.Product;
 import com.springstudy.dhere.domain.Story;
+import com.springstudy.dhere.domain.Tag;
 import com.springstudy.dhere.service.ProductService;
 import com.springstudy.dhere.service.StoryService;
 

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="false" %>
 
 <html>
@@ -9,10 +10,6 @@
 	<title>Home</title>
 </head>
 <body>
-
-
-
-
 
 <div class="row">
 	<div class="col">
@@ -78,54 +75,143 @@
 			</div>
 		</div>
 		<!-- 게시글 타이틀 끝 -->
+		
+		<!-- 리셋해보자 -->
+		=============================================================================================================
+		<!-- 데스크셋업 리스트 -->
+		<div class="row">
+		<div class="col">
+		
+			<div class="row">
+			
+			<!-- 게시물 한칸 -->
+			<c:forEach var="s" items="${sList}">
+			<div class="col-3 mx-3">
+			
+				<!-- 데스크셋업 썸네일 -->
+				<div class="row border border-success">
+				<div class="col">
+					<img src="resources/images/desk/${s.fileName}" alt="${s.fileName}" style="width: 350px; height: 200px; object-fit: cover;">
+				</div>
+				</div>
+				
+				<!-- 프로필, 닉네임, 조회수, 좋아요 -->
+				<div class="row border border-success">
+				<div class="col">
+					<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 3px solid gray"><br/>
+					${s.nickname}<br/>
+					${s.readCount}<br/>
+					${s.thank}
+				</div>
+				</div>
+				
+				<!-- 제목 -->
+				<div class="row border border-success">
+				<div class="col">
+					${s.title}
+				</div>
+				</div>
+				
+				<!-- 태그 -->
+				<div class="row border border-success">
+				<div class="col">
+					<c:forEach var="tag" items="${s.tags}" varStatus="loop">
+				            #${tag.tagName} 
+			        </c:forEach>
+				</div>
+				</div>
+				
+				<!-- 날짜 -->
+				<div class="row border border-success">
+				<div class="col">
+					<fmt:formatDate value="${s.regDate}" pattern="yyyy-MM-dd" var="formattedDate" />
+					${formattedDate}
+				</div>
+				</div>
+			
+			</div>
+			</c:forEach>
+			
+			</div>
+		
+		
+		
+		</div>
+		</div>
+		
+		
+		
+		=============================================================================================================
 		<!-- 게시글리스트 시작 -->
-		<div class="row my-3 p-5">
+		<div class="row">
 		
 			<c:forEach var="s" items="${sList}">
-			<div class="col-4">
+			<div class="col-4 py-4 my-3" style="border-radius: 3%">
+			
+
+	
+	
 				<!-- 데스크셋업 이미지 -->
 				<div class="row">
-					<div class="col">
-						<img src="resources/images/desk/${s.fileName}" alt="400*200 size image" style="width: 400px; height: 200px; object-fit: cover;">
-					</div>
-				</div>
-				<!-- 프로필 이미지, 닉네임, 좋아요, 공감 -->
-				<div class="row my-3">
-					<div class="col-2">
-						<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%;">
-					</div>
-					<div class="col-4">
-						${s.nickname} (닉네임)
-					</div>
-					<div class="col text-end">
-						${s.readCount} (조회수)
-					</div>
-					<div class="col text-end">
-						${s.thank} (좋아요)
-					</div>
-				</div>
-				<!-- 타이틀 -->
-				<div class="row border-bottom py-3">
-					<div class="col">
-						<a href="storyDetail?storyNo=${s.storyNo }">${s.title}</a>
-					</div>
-				</div>
-				<!-- 태그 -->
-				<div class="row py-3">
-					<div class="col">
-						tag, tag_post 테이블 참조 ..
-					</div>
-				</div>
-				<div class="row text-end py-3">
-					<div class="col">
-					${s.regDate}
+					<div class="col offset-1">
+						<img src="resources/images/desk/${s.fileName}" alt="400*200 size image" style="width: 350px; height: 200px; object-fit: cover;">
 					</div>
 				</div>
 				
+		<div class="row">
+		<div class="col offset-1 bg-warning">
+				
+				<!-- 프로필 이미지, 닉네임, 좋아요, 공감 -->
+				<div class="row justify-content-center ">
+					<div class="col offset-1 bg-primary">
+						<div class="row my-3 align-items-center">
+							<div class="col-2 bg-warning">
+								<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 3px solid gray">
+							</div>
+							<div class="col-4 bg-primary">
+								${s.nickname} (닉네임)
+							</div>
+							<div class="col bg-warning">
+								${s.readCount} (조회수)
+							</div>
+							<div class="col bg-info">
+								${s.thank} (좋아요)
+							</div>
+							<div class="col-1"></div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 타이틀 -->
+				<div class="row border-bottom py-3">
+					<div class="col offset-1 bg-primary">
+						<a href="storyDetail?storyNo=${s.storyNo }" class="link-dark link-underline-opacity-0">${s.title}</a>
+					</div>
+					<div class="col-1"></div>
+				</div>
+				<!-- 태그 -->
+				<div class="row py-3">
+					<div class="col offset-1 bg-primary">
+				        <c:forEach var="tag" items="${s.tags}" varStatus="loop">
+				            #${tag.tagName} 
+				        </c:forEach>
+					</div>
+					<div class="col-1"></div>
+				</div>
+				<fmt:formatDate value="${s.regDate}" pattern="yyyy-MM-dd" var="formattedDate" />
+				<div class="row text-end py-3">
+					<div class="col offset-1 bg-primary">
+					${formattedDate}
+					</div>
+					<div class="col-1"></div>
+				</div>
+	</div>
+	</div>			
 			</div>
 			</c:forEach>
 			
 		</div>
+
 		
 		<!-- 경진 -->
 <div class="row justify-content-center">

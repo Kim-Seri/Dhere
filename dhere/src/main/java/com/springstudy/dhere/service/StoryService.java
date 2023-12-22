@@ -7,6 +7,7 @@ import java.util.Map;
 import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Story;
+import com.springstudy.dhere.domain.Tag;
 
 public interface StoryService {
 	
@@ -16,7 +17,7 @@ public interface StoryService {
     // 게시물 쓰기
 	public abstract void postWrite(Story story);
 
-     // 게시물 가져오기
-    List<Story> getStoryDetail(int storyNo);
+     // 게시물 가져오기 / seri02 수정
+    public abstract List<Story> getStoryDetail(int storyNo);
 
 }

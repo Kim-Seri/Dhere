@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Story;
+import com.springstudy.dhere.domain.Tag;
 
 @Repository
 public class StoryDaoImpl implements StoryDao {
@@ -33,5 +34,4 @@ public class StoryDaoImpl implements StoryDao {
 	public List<Story> getStoryDetail(int storyNo) {
 	    return sqlSession.selectList(NAME_SPACE + ".getStoryDetail", storyNo);
 	}
-
 }

@@ -11,6 +11,7 @@ import com.springstudy.dhere.dao.StoryDao;
 import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Story;
+import com.springstudy.dhere.domain.Tag;
 
 @Service
 public class StoryServiceImpl implements StoryService {
@@ -23,7 +24,6 @@ public class StoryServiceImpl implements StoryService {
 	// 게시물 리스트 가져오기
 	@Override
 	public List<Story> getStoryList() {
-		
 		return storyDao.getStoryList();
 	}
 
@@ -38,5 +38,5 @@ public class StoryServiceImpl implements StoryService {
 	public List<Story> getStoryDetail(int storyNo) {
 	    return storyDao.getStoryDetail(storyNo);
 	}
-	
+
 }
