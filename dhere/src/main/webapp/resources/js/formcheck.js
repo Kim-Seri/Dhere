@@ -84,6 +84,11 @@ $(function() {
 
     // 이미지 업로드 인풋이 변경됐을 때의 이벤트 핸들러
     imageInput.on("change", function () {
+    	
+		if (!this.files.length) {
+	        return;
+	      }
+    	
       // 이미지 미리보기 업데이트
       var imagePreview = $("<img class='img-thumbnail'>");
       var changeButton = $(
