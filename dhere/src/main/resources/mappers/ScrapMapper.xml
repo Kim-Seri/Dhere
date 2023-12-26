@@ -35,6 +35,10 @@
 				sc.email = #{eamil}
  	</select>
 	 
+	 <!-- 회원정보를 수정하는 sql -->
+	<update id="MypageUpdate" parameterType="member">
+		UPDATE * FROM member
+	</update>
 	
 	<resultMap id="ScrapResultMap" type="Scrap">
 		<id property="email" column="email" />

@@ -9,4 +9,14 @@ public interface MemberDao {
 
 	// 회원가입
 	public abstract void addMember(Member m);
+
+	//	//연지-가상
+//	public interface MemberMapper {
+//		Member getMember(
+//			@Param("Email") String email,
+//			@Param("password") String password);
+//	
+//	Member printOneByEmail(@Param("email") String email);
+//	}
+//	
 }

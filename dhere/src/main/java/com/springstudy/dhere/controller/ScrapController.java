@@ -25,18 +25,48 @@ public class ScrapController {
 	@Autowired
 	private MemberService memberService;
 	
+//	@Autowired
+//	private SessionInfo sessionInfo;
+	
+//	@RequestMapping(value= "/scrap" method=RequestMethod.GET)
+//	public String viewMyPage(Model model) {
+//		String email = SessionInfo.getEmail();
+//		String job = SessionInfo.getJob();
+//		
+//		Member login = memberService.getMember(email);
+//		
+//		if(login != null) {
+//			model.addAttribute(setMember, getMember);
+//			return "scrap";
+//		} else {
+//			return "redirect:/login";
+//		}
+//	}
+	
+	
 	// 회원정보 받기
 	@RequestMapping(value="/scrap", method=RequestMethod.GET)
-	public String Profile
+	public String email
 	(Model model,HttpSession session ,
 			@RequestParam (defaultValue="test") String email) {
 		
+		// 세션 객체 안에 있는 이메일 정보 저장
 		Scrap scrap = scrapService.getScrap(email);
-		Member member = ( Member) session.getAttribute("member");
-		member.getNickname();
-		member.getEmail();
+		// Member member = (Member) session.getAttribute("member");
 		
+//		if(member != null) {
+//		String picture = member.getPicture();
+//		String nickname = member.getNickname();
+//		String Email = member.getEmail();
+//		String job = member.getJob(); 
+//		
+//		} else {
+//			
+//		}
+//		
+		// 정보 저장 후 페이지 이동
 		model.addAttribute("scrap", scrap);
+		// model.addAttribute("member", member);
 		
 		return "scrap";
 	}

@@ -17,7 +17,8 @@
 	
 		<!-- 언이 글쓰기 버튼 -->
 		<input type="button" class="btn btn-primary" onclick="location.href='postWriteForm'" value="글쓰기"/>
-		
+		<!-- 마이페이지 -->
+		<input type="button" class="btn btn-primary" onclick="location.href='scrap'" value="마이페이지" />
 		
 		<!-- 캐러셀 시작 -->
 		<div class="row">
