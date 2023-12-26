@@ -31,8 +31,8 @@
 						<p style="font-weight: bold; font-size: 40px">${product.productName}</p>
 					</div>
 					<div class="col-4 d-flex justify-content-end align-items-center">
-					    <img src="resources/images/share.png" class="product-icon">&nbsp;&nbsp;
-					    <img src="resources/images/link.png" class="product-icon" onclick="location.href='${product.productLink}'">
+					    <img src="resources/images/share.png" class="product-icon" data-bs-toggle='modal' data-bs-target='#shareModal' style="cursor: pointer">&nbsp;&nbsp;
+					    <img src="resources/images/link.png" class="product-icon" style="cursor: pointer" onclick="location.href='${product.productLink}'">
 					</div>
 
 

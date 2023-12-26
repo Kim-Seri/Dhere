@@ -221,27 +221,27 @@
 		</div>
 		<ul class="nav nav-underline offset-1">
 			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link active categoryBtn" aria-current="page" style="font-size: 25px; color: black" data-bs-toggle="pill">All</a>
+			  <a class="nav-link active categoryBtn" aria-current="page" style="font-size: 25px; color: black; cursor: pointer" data-bs-toggle="pill">All</a>
 			</li>
 			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Lap-top</a>
+			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black; cursor: pointer" data-bs-toggle="pill">Lap-top</a>
 			</li>
 			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Monitor</a>
+			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black; cursor: pointer" data-bs-toggle="pill">Monitor</a>
 			</li>
 			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Mouse</a>
+			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black; cursor: pointer" data-bs-toggle="pill">Mouse</a>
 			</li>
 			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Keyboard</a>
+			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black; cursor: pointer" data-bs-toggle="pill">Keyboard</a>
 			</li>
 			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Others</a>
+			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black; cursor: pointer" data-bs-toggle="pill">Others</a>
 			</li>
 		</ul>
 		<div class="row justify-content-center" id="categoryList">
 		<c:forEach var="p" items="${pList}">
-		<div class="col-3 m-3 p-1 rounded-4" style="width: 350px; height: 380px; background: #F3F3F3" onclick="location.href='productDetail?productNo=${p.productNo}'">
+		<div class="col-3 m-3 p-1 rounded-4" style="width: 350px; height: 380px; background: #F3F3F3; cursor: pointer" onclick="location.href='productDetail?productNo=${p.productNo}'">
 			<div class="row">
 			    <div class="col d-flex justify-content-center align-items-center" style="height: 200px; overflow: hidden;">
 			        <img src="resources/images/products/${p.productImage}" id="preview" class="img-fluid rounded-top-4" alt="${p.productImage}" style="width: 100%; height: 100%;">

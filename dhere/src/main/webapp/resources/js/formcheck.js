@@ -14,6 +14,26 @@ function goBack() {
 window.history.back();
 }
 
+// 링크 복사 버튼
+function copyToClipboard() {
+    var copyText = document.getElementById('copyTxt');
+    
+    copyText.select();
+    
+    try {
+        var success = document.execCommand('copy');
+    
+        if (success) {
+            alert('주소가 복사되었습니다.');
+        } else {
+            alert('복사에 실패했습니다. 텍스트를 선택한 후 수동으로 복사해주세요.');
+        }
+    } catch (err) {
+        console.error('복사 동작이 지원되지 않습니다.', err);
+        alert('이 브라우저에서는 복사 기능이 지원되지 않습니다. 텍스트를 선택한 후 수동으로 복사해주세요.');
+    }
+}
+
 $(function() {
 	
 	$("#addImageButton").on("click",function(){
@@ -103,6 +123,7 @@ $(function() {
 	    	})
 	    })
 
+	    
 	
 }
 )
