@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* main */
+
+/* 카테고리 */
+
+
+/* 검색창 */
+.TagSearchBox {
+	width: 300px;
+}
+
+/* 게시글 타이틀, 필터, 정렬 */
+/* 셀렉트박스 */
+.selectBox {
+	width: 130px;
+	border: none;
+}

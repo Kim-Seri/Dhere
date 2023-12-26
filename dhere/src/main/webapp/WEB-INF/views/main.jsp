@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<link rel="stylesheet" href="resources/css/main.css">
 <%@ page session="false" %>
 
 <html>
@@ -13,6 +14,11 @@
 
 <div class="row">
 	<div class="col">
+	
+		<!-- 언이 글쓰기 버튼 -->
+		<input type="button" class="btn btn-primary" onclick="location.href='postWriteForm'" value="글쓰기"/>
+		
+		
 		<!-- 캐러셀 시작 -->
 		<div class="row">
 			<div class="col">
@@ -40,177 +46,113 @@
 			</div>
 		</div>
 		<!-- 캐러셀 끝 -->
-		<!-- 카테고리 시작 -->
-		<div class="row bg-primary">
-			<div class="col">
-				category
-			</div>
-		</div>
-		<!-- 카테고리 끝 -->
-		<!-- 검색창 시작 -->
-		<div class="row my-5 text-center justify-content-center">
-			<div class="col">
-				<form class="" action="#">	
-					<div class="col">
-						<input type="text" placeholder="need search">
-						<button type="submit" class="btn btn-secondary" name="searchButton" id="searchButton">Search</button>
-					</div>	
-				</form>
-			</div>
-			<div class="col">
-				<input type="button" class="btn btn-primary" onclick="location.href='postWriteForm'" value="글쓰기"/>
-			</div>
-		</div>
-		<!-- 검색창 끝 -->
-		<!-- 게시글 타이틀 시작 -->
-		<div class="row my-5">
-			<div class="col-3 bg-success">
-				전체 게시글
-			</div>
-			<div class="col-6">
-				filter list 1, filter list 2, filter list 3,
-			</div>
-			<div class="col-3 bg-success text-end">
-				최신순 정렬
-			</div>
-		</div>
-		<!-- 게시글 타이틀 끝 -->
 		
-		<!-- 리셋해보자 -->
-		=============================================================================================================
+		<!-- 카테고리 -->
+		<div class="row">
+		<div class="col">
+			
+		</div>
+		</div>
+		
+		<!-- 검색창 -->
+		<div class="row">
+		<div class="col d-flex justify-content-center">
+			<form class="row my-5 " action="#">
+			<div class="col">
+				<input type="text" placeholder=" &nbsp;#데스크셋업" class="border border-primary border-3 rounded-4 TagSearchBox"> &nbsp;&nbsp;
+				<img src="resources/images/icon/search.png" style="width: 35px;">
+			</div>
+			</form>
+		</div>
+		</div>
+		
+		<!-- 게시글 타이틀, 필터, 정렬 -->
+		<div class="row align-items-center">
+		<div class="col-2" style="font-weight: bold; font-size: 2.0em;">
+			 ⎸ 전체 게시글
+		</div>
+		<div class="col align-items-center">
+			<button type="button" class="btn btn-outline-secondary btn-sm rounded-4">#데스크셋업	x</button>&nbsp;
+			<button type="button" class="btn btn-outline-secondary btn-sm rounded-4">#개발자		x</button>
+		</div>
+		<div class="col text-end">
+			<select class="selectBox" onchange="">
+				<option value="">최신순 정렬</option>
+				<option value="">인기순 정렬</option>
+			</select>
+		</div>
+		</div>
+
 		<!-- 데스크셋업 리스트 -->
 		<div class="row">
 		<div class="col">
-		
+			
+			<!-- 게시물 전체 -->
 			<div class="row">
+			<div class="col">
 			
 			<!-- 게시물 한칸 -->
+			<div class="row d-flex justify-content-center">
 			<c:forEach var="s" items="${sList}">
-			<div class="col-3 mx-3">
+			<div class="col-3 m-4 rounded-4" style="background: #F3F3F3;">
 			
 				<!-- 데스크셋업 썸네일 -->
-				<div class="row border border-success">
-				<div class="col">
-					<img src="resources/images/desk/${s.fileName}" alt="${s.fileName}" style="width: 350px; height: 200px; object-fit: cover;">
+				<div class="row rounded-top-4" style="height: 200px; background-size: cover; background-position: center; background-image: url('resources/images/desk/${s.fileName}');">
+				<div class="col">				
 				</div>
 				</div>
 				
-				<!-- 프로필, 닉네임, 조회수, 좋아요 -->
-				<div class="row border border-success">
-				<div class="col">
-					<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 3px solid gray"><br/>
-					${s.nickname}<br/>
-					${s.readCount}<br/>
-					${s.thank}
+				<!-- 프로필, 닉네임, 날짜 -->
+				<div class="row">
+				<div class="col offset-1 p-3" style="color: #636363;">
+					<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 2px solid #5E5E5E;">&nbsp;&nbsp;&nbsp;
+					${s.nickname}
+				</div>
+				<div class="col text-end pt-1 pe-4" style="color:#5E5E5E; font-size: smaller;">
+					<fmt:formatDate value="${s.regDate}" pattern="yyyy-MM-dd" var="formattedDate" />
+					${formattedDate}
 				</div>
 				</div>
 				
 				<!-- 제목 -->
-				<div class="row border border-success">
-				<div class="col">
-					${s.title}
+				<div class="row">
+				<div class="col-10 offset-1 py-3" style="font-weight: bold; border-bottom: 2px solid #bfbfbf;">
+					<a href="storyDetail?storyNo=${s.storyNo }" class="link-dark link-underline-opacity-0">${s.title}</a>
 				</div>
 				</div>
 				
 				<!-- 태그 -->
-				<div class="row border border-success">
-				<div class="col">
+				<div class="row">
+				<div class="col-11 offset-1 pt-3" style="color:#5E5E5E;">
 					<c:forEach var="tag" items="${s.tags}" varStatus="loop">
 				            #${tag.tagName} 
 			        </c:forEach>
 				</div>
 				</div>
 				
-				<!-- 날짜 -->
-				<div class="row border border-success">
-				<div class="col">
-					<fmt:formatDate value="${s.regDate}" pattern="yyyy-MM-dd" var="formattedDate" />
-					${formattedDate}
-				</div>
-				</div>
-			
-			</div>
-			</c:forEach>
-			
-			</div>
-		
-		
-		
-		</div>
-		</div>
-		
-		
-		
-		=============================================================================================================
-		<!-- 게시글리스트 시작 -->
-		<div class="row">
-		
-			<c:forEach var="s" items="${sList}">
-			<div class="col-4 py-4 my-3" style="border-radius: 3%">
-			
-
-	
-	
-				<!-- 데스크셋업 이미지 -->
+				<!-- 조회수, 좋아요 -->
 				<div class="row">
-					<div class="col offset-1">
-						<img src="resources/images/desk/${s.fileName}" alt="400*200 size image" style="width: 350px; height: 200px; object-fit: cover;">
-					</div>
+				<div class="col text-end pe-4 py-3" style="color:#5E5E5E; font-size: smaller;">
+					<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count" style="width: 20px;">
+					${s.readCount} &nbsp;&nbsp;
+					<img src="resources/images/icon/heart.png" id="icon_heart" style="width: 20px;">
+					${s.thank}
 				</div>
-				
-		<div class="row">
-		<div class="col offset-1 bg-warning">
-				
-				<!-- 프로필 이미지, 닉네임, 좋아요, 공감 -->
-				<div class="row justify-content-center ">
-					<div class="col offset-1 bg-primary">
-						<div class="row my-3 align-items-center">
-							<div class="col-2 bg-warning">
-								<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 3px solid gray">
-							</div>
-							<div class="col-4 bg-primary">
-								${s.nickname} (닉네임)
-							</div>
-							<div class="col bg-warning">
-								${s.readCount} (조회수)
-							</div>
-							<div class="col bg-info">
-								${s.thank} (좋아요)
-							</div>
-							<div class="col-1"></div>
-						</div>
-					</div>
 				</div>
-				
-				<!-- 타이틀 -->
-				<div class="row border-bottom py-3">
-					<div class="col offset-1 bg-primary">
-						<a href="storyDetail?storyNo=${s.storyNo }" class="link-dark link-underline-opacity-0">${s.title}</a>
-					</div>
-					<div class="col-1"></div>
-				</div>
-				<!-- 태그 -->
-				<div class="row py-3">
-					<div class="col offset-1 bg-primary">
-				        <c:forEach var="tag" items="${s.tags}" varStatus="loop">
-				            #${tag.tagName} 
-				        </c:forEach>
-					</div>
-					<div class="col-1"></div>
-				</div>
-				<fmt:formatDate value="${s.regDate}" pattern="yyyy-MM-dd" var="formattedDate" />
-				<div class="row text-end py-3">
-					<div class="col offset-1 bg-primary">
-					${formattedDate}
-					</div>
-					<div class="col-1"></div>
-				</div>
-	</div>
-	</div>			
+
+			
 			</div>
 			</c:forEach>
+			</div>
 			
+			</div>
+			</div>
+		
+		
+		
 		</div>
+		</div>
+		
 
 		
 		<!-- 경진 -->
