@@ -31,13 +31,13 @@ public class StoryDaoImpl implements StoryDao {
 		return sqlSession.selectList(NAME_SPACE + ".getStoryList");
 	}
 
-	// 게시물 가져오기
+	// 게시물 디테일 가져오기
 	@Override
 	public List<Story> getStoryDetail(int storyNo) {
 	    return sqlSession.selectList(NAME_SPACE + ".getStoryDetail", storyNo);
 	}
 	
-	 //직종 리스트 가져오기
+	 // 직종 리스트 가져오기
 	@Override
 	public List<Job> getJobList(){
 		List<Job> jList=sqlSession.selectList(NAME_SPACE+".getJobList");
@@ -45,7 +45,7 @@ public class StoryDaoImpl implements StoryDao {
 		return sqlSession.selectList(NAME_SPACE+".getJobList");
 	}
 	
-	//게시글 이미지 추가하기
+	// 게시글 이미지 추가하기
 	@Override
 	public void insertImage(Image image) {
 		sqlSession.insert(NAME_SPACE+".insertImage",image);

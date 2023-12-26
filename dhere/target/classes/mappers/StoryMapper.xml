@@ -10,9 +10,9 @@
 		        s.story_no,
 		        s.title,
 		        s.content1,
-						s.content2,
-						s.content3,
-						s.content4,
+			    s.content2,
+			    s.content3,
+			    s.content4,
 		        s.email,
 		        s.reg_date,
 		        s.category_no,
@@ -64,7 +64,7 @@
 	<!-- 스토리 게시글 작성 쿼리 -->
 		<insert id="postWrite" parameterType="story">
 			INSERT INTO story(title,content1,content2,content3,content4,email,reg_date,category_no,nickname)
-			VALUES(#{title},#{content1},#{content2},#{content3},#{content4},#{email},SYSDAYE(),#{categoryNo},#{nickname})
+			VALUES(#{title},#{content1},#{content2},#{content3},#{content4},#{email},SYSDATE(),#{categoryNo},#{nickname})
 		
 			<selectKey keyProperty="storyNo" order="AFTER"
 				resultType="int">
@@ -81,26 +81,29 @@
 
 	<!-- 게시물 상세보기 쿼리 -->
 	<select id="getStoryDetail" resultType="Story">
-		    SELECT 
-		        s.story_no as storyNo,
-		        s.title,
-		        s.content1,
-		        s.content2,
-		        s.content3,
-		        s.content4,
-		        s.email,
-		        s.reg_date as regDate,
-		        s.category_no as categoryNo,
-		        s.read_count as readCount,
-		        s.thank,
-		        s.nickname,
-		        i.image_no as imageNo,
-		        i.file_name as fileName,
-		        m.picture 
-		    FROM story s
-		    LEFT JOIN image i ON s.story_no = i.story_no
-		    LEFT JOIN member m ON s.email = m.email
-		    WHERE s.story_no = #{storyNo}
+	    SELECT 
+            s.story_no as storyNo,
+            s.title,
+            s.content1,
+            s.content2,
+            s.content3,
+            s.content4,
+            s.email,
+            s.reg_date as regDate,
+            s.category_no as categoryNo,
+            s.read_count as readCount,
+            s.thank,
+            s.nickname,
+            i.image_no as imageNo,
+            i.file_name as fileName,
+            m.picture,
+            t.tag_name as tagName
+        FROM story s
+        LEFT JOIN image i ON s.story_no = i.story_no
+        LEFT JOIN member m ON s.email = m.email
+        LEFT JOIN tag_post tp ON s.story_no = tp.story_no
+        LEFT JOIN tag t ON tp.tag_no = t.tag_no
+        WHERE s.story_no = #{storyNo}
 		</select>
 		
 	<!-- 직종 조회 쿼리 -->
