@@ -34,6 +34,9 @@
 	<view-controller path="/scrap" view-name="scrap" />
 	<view-controller path="/postWriteForm" view-name="postWriteForm"/>
 	<view-controller path="/productDetail" view-name="productDetail"/>
+	<view-controller path="/mainProduct" view-name="/mainProduct"/>
+	<view-controller path="/mainAbout" view-name="/mainAbout"/>
+	<view-controller path="/mainNotice" view-name="/mainNotice"/>
 	
 	
 </beans:beans>

@@ -11,7 +11,7 @@
 	<title>Home</title>
 </head>
 <body>
-
+<div class="container">
 <div class="row">
 	<div class="col">
 	
@@ -156,70 +156,71 @@
 
 		
 		<!-- 경진 -->
-		<div class="row">
-			<div class="col-3 offset-1 my-3">
-				<h1 style="font-weight: bold">장비 리스트</h1>
-			</div>
-		</div>
-		<ul class="nav nav-underline offset-1">
-			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link active categoryBtn" aria-current="page" style="font-size: 25px; color: black" data-bs-toggle="pill">All</a>
-			</li>
-			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Lap-top</a>
-			</li>
-			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Monitor</a>
-			</li>
-			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Mouse</a>
-			</li>
-			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Keyboard</a>
-			</li>
-			<li class="nav-item text-center" style="width: 170px">
-			  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Others</a>
-			</li>
-		</ul>
-		<div class="row justify-content-center" id="categoryList">
-		<c:forEach var="p" items="${pList}">
-		<div class="col-3 m-3 p-1 rounded-4" style="width: 350px; height: 380px; background: #F3F3F3" onclick="location.href='productDetail?productNo=${p.productNo}'">
 			<div class="row">
-			    <div class="col d-flex justify-content-center align-items-center" style="height: 200px; overflow: hidden;">
-			        <img src="resources/images/products/${p.productImage}" id="preview" class="img-fluid rounded-top-4" alt="${p.productImage}" style="width: 100%; height: 100%;">
-			    </div>
-			</div>
-
-			<div class="row">
-				<div class="col p-3">
-					<div class="row">
-			    <div class="col d-flex justify-content  mb-3" style="overflow: hidden; font-size: 15px">
-			    	${p.brandName}
+				<div class="col-3 offset-1 my-3">
+					<h1 style="font-weight: bold">장비 리스트</h1>
 				</div>
 			</div>
-			
-			<div style="width: 100%; height: 2px; background-color: black"></div>
-			
-			<div class="row">
-			    <div class="col mt-3 d-flex justify-content" style="overflow: hidden; font-size: 23px">
-			        <b>${p.productName}</b>
-			    </div>
-			</div>
+			<ul class="nav nav-underline offset-1">
+				<li class="nav-item text-center" style="width: 170px">
+				  <a class="nav-link active categoryBtn" aria-current="page" style="font-size: 25px; color: black" data-bs-toggle="pill">All</a>
+				</li>
+				<li class="nav-item text-center" style="width: 170px">
+				  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Lap-top</a>
+				</li>
+				<li class="nav-item text-center" style="width: 170px">
+				  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Monitor</a>
+				</li>
+				<li class="nav-item text-center" style="width: 170px">
+				  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Mouse</a>
+				</li>
+				<li class="nav-item text-center" style="width: 170px">
+				  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Keyboard</a>
+				</li>
+				<li class="nav-item text-center" style="width: 170px">
+				  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">Others</a>
+				</li>
+			</ul>
+			<div class="row justify-content-center" id="categoryList">
+			<c:forEach var="p" items="${pList}">
+			<div class="col-3 m-3 p-1 rounded-4" style="width: 350px; height: 380px; background: #F3F3F3;" onclick="location.href='productDetail?productNo=${p.productNo}'">
+				<div class="row">
+				    <div class="col d-flex justify-content-center align-items-center" style="height: 200px; overflow: hidden;">
+				        <img src="resources/images/products/${p.productImage}" id="preview" class="img-fluid rounded-top-4" alt="${p.productImage}" style="width: 100%; height: 100%;">
+				    </div>
+				</div>
+	
+				<div class="row">
+					<div class="col p-3">
+						<div class="row">
+				    <div class="col d-flex justify-content  mb-3" style="overflow: hidden; font-size: 15px; color: #5E5E5E">
+				    	${p.brandName}
+					</div>
+				</div>
+				
+				<div style="width: 100%; height: 2px; background-color: #5E5E5E"></div>
+				
+				<div class="row">
+				    <div class="col mt-3 d-flex justify-content" style="overflow: hidden; font-size: 23px">
+				        <b>${p.productName}</b>
+				    </div>
+				</div>
+					</div>
 				</div>
 			</div>
+			</c:forEach>
+			</div>
+			
+			
+			
+			
+	
 		</div>
-		</c:forEach>
-		</div>
-		
-		
-		
-		
-
 	</div>
 </div>
 	
 
-
+</div>
 </body>
 </html>
 

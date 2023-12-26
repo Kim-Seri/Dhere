@@ -53,6 +53,7 @@ public class StoryController {
 	// 게시물 디테일 
 	@RequestMapping("/storyDetail")
 	public String storyDetail(Model model, @RequestParam int storyNo) {
+		
 	    List<Story> story = storyService.getStoryDetail(storyNo);
 	    model.addAttribute("story", story);
 

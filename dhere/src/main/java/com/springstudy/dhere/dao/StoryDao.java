@@ -12,16 +12,16 @@ public interface StoryDao {
     // 게시물 리스트 가져오기
     public abstract List<Story> getStoryList();
 
-     // 게시물 가져오기
+     // 게시물 디테일 가져오기
     public abstract List<Story> getStoryDetail(int storyNo);
 
     // 게시물 쓰기
 	public abstract void postWrite(Story story);
 
-	//직종 리스트 가져오기
+	// 직종 리스트 가져오기
 	public abstract List<Job> getJobList();
 
-	//게시글 이미지 입력하기
+	// 게시글 이미지 입력하기
 	public abstract void insertImage(Image image);
 
 }
