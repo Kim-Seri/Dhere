@@ -115,12 +115,6 @@ $(function() {
 
       displayImagePreview(this, imagePreview);
 
-      // 다음 추가를 위해 새로운 + 버튼 생성
-      var changeButton = $(
-        "<button type='button' class='btn btn-outline-primary' id='changeImageButton'>사진 수정하기</button>"
-      );
-      imageDivCol3.append(changeButton);
-
       changeButton.on("click", function () {
         $(this).parent().parent().parent().parent().prev().click();
       });
