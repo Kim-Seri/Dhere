@@ -3,79 +3,132 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="row">
+<div class="row p-5 my-5 border border-primary rounded-4 border-3">
 	<div class="col">
-		<form action="/postWrite" method="post" id="postWriteForm"
-			name="postWriteForm">
-			
+		<form action="postWrite" method="post" id="postWriteForm"
+			name="postWriteForm" enctype="multipart/form-data">
+			<div class="row ">
+				<div class="col text-start">
+					<h3 class="text-secondary">직종 선택</h3>
+				</div>
+			</div>
+
+
 			<div class="row my-3 py-3">
-			<div class="col ">
-				<div class="row">
-					<div class="col text-center">
-						
-						<div class="btn-group btn-group-lg my-3" role="group" aria-label="Basic radio toggle button group">
-							<div class="row g-3">
-								<div class="col-3">
-									<input type="radio" class="btn-check" name="category" id="developer" value="1" checked>
-								    <label class="btn btn-outline-primary" for="developer">개발</label>
+				<div class="col">
+					<div id="categoryCarousel" class="carousel slide"
+						data-bs-ride="carousel" data-bs-interval="5000">
+						<div class="carousel-inner">
+							<c:forEach var="jList" items="${jList}" varStatus="status">
+								<div
+									class="carousel-item ${status.index == 0 ? 'active' : ''} text-center">
+									<input type="radio" class="btn-check" name="category"
+										id="category${jList.categoryNo}" value="${jList.categoryNo}"> 
+										<label
+										class="btn btn-outline-primary"
+										for="category${jList.categoryNo}">${jList.categoryName}</label>
 								</div>
-								<div class="col-3">
-									<input type="radio" class="btn-check" name="category" id="marketer" value="2">
-								  	<label class="btn btn-outline-primary" for="marketer">마케터</label>
-								</div>
-								<div class="col-3">
-									<input type="radio" class="btn-check" name="category" id="designer" value="3">
-								  	<label class="btn btn-outline-primary" for="designer">디자이너</label>
-								</div>	
-								<div class="col-3">
-									<input type="radio" class="btn-check" name="category" id="pd" value="4">
-								  	<label class="btn btn-outline-primary" for="pd">PD</label>
-								</div>	  	
-								<div class="col-3">
-									<input type="radio" class="btn-check" name="category" id="writer" value="5">
-								  	<label class="btn btn-outline-primary" for="writer">작가</label>
-								</div>	  	  						
-	
-								  <div class="col-3">
-									<input type="radio" class="btn-check" name="category" id="researcher" value="6">
-								    <label class="btn btn-outline-primary" for="researcher">연구원</label>
-								</div>
-								<div class="col-3">
-									<input type="radio" class="btn-check" name="category" id="teacher" value="7">
-								  	<label class="btn btn-outline-primary" for="teacher">선생님</label>
-								</div>
-								<div class="col-3">
-									<input type="radio" class="btn-check" name="category" id="accountant" value="8">
-								  	<label class="btn btn-outline-primary" for="accountant">회계사</label>
-								</div>	 					
-							</div>
-						
+							</c:forEach>
 						</div>
-				
+						<button class="carousel-control-prev" type="button"
+							data-bs-target="#categoryCarousel" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon bg-primary"
+								aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button"
+							data-bs-target="#categoryCarousel" data-bs-slide="next">
+							<span class="carousel-control-next-icon bg-primary"
+								aria-hidden="true"></span> <span class="visually-hidden">Next</span>
+						</button>
 					</div>
 				</div>
-				
 			</div>
-		</div>
+
+
 			<div class="row my-5">
 				<div class="col text-center ">
-					<input type="text" class="form-control form-control-lg"
+					<input type="text"
+						class="form-control form-control-lg border-0 border-bottom"
 						name="title" placeholder="제목을 입력하세요" id="postTitle"
 						name="postTitle" style="height: 100px">
 				</div>
 			</div>
 
-			<div class="row my-5 " id="imageContainer">
-				<div class="col  ">
-					<label for="formFile" class="form-label">책상 사진을 업로드해 주세요.</label> <input
-						class="form-control" type="file" id="formFile" name="fileName">
+			<div class="row ">
+				<div class="col text-start">
+					<h3 class="text-secondary">사진 등록</h3>
 				</div>
 			</div>
-			<button type="button" class="btn btn-outline-primary" id="addImageButton">+</button>
+
+			<div class="row ">
+				<div class="col"  id="imageContainer">
+				
+				</div>
+			</div>
 			<div class="row my-5">
-				<div class="col text-center ">
-					<textarea class="form-control fs-4 " placeholder="내용을 입력하세요"
-						name="content" id="floatingTextarea2" style="height: 500px"></textarea>
+				<div class="col text-center">
+					<button type="button" class="btn btn-outline-primary"
+						id="addImageButton">+사진 추가</button>
+				</div>
+			</div>
+			<div class="row my-5">
+				<div class="col">
+					<div class="row my-3">
+						<div class="col">
+							<h3 class="text-primary fw-bold">당신의 데스크셋업은 어떤 생각으로 구성했나요?</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col text-center fw-bold">
+							<textarea class="form-control fs-4 " placeholder="내용을 입력하세요"
+								name="content1" id="floatingTextarea2" style="height: 400px"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row my-5">
+				<div class="col">
+					<div class="row my-3">
+						<div class="col">
+							<h3 class="text-primary">추천하는 기기는 무엇인가요?</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col text-center ">
+							<textarea class="form-control fs-4 " placeholder="내용을 입력하세요"
+								name="content2" id="floatingTextarea2" style="height: 300px"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row my-5">
+				<div class="col">
+					<div class="row my-3">
+						<div class="col">
+							<h3 class="text-primary">추천하는 업무용 툴이나 기타 프로그램이 무엇인가요?</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col text-center ">
+							<textarea class="form-control fs-4 " placeholder="내용을 입력하세요"
+								name="content3" id="floatingTextarea2" style="height: 200px"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row my-5">
+				<div class="col">
+					<div class="row my-3">
+						<div class="col">
+							<h3 class="text-primary">당신의 데스크셋업에서 보완하고 싶은 부분이 있다면 무엇인가요?</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col text-center ">
+							<textarea class="form-control fs-4 " placeholder="내용을 입력하세요"
+								name="content4" id="floatingTextarea2" style="height: 200px"></textarea>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row my-5">

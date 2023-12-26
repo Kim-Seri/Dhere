@@ -4,35 +4,47 @@
 	
 	<mapper namespace="com.springstudy.dhere.mappers.StoryMapper">
 	
-		<!-- 스토리 게시물 출력 (스토리, 이미지, 프로필) -->
-		<select id="getStoryList"  resultMap="StoryResultMap">
-			SELECT 
-			    s.story_no,
-			    s.title,
-			    s.content,
-			    s.email,
-			    s.reg_date,
-			    s.category_no,
-			    s.read_count,
-			    s.thank,
-			    s.nickname,
-			    i.file_name,
-			    m.picture 
-			FROM 
-			    story s
-			LEFT JOIN 
-			    image i ON s.story_no = i.story_no
-			LEFT JOIN 
-			    member m ON s.email = m.email
-			WHERE
-			    i.image_no = (SELECT MIN(image_no) FROM image WHERE story_no = s.story_no)
+		<!-- 스토리 게시물 출력 (스토리, 이미지, 프로필) / seri02 수정 -->
+		<select id="getStoryList" resultMap="StoryResultMap">
+		    SELECT 
+		        s.story_no,
+		        s.title,
+		        s.content1,
+			    s.content2,
+			    s.content3,
+			    s.content4,
+		        s.email,
+		        s.reg_date,
+		        s.category_no,
+		        s.read_count,
+		        s.thank,
+		        s.nickname,
+		        i.file_name,
+		        m.picture,
+		        t.tag_name  <!-- 새로운 부분: 태그 이름 추가 -->
+		    FROM 
+		        story s
+		    LEFT JOIN 
+		        image i ON s.story_no = i.story_no
+		    LEFT JOIN 
+		        member m ON s.email = m.email
+		    LEFT JOIN
+		        tag_post tp ON s.story_no = tp.story_no
+		    LEFT JOIN
+		        tag t ON tp.tag_no = t.tag_no
+		    WHERE
+		        i.image_no = (SELECT MIN(image_no) FROM image WHERE story_no = s.story_no)
 		</select>
+
 	
-	<!-- 스토리 result map -->
+		<!-- 스토리 result map / seri02 수정 -->
 		<resultMap id="StoryResultMap" type="Story">
 				<id property="storyNo" column="story_no" />
 				<result property="title" column="title" />
-				<result property="content" column="content" />
+				<result property="content1" column="content1" />
+				<result property="content2" column="content2" />
+				<result property="content3" column="content3" />
+				<result property="content4" column="content4" />
 				<result property="email" column="email" />
 				<result property="regDate" column="reg_date" />
 				<result property="categoryNo" column="category_no" />
@@ -41,12 +53,18 @@
 				<result property="nickname" column="nickname" />
 				<result property="fileName" column="file_name" />
 				<result property="picture" column="picture" />
-		</resultMap>
 
+				<collection property="tags" ofType="Tag">
+			        <id property="tagNo" column="tag_no" />
+			        <result property="tagName" column="tag_name" />
+		        </collection>
+		        
+		</resultMap>
+	
 	<!-- 스토리 게시글 작성 쿼리 -->
 		<insert id="postWrite" parameterType="story">
-			INSERT INTO story(title,content,email,reg_date,category_no,nickname)
-			VALUES(#{title},#{content},#{email},SYSDAYE(),#{categoryNo},#{nickname})
+			INSERT INTO story(title,content1,content2,content3,content4,email,reg_date,category_no,nickname)
+			VALUES(#{title},#{content1},#{content2},#{content3},#{content4},#{email},SYSDAYE(),#{categoryNo},#{nickname})
 		
 			<selectKey keyProperty="storyNo" order="AFTER"
 				resultType="int">
@@ -66,7 +84,10 @@
 		    SELECT 
 		        s.story_no as storyNo,
 		        s.title,
-		        s.content,
+		        s.content1,
+		        s.content2,
+		        s.content3,
+		        s.content4,
 		        s.email,
 		        s.reg_date as regDate,
 		        s.category_no as categoryNo,
@@ -74,10 +95,24 @@
 		        s.thank,
 		        s.nickname,
 		        i.image_no as imageNo,
-		        i.file_name as fileName
+		        i.file_name as fileName,
+		        m.picture 
 		    FROM story s
 		    LEFT JOIN image i ON s.story_no = i.story_no
+		    LEFT JOIN member m ON s.email = m.email
 		    WHERE s.story_no = #{storyNo}
 		</select>
+		
+	<!-- 직종 조회 쿼리 -->
+	<select id="getJobList" resultType="Job" resultMap="JobResultMap">
+		SELECT * FROM job;
+	</select>
+	
+	<!-- 직종 reulstMap -->
+	<resultMap id="JobResultMap" type="Job">
+		<id property="categoryNo" column="category_no" />
+		<result property="categoryName" column="category_name"/>
+	</resultMap>
+
 		
 	</mapper>

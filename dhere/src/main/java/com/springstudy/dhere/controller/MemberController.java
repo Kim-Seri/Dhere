@@ -47,13 +47,14 @@ public class MemberController {
 			out.print("alert('비밀번호가 틀립니다.');");
 			out.print("history.back();");
 			out.print("</script>");
+			return null;
 		}
 
 		Member member = memberService.getMember(email);
 
 		session.setAttribute("isLogin", true);
 		session.setAttribute("member", member);
-		session.setAttribute("name", member.getNickname());
+		session.setAttribute("nickname", member.getNickname());
 
 		System.out.println(email);
 		System.out.println(pass);

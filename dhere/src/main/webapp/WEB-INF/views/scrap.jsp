@@ -22,43 +22,40 @@
 			<div class="p-5">
 				<div class="row">
 				<div class="col-2">
+				
 					<!-- 프사 -->
-					<c:if test="${ empty image.file_name }">
+					<c:if test="${ empty scrap.picture }">
+					프사
+					<!-- 귀여운그림 -->
 					</c:if>
-					<c:if test="${ not empty image.file_name }">
-						${ image.file_name } 
+					<c:if test="${ not empty scrap.picture }">
+						${ scrap.picture } 
 					</c:if>
 				</div>
 				<div class="col">
-					닉네임<br>
-					좋아요 ${ story.thank } 00개 | 게시물 수 00개 | 스크랩 수 00개  
+				
+				${scrap.nickname}님	( ${scrap.email} )<br>
+				${scrap.job} <br>
+					좋아요 00개
 				</div>
-				<div class="col-1">
-					<p class = "text-end">
-					설정
-					</p>
 				</div>				
 				</div>
 			</div>
 		</div>
 		<div>
 			<div>
+			<!-- 내정보 끝 -->
 			<p class="fs-4 fw-bold">
 			게시물 보기 
 			</p>
 			<div>
-				<p class="text-end">
-				나의 글보기 | 스크랩
+				<p class="text-center">
+				나의 게시물 | 나의 스크랩 | 팔로잉 목록
 				</p>
 			</div>
 			</div>
 			<div>
 				<!-- 이미지/제목/닉네임/조회수/좋아요/날짜 -->
-
-				<img src="resources/images/DeskSetUpSample00.png"> 
-				<img src="resources/images/userIcon.png"> 
-				<img src="resources/images/DeskSetUpSample00.png"> 
-				<img src="resources/images/likeIcon.png">
 
 			</div>
 			<div>
