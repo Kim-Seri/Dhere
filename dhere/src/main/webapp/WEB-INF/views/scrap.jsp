@@ -26,7 +26,7 @@
 					  <a class="nav-link active categoryBtn" aria-current="page" style="font-size: 25px; color: black" data-bs-toggle="pill">회원정보</a>
 					</li>
 					<li class="nav-item text-center" style="width: 170px">
-					  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">회원정보 수정</a>
+					  <a class="nav-link categoryBtn" href="/mypageUpdateForm" style="font-size: 25px; color: black" data-bs-toggle="pill">회원정보 수정</a>
 					</li>
 					<li class="nav-item text-center" style="width: 170px">
 					  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">1:1문의하기</a>
@@ -35,31 +35,33 @@
 					  <a class="nav-link categoryBtn"  style="font-size: 25px; color: black" data-bs-toggle="pill">로그아웃</a>
 					</li>
 				</ul>			
+				
 					<div class="row justify-content-center" id="profile">
 						<div class="col-8 m-3 p-1 rounded-4">
 					<div class="row-4">
 					<!-- 프사 -->
-					<c:if test="${ empty scrap.picture }">
-					기본프사
+					<c:if test="${ empty sessionScope.member.picture }">
+					프사
 					<!-- 귀여운그림 -->
 					</c:if>
-					<c:if test="${ not empty scrap.picture }">
-						${SessionScope.scrap.picture } 
+					<c:if test="${ not empty sessionScope.member.picture }">
+						<img src="resources/images/profile/${ sessionScope.member.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 3px solid gray">
 					</c:if>
-					</div>
-					<div class="row-8">
-
-						<span th:text=${Session.getAttribute('nickname')}님	></span>
-						( ${SessionScope.getMember.email} )<br>
-						${SessionScope.member.job} <br>
-						좋아요 00개
-					</div>
-				</div>			
-					</div>	
-					
+				</div>
+				<div class="col">
+				
+				${sessionScope.member.nickname}님	( ${sessionScope.member.email} )<br>
+				${sessionScope.member.job} <br>
+					좋아요 00개
+				</div>
+				</div>				
+				</div>
+			</div>
+		</div>
+		<div>
+			<div>
 			<!-- 내정보 끝 -->
-				<!-- 이미지/제목/닉네임/조회수/좋아요/날짜 -->
-		<div class="row">
+			<div class="row">
 				<div class="col-3 offset-1 my-3">
 					<h1 style="font-weight: bold">게시물 보기</h1>
 				</div>
