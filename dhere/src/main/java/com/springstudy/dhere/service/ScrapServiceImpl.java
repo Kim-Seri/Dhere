@@ -26,9 +26,9 @@ public class ScrapServiceImpl implements ScrapService {
 	}
 	
 	// 스크랩한거 읽어오기
-	@Override
-	public List<Scrap> ScrapList() {
-		return scrapDao.getScrapList();
-	}
+//	@Override
+//	public List<Scrap> ScrapList() {
+//		return scrapDao.getScrapList();
+//	}
 
 }

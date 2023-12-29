@@ -19,7 +19,7 @@
 	
 	
 <!-- 스크랩 -->
- 	<select id="ScrapList" resultMap="ScrapResultMap">
+ <!-- 	<select id="ScrapList" resultType="Scrap" resultMap="ScrapResultMap">
 		 	SELECT 
 				sc.scrap_no,
 			    sc.scrap_date,
@@ -27,14 +27,18 @@
 			    m.nickname,
 			    m.job,
 			    m.pass
-			FROM
-				scrap sc
-			LEFT JOIN
-				member m ON sc.email = m.email
-			WHERE
-				sc.email = #{eamil}
- 	</select>
-	 
+			FROM scrap
+			<Where>
+				<if test="scrapCategory == 'Others' and ScrapCategory != 'All'">
+					not (scrap_category = 'My-Post' or scrap_category = 'My-Scrap' or scrap_category = 'Following-List')
+				</if>
+				<if test="scrapCategory != 'others' and ScrapCategory != 'All'">
+					scrap_category = #{scrapCategory}
+				</if>
+			</Where>
+			ORDER by scrap_no
+ 	</select> -->
+ 		 
 	 <!-- 회원정보를 수정하는 sql -->
 	<update id="MypageUpdate" parameterType="member">
 		UPDATE * FROM member

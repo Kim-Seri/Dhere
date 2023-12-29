@@ -14,5 +14,10 @@ public interface ScrapService {
 	public Scrap getScrap(String email);
 	
 	// 스크랩리스트 출력
-	public List<Scrap> ScrapList();
+//	public List<Scrap> ScrapList();
+	
+	// 스크랩한 게시물을 읽어보는 메서드
+//	public abstract Scrap getScrapPost(String email);
+	
+	// 
 }

@@ -22,27 +22,12 @@ public class ScrapController {
 	@Autowired
 	private ScrapService scrapService;
 	
+	public void setScrapService(ScrapService scrapService) {
+		this.scrapService = scrapService;
+	}
+	
 	@Autowired
-	private MemberService memberService;
-	
-//	@Autowired
-//	private SessionInfo sessionInfo;
-	
-//	@RequestMapping(value= "/scrap" method=RequestMethod.GET)
-//	public String viewMyPage(Model model) {
-//		String email = SessionInfo.getEmail();
-//		String job = SessionInfo.getJob();
-//		
-//		Member login = memberService.getMember(email);
-//		
-//		if(login != null) {
-//			model.addAttribute(setMember, getMember);
-//			return "scrap";
-//		} else {
-//			return "redirect:/login";
-//		}
-//	}
-	
+	private MemberService memberService;	
 	
 	// 회원정보 받기
 	@RequestMapping(value="/scrap", method=RequestMethod.GET)
@@ -52,32 +37,11 @@ public class ScrapController {
 		
 		// 세션 객체 안에 있는 이메일 정보 저장
 		Scrap scrap = scrapService.getScrap(email);
-		// Member member = (Member) session.getAttribute("member");
-		
-//		if(member != null) {
-//		String picture = member.getPicture();
-//		String nickname = member.getNickname();
-//		String Email = member.getEmail();
-//		String job = member.getJob(); 
-//		
-//		} else {
-//			
-//		}
-//		
+
 		// 정보 저장 후 페이지 이동
 		model.addAttribute("scrap", scrap);
-		// model.addAttribute("member", member);
 		
 		return "scrap";
 	}
 	
-	// 스크랩 리스트 출력하기
-//	@RequestMapping(value= {"/scrap"}, method = RequestMethod.GET)
-//	public String scrapList(Model model) {
-//		
-//		List<Scrap> list = scrapService.ScrapList();
-//		model.addAllAttributes(scrapService.ScrapList());
-//		
-//		return "scrap";
-//	}
 }
