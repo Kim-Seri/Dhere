@@ -42,7 +42,7 @@
 	
 <!-- 링크 공유 모달 -->
 <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-	<div class="modal-dialog" style="width: 400px">
+	<div class="modal-dialog" style="width: 500px">
 			<div class="modal-content" style="border: 8px solid rgb(49, 108, 244)">
 					<div class="modal-header text-white" style="text-align: center">
 						<h1 class="modal-title fs-5 fw-bold" id="modalLabel" style="color: rgb(49, 108, 244); font-weight: bold">공유하기</h1>
@@ -54,22 +54,22 @@
 								<input type="text" class="form-control rounded-3" id="copyTxt" name="shareLink" style="border: 3px solid rgb(49, 108, 244)" value="${product.productLink}" readonly>
 						</div>
 						<div class="col-2">
-								<img src="resources/images/share.png" class="product-icon" style="cursor: pointer" onclick="copyToClipboard()">
+								<img src="resources/images/copy.png" class="product-icon" style="width: 40px; cursor: pointer" onclick="copyToClipboard()">
 						</div>
 				</div>
 					<div class="row my-3">
 						<div class="col text-center">
-							<button type="button" class="btn btn-outline-warning rounded-5" style="width: 250px; border-width: 3px; font-weight: bold">Share to KakaoTak</button>
+							<button type="button" class="btn btn-outline-warning rounded-5" style="width: 250px; border-width: 3px; font-weight: bold; text-align: left">Share to KakaoTak</button>
 						</div>
 					</div>
 					<div class="row my-3">
 						<div class="col text-center">
-							<button type="button" class="btn btn-outline-success rounded-5" style="width: 250px; border-width: 3px; font-weight: bold">Share to Google</button>
+							<button type="button" class="btn btn-outline-success rounded-5" style="width: 250px; border-width: 3px; font-weight: bold; text-align: left">Share to Google</button>
 						</div>
 					</div>
 					<div class="row my-3">
 						<div class="col text-center">
-							<button type="button" class="btn btn-outline-primary rounded-5" style="width: 250px; border-width: 3px; font-weight: bold">Share to Facebook</button>
+							<button type="button" class="btn btn-outline-primary rounded-5" style="width: 250px; border-width: 3px; font-weight: bold; text-align: left">Share to Facebook</button>
 						</div>
 					</div>
 					</form>
