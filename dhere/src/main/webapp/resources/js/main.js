@@ -11,15 +11,15 @@ document.addEventListener("DOMContentLoaded", function () {
       button.style.display = "none";
     }
   });
-	
-	button.addEventListener("click", function() {
-		  if(!isLogin) {
-			  alert("로그인 먼저 진행해주세요.");
-			  // 여기 오류 잡아야 함 
-			 history.back();
-			 return null; 
-		  } 
-	})
+//	
+//	button.addEventListener("click", function() {
+//		  if(!isLogin) {
+//			  alert("로그인 먼저 진행해주세요.");
+//			  // 여기 오류 잡아야 함 
+//			 history.back();
+//			 return null; 
+//		  } 
+//	})
 
 	console.log('s');
 	/*
@@ -55,17 +55,17 @@ document.addEventListener("DOMContentLoaded", function () {
 			
 			console.log(selectedJob);
 			// ajax : 카테고리가 PD인 데이터를 서버에서 받기, 눌린 버튼은 배열에 들어가도록하고 그 배열을 넘겨
-			$.ajax {
-				url : "jobSelectedCategory",
-				data : "jobSelectedCategory=" + jobSelectedCategory,
-				type: "POST",
-				dataType: "json",
-				success: function(res) {
-					$("#jobSelectedCategory").empty();
-					
-				}
-			
-			}
+//			$.ajax {
+//				url : "jobSelectedCategory",
+//				data : "jobSelectedCategory=" + jobSelectedCategory,
+//				type: "POST",
+//				dataType: "json",
+//				success: function(res) {
+//					$("#jobSelectedCategory").empty();
+//					
+//				}
+//			
+//			}
 			
 			
 		}
