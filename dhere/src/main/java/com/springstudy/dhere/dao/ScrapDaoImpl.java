@@ -28,10 +28,10 @@ public class ScrapDaoImpl implements ScrapDao {
 	}
 
 	// 스크랩한 게시물 가져오기
-	@Override
-	public List<Scrap> getScrapList() {
-		return sqlSession.selectList(NAME_SPACE + ".scrap");
-	}
+//	@Override
+//	public List<Scrap> getScrapList() {
+//		return sqlSession.selectList(NAME_SPACE + ".scrap");
+//	}
 
 
 }

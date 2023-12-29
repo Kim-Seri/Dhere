@@ -24,4 +24,18 @@
 	    )
 	</insert>
 
+	<!-- 회원테이블에서 id에 해당하는 비밀번호를 가져오는 맵핑 구문 -->
+<!-- 	<select id="memberPassCheck" resultType="String">
+		SELECT
+			pass
+		FROM member
+		WHERE email = #{email}
+	</select> -->
+	
+	<!-- 회원정보를 수정하는 맵핑구문 -->
+<!-- 	<update id="updateMember" parameterType="String">
+		UPDATE member
+			SET pass=#{pass}, email=#{email}, 
+	</update> -->
+	
 	</mapper>

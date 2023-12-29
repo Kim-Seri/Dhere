@@ -63,6 +63,13 @@ public class MemberController {
 		return "redirect:main";
 
 	}
+	
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main";
+	}
 
 	// 회원가입
 	@RequestMapping(value = "/joinResult", method = RequestMethod.POST)
