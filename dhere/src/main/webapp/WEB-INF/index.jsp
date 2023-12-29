@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="resources/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    
     <script src="resources/js/jquery-3.2.1.min.js"></script>
     <script src="resources/js/formcheck.js"></script>
     <script src="resources/js/member.js"></script>
@@ -16,8 +17,10 @@
 </head>
 <body>
  
-        <%@ include file="template/header.jsp" %>        
-        <jsp:include page="${param.body}" />
+        <%@ include file="template/header.jsp" %>     
+        <div class="container">   
+        	<jsp:include page="${param.body}" />
+        </div>
         <%@ include file="template/footer.jsp" %>       
    
     
@@ -39,6 +42,7 @@
 	</script>
 
 <script src="resources/bootstrap/bootstrap.bundle.min.js"></script>
+
 	
 <!-- 링크 공유 모달 -->
 <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">

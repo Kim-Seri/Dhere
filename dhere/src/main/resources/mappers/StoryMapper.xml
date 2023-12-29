@@ -78,6 +78,21 @@
         INSERT INTO image (file_name, story_no)
         VALUES (#{fileName}, #{storyNo})
     </insert>
+    
+    
+    <insert id="insertTag" parameterType="Tag">
+    	INSERT INTO tag (tag_name)
+    	VALUES(#{tag})
+    	<selectKey keyProperty="tagNo" order="AFTER"
+				resultType="int">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+    </insert>
+    
+    <insert id="insertTagPost" parameterType="Tag">
+    	INSERT INTO tag_post (tag_no, story_no)
+    	VALUES(#{tag})
+    </insert>
 
 	<!-- 게시물 상세보기 쿼리 -->
 	<select id="getStoryDetail" resultType="Story">

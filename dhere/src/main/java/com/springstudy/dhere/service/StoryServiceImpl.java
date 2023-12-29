@@ -53,4 +53,16 @@ public class StoryServiceImpl implements StoryService {
 	public void insertImage(Image image) {
 		storyDao.insertImage(image);
 	}	
+	
+	//tag추가하기
+	@Override
+	public void insertTag(Tag tag) {
+		storyDao.insertTag(tag);
+	}
+	
+	//tagPost추가하기
+	@Override
+	public void insertTagPost(Tag tag) {
+		storyDao.insertTagPost(tag);
+	}
 }

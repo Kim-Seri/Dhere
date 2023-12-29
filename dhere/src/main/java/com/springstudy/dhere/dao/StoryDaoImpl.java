@@ -50,5 +50,15 @@ public class StoryDaoImpl implements StoryDao {
 	public void insertImage(Image image) {
 		sqlSession.insert(NAME_SPACE+".insertImage",image);
 	}
-
+	
+	//tag 추가하기
+	@Override
+	public void insertTag(Tag tag) {
+		sqlSession.insert(NAME_SPACE+"insertTag", tag);
+	}
+	//tagPost추가하기
+	@Override
+	public void insertTagPost(Tag tag) {
+		sqlSession.insert(NAME_SPACE+"insertTagPost", tag);
+	}
 }
