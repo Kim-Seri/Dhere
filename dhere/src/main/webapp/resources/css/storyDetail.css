@@ -50,7 +50,7 @@
 }
 
 #followBtn, #scrapBtn {
-	width: 90px; 
+	width: 110px; 
 	height: 50px; 
 }
 
@@ -99,3 +99,51 @@
 	height: 60px;
 }
 
+#storyDetaile_products_area {
+	border-top: 2px solid #4370FF;
+	border-bottom: 2px solid #4370FF;
+	margin-top: 80px;
+	margin-bottom: 80px;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+#storyDetail_reply_area {
+	padding-left: 150px;
+	padding-right: 150px;
+}
+
+#storyDetail_reply_content {
+	border: 5px solid #4370FF;
+	padding: 20px;
+	border-radius: 20px;
+	font-size: 25px;
+}
+
+#storyDetail_reply_regDate {
+	color: #5E5E5E;
+}
+
+#storyDetail_reply_siren {
+	width: 30px; 
+	height: 30px;
+}
+
+#storyDetail_reply_write_area {
+	background-color: #EFEFEF;
+	width: 100%; 
+	height: 250px;
+	padding: 20px;
+}
+
+#storyDetail_reply_write_content {
+	border: 5px solid #4370FF;
+	padding: 20px;
+	margin-right: 10px;
+	border-radius: 20px;
+	font-size: 25px;
+}
+
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--bs-primary);
+}

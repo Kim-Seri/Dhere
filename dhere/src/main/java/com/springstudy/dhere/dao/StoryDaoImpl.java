@@ -33,8 +33,20 @@ public class StoryDaoImpl implements StoryDao {
 
 	// 게시물 디테일 가져오기
 	@Override
-	public List<Story> getStoryDetail(int storyNo) {
-	    return sqlSession.selectList(NAME_SPACE + ".getStoryDetail", storyNo);
+	public Story getStoryDetail(int storyNo) {
+	    return sqlSession.selectOne(NAME_SPACE + ".getStoryDetail", storyNo);
+	}
+	
+	// 게시물 디테일_이미지 가져오기
+	@Override
+	public List<Image> getStoryDetailImage(int storyNo) {
+		return sqlSession.selectList(NAME_SPACE + ".getStoryDetailImage", storyNo);
+	}
+	
+	// // 게시물 디테일_태그 가져오기
+	@Override
+	public List<Tag> getStoryDetailTag(int storyNo) {
+		return sqlSession.selectList(NAME_SPACE + ".getStoryDetailTag", storyNo);
 	}
 	
 	 // 직종 리스트 가져오기
@@ -50,5 +62,7 @@ public class StoryDaoImpl implements StoryDao {
 	public void insertImage(Image image) {
 		sqlSession.insert(NAME_SPACE+".insertImage",image);
 	}
+
+
 
 }
