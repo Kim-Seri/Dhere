@@ -36,7 +36,7 @@ public class StoryServiceImpl implements StoryService {
 	
 	// 게시물 상세보기 
 	@Override
-	public List<Story> getStoryDetail(int storyNo) {
+	public Story getStoryDetail(int storyNo) {
 	    return storyDao.getStoryDetail(storyNo);
 	}
 	
