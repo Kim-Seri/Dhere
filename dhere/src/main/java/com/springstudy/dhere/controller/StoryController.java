@@ -2,6 +2,7 @@ package com.springstudy.dhere.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -55,16 +56,20 @@ public class StoryController {
 		return "main";
 	}
 	
-	// 게시물 디테일 
+// 게시물 디테일 
 	@RequestMapping("/storyDetail")
 	public String storyDetail(Model model, @RequestParam int storyNo) {
-		
-	    List<Story> story = storyService.getStoryDetail(storyNo);
-
-	    model.addAttribute("story", story);
 	    
-	    System.out.println();
-
+	    Story storyDetail = storyService.getStoryDetail(storyNo);
+	    model.addAttribute("storyDetail", storyDetail);
+	    
+	    List<Image> iList = storyService.getStoryDetailImage(storyNo);
+		model.addAttribute("iList", iList);
+	    
+		List<Tag> tList = storyService.getStoryDetailTag(storyNo);
+		model.addAttribute("tList", tList);
+	    
+		
 	    return "storyDetail";
 	}
 	

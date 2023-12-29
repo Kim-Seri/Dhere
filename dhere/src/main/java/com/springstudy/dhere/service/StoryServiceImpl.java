@@ -37,8 +37,19 @@ public class StoryServiceImpl implements StoryService {
 	// 게시물 상세보기 
 	@Override
 	public List<Story> getStoryDetail(int storyNo) {
-		System.out.println("dao" + storyDao.getStoryList().get(1).getTags().toString());
 	    return storyDao.getStoryDetail(storyNo);
+	}
+	
+	// 게시물 디테일_이미지 가져오기
+	@Override
+	public List<Image> getStoryDetailImage(int storyNo) {
+		return storyDao.getStoryDetailImage(storyNo);
+	}	
+	
+	// 게시물 디테일_태그 가져오기
+	@Override
+	public List<Tag> getStoryDetailTag(int storyNo) {
+		return storyDao.getStoryDetailTag(storyNo);
 	}
 	
 	//직종 리스트 가져오기
@@ -53,5 +64,9 @@ public class StoryServiceImpl implements StoryService {
 	@Override
 	public void insertImage(Image image) {
 		storyDao.insertImage(image);
-	}	
+	}
+
+
+
+
 }

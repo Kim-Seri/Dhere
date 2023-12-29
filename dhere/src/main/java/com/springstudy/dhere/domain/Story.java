@@ -21,12 +21,13 @@ public class Story {
 	private String picture; 
 	private int imageNo;
 	private String fileName;
+	private String tagName;
 	
 	
 	public Story() {}
 	
 	public Story(int storyNo, String title, String content1, String content2, String content3, String content4, String email, Timestamp regDate, int categoryNo, 
-			int readCount, int thank, String nickname, int imageNo, String fileName) {
+			int readCount, int thank, String nickname, int imageNo, String fileName, String tagName) {
 		
 	    this.storyNo = storyNo;
 	    this.title = title;
@@ -42,6 +43,7 @@ public class Story {
 	    this.nickname = nickname;
 	    this.imageNo = imageNo;
 	    this.fileName = fileName;
+	    this.tagName = tagName;
 	}
 
 	public int getStoryNo() {
@@ -176,19 +178,13 @@ public class Story {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
-    
-    // story detail을 출력하기 위해 추가 
-    private String tagsAsString;
-    
-    // 기존 메서드들은 그대로 유지
-    
-    public String getTagsAsString() {
-        List<Tag> tags = this.getTags();
-        if (tags != null && !tags.isEmpty()) {
-            return tags.stream().map(Tag::getTagName).collect(Collectors.joining(", "));
-        }
-        return null;
-    }
-
 	
+		public String getTagName() {
+		return tagName;
+	}
+
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
+
 }

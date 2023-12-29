@@ -79,32 +79,52 @@
         VALUES (#{fileName}, #{storyNo})
     </insert>
 
-	<!-- 게시물 상세보기 쿼리 -->
+	<!-- 스토리 디테일 쿼리 -->
 	<select id="getStoryDetail" resultType="Story">
-	    SELECT 
-            s.story_no as storyNo,
-            s.title,
-            s.content1,
-            s.content2,
-            s.content3,
-            s.content4,
-            s.email,
-            s.reg_date as regDate,
-            s.category_no as categoryNo,
-            s.read_count as readCount,
-            s.thank,
-            s.nickname,
-            i.image_no as imageNo,
-            i.file_name as fileName,
-            m.picture,
-            t.tag_name as tagName
-        FROM story s
-        LEFT JOIN image i ON s.story_no = i.story_no
-        LEFT JOIN member m ON s.email = m.email
-        LEFT JOIN tag_post tp ON s.story_no = tp.story_no
-        LEFT JOIN tag t ON tp.tag_no = t.tag_no
-        WHERE s.story_no = #{storyNo}
-		</select>
+	    SELECT
+	        s.story_no AS storyNo,
+	        s.title,
+	        s.content1,
+	        s.content2,
+	        s.content3,
+	        s.content4,
+	        s.email,
+	        s.reg_date AS regDate,
+	        s.category_no AS categoryNo,
+	        s.read_count AS readCount,
+	        s.thank,
+	        s.nickname,
+	        m.picture
+	    FROM
+	        story s
+	    JOIN
+	        member m ON s.email = m.email
+	    WHERE
+	        s.story_no = #{storyNo}
+	</select>
+
+		
+<!-- 스토리 디테일_이미지 가져오기 쿼리 -->	
+	<select id="getStoryDetailImage" resultType="Image">
+	    	SELECT 
+		        image_no as imageNo,
+				file_name as fileName,
+				story_no as storyNo
+		    FROM image
+		    WHERE story_no = #{storyNo}
+	</select>
+	
+	
+<!-- 스토리 디테일_이미지 가져오기 쿼리 -->	
+	<select id="getStoryDetailTag" resultType="Tag">
+	    SELECT tp.story_no AS storyNo, t.tag_name AS tagName
+	    FROM tag_post tp
+	    JOIN tag t ON tp.tag_no = t.tag_no
+	    WHERE tp.story_no = #{storyNo}
+	</select>
+	
+	
+	
 		
 	<!-- 직종 조회 쿼리 -->
 	<select id="getJobList" resultType="Job" resultMap="JobResultMap">
