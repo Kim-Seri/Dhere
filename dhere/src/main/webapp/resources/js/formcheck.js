@@ -162,15 +162,16 @@ $(function() {
 			<div class="row">
 				<div class="col p-3">
 					<div class="row">
-			    <div class="col d-flex justify-content  mb-3" style="overflow: hidden; font-size: 15px">
-			    	`+i.brandName+`
-				</div>
-			</div>
+					    <div class="col-10 offset-1 py-3" style="font-weight: bold; border-bottom: 2px solid #bfbfbf; color: #bfbfbf">
+					        `+i.brandName+`
+					    </div>
+					</div>	
+
 			
-			<div style="width: 100%; height: 2px; background-color: black"></div>
+			<div style="width: 100%; height: 2px; color: black"></div>
 			
 			<div class="row">
-			    <div class="col mt-3 d-flex justify-content" style="overflow: hidden; font-size: 23px">
+			    <div class="col-10 offset-1 py-3" style="overflow: hidden; font-size: 23px">
 			        <b>`+i.productName+`</b>
 			    </div>
 			</div>
