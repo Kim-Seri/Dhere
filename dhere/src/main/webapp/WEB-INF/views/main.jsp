@@ -15,8 +15,8 @@
 <div class="row">
 	<div class="col">
 	
-		<!-- 언이 글쓰기 버튼 -->
-		<input type="button" class="btn btn-primary" onclick="location.href='postWriteForm'" value="글쓰기"/>
+		 <!-- 글쓰기 버튼 -->
+		 <input type="button" class="btn btn-primary fixed-write-button" onclick="location.href='postWriteForm'" value="글쓰기" />
 		<!-- 마이페이지 -->
 		<input type="button" class="btn btn-primary" onclick="location.href='scrap'" value="마이페이지" />
 		
@@ -47,13 +47,33 @@
 			</div>
 		</div>
 		<!-- 캐러셀 끝 -->
-		
+
 		<!-- 카테고리 -->
 		<div class="row">
 		<div class="col">
 			
+			
+			<!-- 여기서 체크박스를 지우고, 라벨도 지우고, -->
+			<div class="job-categories-container">
+			    <c:forEach var="jList" items="${jList}" varStatus="status">
+			        <div class="jobs" data-category="${jList.categoryName}" style="cursor: pointer; position:relative; background-color: white;">
+			        	
+			        	<span >${jList.categoryName}</span>
+			        	
+			           <%--  <input type="checkbox" id="jobCategories-${status.index}">			     
+			            <label for="jobCategories-${status.index}" id="jobCategoriesLabel-${status.index}" >${jList.categoryName}</label> --%>
+			            <span class="close-btn" onclick="clearSelection(${status.index})"></span>
+			        </div>
+			    </c:forEach>
+			</div>
+
+				
 		</div>
 		</div>
+
+
+
+
 		
 		<!-- 검색창 -->
 		<div class="row">
@@ -93,7 +113,7 @@
 			<div class="col">
 			
 			<!-- 게시물 한칸 -->
-			<div class="row d-flex justify-content-center">
+			<div class="row d-flex justify-content-center" id="jobSelectedCategory">
 			<c:forEach var="s" items="${sList}">
 			<div class="col-3 m-4 rounded-4" style="background: #F3F3F3;">
 			

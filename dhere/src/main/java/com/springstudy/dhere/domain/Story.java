@@ -2,6 +2,7 @@ package com.springstudy.dhere.domain;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Story {
 	
@@ -175,5 +176,19 @@ public class Story {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
+    
+    // story detail을 출력하기 위해 추가 
+    private String tagsAsString;
+    
+    // 기존 메서드들은 그대로 유지
+    
+    public String getTagsAsString() {
+        List<Tag> tags = this.getTags();
+        if (tags != null && !tags.isEmpty()) {
+            return tags.stream().map(Tag::getTagName).collect(Collectors.joining(", "));
+        }
+        return null;
+    }
+
 	
 }

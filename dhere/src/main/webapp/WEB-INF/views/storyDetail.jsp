@@ -187,9 +187,11 @@
 				<div class="row" id="tag">
 				    <div class="col">
 				        <img src="resources/images/icon/name_tag.png" id="icon_tag">
-				            <c:forEach var="tag" items="${a.tags}">
-				                ${tag.tagName}<br>
-				            </c:forEach>
+
+					            
+						            ${a.tagsAsString}
+						        
+        
 				    </div>
 				</div>
 				

@@ -1,6 +1,7 @@
 package com.springstudy.dhere.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +43,9 @@ public class StoryController {
 	@RequestMapping(value= {"/", "/main"}, method=RequestMethod.GET)
 	public String Main(Model model, @RequestParam(defaultValue="1") int storyNo,  @RequestParam(required=false, defaultValue="All") String productCategory) {
 		
+		List<Job> jList=storyService.getJobList();
+		model.addAttribute("jList", jList);
+		
 		List<Story> sList = storyService.getStoryList();
 		model.addAttribute("sList", sList);
 		
@@ -55,7 +60,10 @@ public class StoryController {
 	public String storyDetail(Model model, @RequestParam int storyNo) {
 		
 	    List<Story> story = storyService.getStoryDetail(storyNo);
+
 	    model.addAttribute("story", story);
+	    
+	    System.out.println();
 
 	    return "storyDetail";
 	}
@@ -103,7 +111,7 @@ public class StoryController {
 	public String postWriteForm(Model model) {
 		
 		List<Job> jList=storyService.getJobList();
-		System.out.println(jList.get(0).getCategoryName());
+		// System.out.println(jList.get(0).getCategoryName());
 		model.addAttribute("jList",jList);
 		
 		
