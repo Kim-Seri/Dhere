@@ -35,6 +35,7 @@
 	</script>
 
 <script src="resources/bootstrap/bootstrap.bundle.min.js"></script>
+
 	
 <!-- 링크 공유 모달 -->
 <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">

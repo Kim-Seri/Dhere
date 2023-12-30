@@ -32,4 +32,10 @@ public interface StoryService {
 
 	//게시글 이미지 추가하기
 	public abstract void insertImage(Image image);
+
+	//tag 추가하기
+	public abstract void insertTag(Tag tag);
+	
+	//tagPost 추가하기
+	public abstract  void insertTagPost(Tag tag);
 }
