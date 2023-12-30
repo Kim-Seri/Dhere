@@ -77,6 +77,7 @@ public class StoryController {
 	@RequestMapping(value="/postWrite",method=RequestMethod.POST)
 	public String postWrite(HttpServletRequest request , HttpServletResponse response , Model model ,String title,String content1, String content2, String content3, String content4 ,
 			@RequestParam(value="category",required=false)int categoryNo,HttpSession session,
+			@RequestParam(value="hashtag",required=false) List<Tag> tagList,
 			@RequestParam(value="additionalImages", required=false) List<MultipartFile> multipartFile) throws IOException{
 		
 		String nickname=(String) session.getAttribute("nickname");
@@ -101,6 +102,21 @@ public class StoryController {
 		
 		storyService.postWrite(story);
 		
+		System.out.println(tagList);
+		
+		
+		//태그 리스트 추가
+		if(tagList != null &&! tagList.isEmpty()) {
+			for(Tag tList:tagList) {
+				Tag tag=new Tag();
+				tag.setTagName(tList.getTagName());
+				tag.setStoryNo(story.getStoryNo());
+				storyService.insertTag(tag);
+				storyService.insertTagPost(tag);
+			}
+		}
+		
+		//이미지 리스트 추가
 		if(multipartFile != null &&! multipartFile.isEmpty()) {
 			for (MultipartFile imageFile : multipartFile) {
                 Image image = new Image();

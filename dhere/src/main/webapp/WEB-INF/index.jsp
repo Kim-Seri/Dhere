@@ -34,7 +34,18 @@
 	});
 	</script>
 
+<script>
+	// 페이지가 로드될 때 툴팁을 초기화합니다.
+	document.addEventListener('DOMContentLoaded', function() {
+		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+		return new bootstrap.Tooltip(tooltipTriggerEl);
+		});
+	});
+</script>
+
 <script src="resources/bootstrap/bootstrap.bundle.min.js"></script>
+
 	
 <!-- 링크 공유 모달 -->
 <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">

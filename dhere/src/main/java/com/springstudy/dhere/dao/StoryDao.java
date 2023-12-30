@@ -30,4 +30,11 @@ public interface StoryDao {
 	// 게시글 이미지 입력하기
 	public abstract void insertImage(Image image);
 
+	//tag추가하기
+	public abstract void insertTag(Tag tag);
+	
+	//tagPost추가하기
+	public abstract void insertTagPost(Tag tag);
+
+
 }
