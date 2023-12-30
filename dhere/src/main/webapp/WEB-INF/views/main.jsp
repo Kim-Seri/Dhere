@@ -115,7 +115,7 @@
 			<!-- 게시물 한칸 -->
 			<div class="row d-flex justify-content-center" id="jobSelectedCategory">
 			<c:forEach var="s" items="${sList}">
-			<div class="col-3 m-4 rounded-4" style="background: #F3F3F3;">
+			<div class="col-3 m-4 rounded-4" style="background: #F3F3F3; width: 29%;">
 			
 				<!-- 데스크셋업 썸네일 -->
 				<div class="row rounded-top-4" style="height: 200px; background-size: cover; background-position: center; background-image: url('resources/images/desk/${s.fileName}');">
@@ -125,26 +125,30 @@
 				
 				<!-- 프로필, 닉네임, 날짜 -->
 				<div class="row">
-				<div class="col offset-1 p-3" style="color: #636363;">
-					<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 2px solid #5E5E5E;">&nbsp;&nbsp;&nbsp;
+				<div class="col" style="color: #636363; margin-left: 2%; margin-top: 3%; font-weight: 700;">
+					<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 1px solid #5E5E5E;">&nbsp;
 					${s.nickname}
 				</div>
-				<div class="col text-end pt-1 pe-4" style="color:#5E5E5E; font-size: smaller;">
-					<fmt:formatDate value="${s.regDate}" pattern="yyyy-MM-dd" var="formattedDate" />
+				<div class="col text-end" style="color: #5E5E5E; margin-top: 2%;">
+					<fmt:formatDate value="${s.regDate}" pattern="yyyy-MM-dd" var="formattedDate"/>
 					${formattedDate}
 				</div>
 				</div>
-				
-				<!-- 제목 -->
+				<!-- 제목 --> 
 				<div class="row">
-				<div class="col-10 offset-1 py-3" style="font-weight: bold; border-bottom: 2px solid #bfbfbf;">
-					<a href="storyDetail?storyNo=${s.storyNo }" class="link-dark link-underline-opacity-0">${s.title}</a>
+					<div class="col" style="font-weight: bold; margin-left: 2%; margin-top: 11%; font-size: 21px; font-weight: 800;">
+						<a href="storyDetail?storyNo=${s.storyNo }" class="link-dark link-underline-opacity-0">${s.title}</a>
+					</div>
 				</div>
+				<div class="row" style="width: 99%; border-bottom: 2px solid #bfbfbf; margin-left: 1%; margin-top: 20px;">
+					<div class="col justify-content-center">
+						
+					</div>
 				</div>
 				
 				<!-- 태그 -->
 				<div class="row">
-				<div class="col-11 offset-1 pt-3" style="color:#5E5E5E;">
+				<div class="col mt-3 mb-4" style="color:#5E5E5E; margin-left: 2%;">
 					<c:forEach var="tag" items="${s.tags}" varStatus="loop">
 				            #${tag.tagName} 
 			        </c:forEach>
@@ -153,7 +157,7 @@
 				
 				<!-- 조회수, 좋아요 -->
 				<div class="row">
-				<div class="col text-end pe-4 py-3" style="color:#5E5E5E; font-size: smaller;">
+				<div class="col text-end py-3" style="color:#5E5E5E; font-size: smaller;">
 					<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count" style="width: 20px;">
 					${s.readCount} &nbsp;&nbsp;
 					<img src="resources/images/icon/heart.png" id="icon_heart" style="width: 20px;">
@@ -222,11 +226,16 @@
 			
 			<div style="width: 100%; height: 2px; color: black"></div>
 			
+			
+			
+			
 			<div class="row">
-			    <div class="col-10 offset-1 py-3" style="overflow: hidden; font-size: 23px">
+			    <div class="col-10 offset-1 mt-2" style="overflow: hidden; font-size: 23px">
 			        <b>${p.productName}</b>
 			    </div>
 			</div>
+			
+			
 				</div>
 			</div>
 		</div>

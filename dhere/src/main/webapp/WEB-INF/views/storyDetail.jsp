@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="resources/css/storyDetail.css">
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html>
 <head>
     <title>Story Detail</title>
@@ -14,12 +14,12 @@
 		
 		
 		
-			
+					<input type="hidden" value="${sessionScope.member.email}">
 					<!-- 직무 카테고리 시작 -->
 					<div class="row" id="category_view_btn">
 						<div class="col">
 							<button type="button" class="btn btn-primary fs-5 fw-bolder">
-							<img src="resources/images/icon/name_tag_white.png" id="icon_tag_category_view_btn">&nbsp;&nbsp;디자이너${storyDetail.categoryNo }</button>
+							<img src="resources/images/icon/name_tag_white.png" id="icon_tag_category_view_btn">&nbsp;&nbsp;${storyDetail.categoryName }</button>
 						</div>
 					</div>
 					<!-- 직무 카테고리 끝 -->
@@ -38,23 +38,19 @@
 						</div>
 						<!-- 프로필 사진 끝 -->
 						<!-- 닉네임 시작 -->
-						<div class="col d-flex align-items-center ms-3" id="nickname">
+						<div class="col-2 d-flex align-items-center ms-3" id="nickname">
 							${ storyDetail.nickname }
 						</div>
 						<!-- 닉네임 끝 -->
 						<!-- 날짜 시작 -->
-						<div class="col-3 text text-end" id="regDate">
+						<div class="col-7 text-end" id="regDate">
 							${ storyDetail.regDate }
 						</div>
 						<!-- 날짜 끝 -->
-						<!-- 조회수 시작 -->
-						<div class="col-1 text text-end" id="count_num">
-							<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count">
+						<!-- 조회수, 좋아요 시작 -->
+						<div class="col-2 text-end justify-content-end" id="count_num">
+						<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count">
 							${ storyDetail.readCount }
-						</div>
-						<!-- 조회수 끝 -->
-						<!-- 좋아요 시작 -->
-						<div class="col-1 text text-end" id="heart_num">
 							<img src="resources/images/icon/heart.png" id="icon_heart">
 							${ storyDetail.thank }
 						</div>
@@ -63,9 +59,12 @@
 					<!-- 팔로우, 스크랩 버튼 시작 -->
 					<div class="row text text-end mb-5">
 						<div class="col">
-							<button type="button" class="btn btn-outline-primary fs-5" id="followBtn">수정하기</button>
-							<button type="button" class="btn btn-outline-primary fs-5" id="scrapBtn">삭제하기</button>
-						</div>
+							<button type="button" class="btn btn-outline-primary fs-5" id="followBtn">
+								${storyDetail.email eq sessionScope.member.email ? '수정하기' : '팔로우'}
+							</button>
+							<button type="button" class="btn btn-outline-primary fs-5" id="scrapBtn">
+								${storyDetail.email eq sessionScope.member.email ? '삭제하기' : '스크랩'}</button>
+							</div>
 					</div>
 					<!-- 팔로우, 스크랩 버튼 끝 -->
 	<!--################################## 사진 출력 영역 시작 ##################################-->

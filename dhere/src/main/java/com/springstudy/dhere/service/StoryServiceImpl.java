@@ -52,6 +52,12 @@ public class StoryServiceImpl implements StoryService {
 		return storyDao.getStoryDetailTag(storyNo);
 	}
 	
+	// 게시물 조회 수 증가시키기
+	@Override
+	public void increaseReadCount(int storyNo) {
+	    storyDao.increaseReadCount(storyNo);
+	}
+	
 	//직종 리스트 가져오기
 	@Override
 	public List<Job> getJobList(){
@@ -77,4 +83,6 @@ public class StoryServiceImpl implements StoryService {
 	public void insertTagPost(Tag tag) {
 		storyDao.insertTagPost(tag);
 	}
+
+
 }

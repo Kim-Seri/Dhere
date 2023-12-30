@@ -22,6 +22,7 @@ public class Story {
 	private int imageNo;
 	private String fileName;
 	private String tagName;
+	private String categoryName;
 	
 	
 	public Story() {}
@@ -185,6 +186,14 @@ public class Story {
 
 	public void setTagName(String tagName) {
 		this.tagName = tagName;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 }

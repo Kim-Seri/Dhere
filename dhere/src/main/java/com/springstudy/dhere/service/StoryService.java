@@ -26,6 +26,9 @@ public interface StoryService {
     
     // 게시물 디테일_태그 가져오기
     public abstract List<Tag> getStoryDetailTag(int storyNo);
+    
+    // 게시물 조회 수 증가시키기
+    public abstract void increaseReadCount(int storyNo);
 	
 	//직종 리스트 가져오기
 	public abstract List<Job> getJobList();
