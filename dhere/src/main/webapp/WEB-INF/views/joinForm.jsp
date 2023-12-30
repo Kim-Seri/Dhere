@@ -14,7 +14,7 @@
 </style>
 
 
-<div class="row my-5 container" id="global-content">
+<div class="row my-4 container" id="global-content">
 	<div class="offset-3 col-6">
 		<form action="joinResult" name="joinForm" id="joinForm" method="post" enctype="multipart/form-data">
 		<div class="row m-3">
@@ -37,100 +37,102 @@
 					</div>
 
 			        
-					<div class="row my-3">
+					<div class="row my-4">
 						<div class="col-8 offset-2">
-							<label for="email" class="form-label" style="color:white">이메일 </label>
+							<label for="email" class="form-label" style="color: white; font-size: 25px; font-weight: bold">&nbsp;&nbsp;이메일</label>
 							<div class="row">
 								<div class="col-8">
-									<input type="text" class="form-control border border-3" name="email" id="email" placeholder="example@example.com" style="background: transparent; border-radius: 15px; color: white;">
+									<input type="text" class="form-control border border-white border-3" name="email" id="email" placeholder="example@example.com" style="width: 110%; background: white; border-radius: 10px; color: black;">
 									<label id="label1"></label>
 								</div>
-								<div class="col-4">
-									<input type="button" class="btn" id="btnOverlapEmail" value="확인" style="width: 65%; height: 45px; background: white; border-radius: 15px;">
+								<div class="col-4 text-end">
+									<input type="button" class="btn border-white" id="btnOverlapEmail" value="확인" style="width: 65%; height: 45px; color: white; border-radius: 10px;">
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row my-3">
+					<div class="row my-4">
 						<div class="col-6 offset-2">
-							<label for="pass" class="form-label" style="color:white">비밀번호 </label>
-							<input type="password" class="form-control border border-3" name="pass" id="pass1" style="background: transparent; border-radius: 15px; color: white;">
+							<label for="pass" class="form-label" style="color: white; font-size: 25px; font-weight: bold">&nbsp;&nbsp;비밀번호 </label>
+							<input type="password" class="form-control border border-white border-3" name="pass" id="pass1" style="width: 97%; background: white; border-radius: 10px; color: black;">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-8 offset-2">
-							<label for="pass2" class="form-label" style="color:white">비밀번호 확인 </label>
+							<label for="pass2" class="form-label" style="color: white; font-size: 25px; font-weight: bold">&nbsp;&nbsp;비밀번호 확인 </label>
 							<div class="row">
 								<div class="col-8">
-									<input type="password" class="form-control border border-3" name="pass2" id="pass2" style="background: transparent; border-radius: 15px; color: white;">
+									<input type="password" class="form-control border border-white border-3" name="pass2" id="pass2" style="width: 110%; background: white; border-radius: 10px; color: black;">
 								</div>
-								<div class="col-4">
-									<input type="button" class="btn" id="btnOverlapPass" value="확인" style="width: 65%; height: 45px; background: white; border-radius: 15px;">
+								<div class="col-4 text-end">
+									<input type="button" class="btn border-white" id="btnOverlapPass" value="확인" style="width: 65%; height: 45px; color: white; border-radius: 10px;">
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row mt-5 mb-3">
+					<div class="row my-4">
 						<div class="col-8 offset-2">
-							<label for="name" class="form-label" style="color:white">이름 </label>
-							<input type="text" class="form-control border border-3" name="name" id="name" style="background: transparent; border-radius: 15px; color: white;">
+							<label for="name" class="form-label" style="color: white; font-size: 25px; font-weight: bold">&nbsp;&nbsp;이름 </label>
+							<input type="text" class="form-control border border-white border-3" name="name" id="name" style="background: white; border-radius: 10px; color: black;">
 						</div>
 					</div>
-					<div class="row my-3">
+					<div class="row my-4">
 						<div class="col-8 offset-2">
-							<label for="nickname" class="form-label" style="color:white">닉네임 </label>
-							<input type="text" class="form-control border border-3" name="nickname" id="nickname" style="background: transparent; border-radius: 15px; color: white;">
+							<label for="nickname" class="form-label" style="color: white; font-size: 25px; font-weight: bold">&nbsp;&nbsp;닉네임 </label>
+							<input type="text" class="form-control border border-white border-3" name="nickname" id="nickname" style="background: white; border-radius: 10px; color: black;">
 						</div>
 					</div>
-					<div class="row my-3">
+					<div class="row mt-4">
 						<div class="col-7 offset-2">
-							<label for="zipcode" class="form-label" style="color:white">주소 </label>
+							<label for="zipcode" class="form-label" style="color: white; font-size: 25px; font-weight: bold">&nbsp;&nbsp;주소 </label>
 							<div class="row">
 								<div class="col-8">
-									<input type="text" class="form-control border border-3" name="zipcode" id="zipcode" maxlength="5" style="background: transparent; border-radius: 15px; color: white;" readonly>
+									<input type="text" class="form-control border border-white border-3" name="zipcode" id="zipcode" maxlength="5" style="background: white; border-radius: 10px; color: black;" readonly>
 								</div>
 								<div class="col-3">
-									<input type="button" class="btn" id="btnZipcode" value="우편번호 검색" style="width: 220%; height: 45px; background: white; border-radius: 15px;">
+									<input type="button" class="btn border-white" id="btnZipcode" value="우편번호 검색" style="width: 220%; height: 45px; color: white; border-radius: 10px;">
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row my-3">
+					<div class="row my-2">
 						<div class="col-8 offset-2">
 							<!-- <label for="address1" class="form-label">Address </label> -->
-							<input type="text" class="form-control border border-3" name="address1" id="address1" style="background: transparent; border-radius: 15px; color: white;" readonly>
+							<input type="text" class="form-control border border-white border-3" name="address1" id="address1" style="background: white; border-radius: 10px; color: black;" readonly>
 						</div>
 					</div>
-					<div class="row my-3">
+					<div class="row my-2">
 						<div class="col-8 offset-2">
 							<!-- <label for="address2" class="form-label">Detail Address </label> -->
-							<input type="text" class="form-control border border-3" name="address2" id="address2" style="background: transparent; border-radius: 15px; color: white;">
+							<input type="text" class="form-control border border-white border-3" name="address2" id="address2" style="background: white; border-radius: 10px; color: black;">
 						</div>
 					</div>
-					<div class="row my-3">
+					<div class="row my-4">
 						<div class="col-8 offset-2">
-							<label for="job" class="form-label" style="color:white">직업 </label>
+							<label for="job" class="form-label" style="color: white; font-size: 25px; font-weight: bold">&nbsp;&nbsp;직업 </label>
 							<div class="row">
 								<div class="col">
-									<input type="text" class="form-control border border-3" name="job" id="job" placeholder="개발자" style="background: transparent; border-radius: 15px; color: white;">
+									<input type="text" class="form-control border border-white border-3" name="job" id="job" placeholder="개발자" style="background: white; border-radius: 10px; color: black;">
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row my-3">
+					<div class="row my-4">
 						<div class="col-8 offset-2">
-							<label for="phone" class="form-label" style="color:white">연락처 </label> 
+							<label for="phone" class="form-label" style="color: white; font-size: 25px; font-weight: bold">&nbsp;&nbsp;연락처 </label> 
 							<div class="row">
 								<div class="col">
-									<input type="text" class="form-control border border-3" name="phone" id="phone" maxlength="20" placeholder="010-0000-0000" style="background: transparent; border-radius: 15px; color: white;">
+									<input type="text" class="form-control border border-white border-3" name="phone" id="phone" maxlength="20" placeholder="010-0000-0000" style="background: white; border-radius: 10px; color: black;">
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row my-5">
-						<div class="col-8 offset-2 text-center"> 
-							<input type="submit" value="Join" class="btn border border-3 border-white" style="background: white; width: 25%; border-radius: 15px;">&nbsp;&nbsp;
-							<input type="button" value="Back" class="btn border border-3" style="width: 25%; border-radius: 15px; color: white" onclick="location.href='main'">
+					<div class="row justify-content-center" style="margin-top: 100px;">
+						<div class="col-4"> 
+							<input type="submit" value="Join" class="btn border border-white border-3" style="background: white; width: 100px; height: 55px; border-radius: 15px;">&nbsp;&nbsp;
+						</div>
+						<div class="col-4 text-end"> 
+							<input type="button" value="Back" class="btn border border-3" style="border-radius: 15px; width: 100px; height: 55px; color: white" onclick="location.href='main'">
 						</div>
 					</div>
 				</div>

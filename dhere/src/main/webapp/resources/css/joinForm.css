@@ -10,3 +10,7 @@ body {
 #header {
     display: none;
 }
+
+#footer_container {
+	display: none;
+}
