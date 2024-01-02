@@ -77,4 +77,10 @@ public class StoryServiceImpl implements StoryService {
 	public void insertTagPost(Tag tag) {
 		storyDao.insertTagPost(tag);
 	}
+
+	// 직종별 게시물 리스트 출력
+	@Override
+	public List<Story> storyList(String selectedJob) {
+		return storyDao.storyList(selectedJob);
+	}
 }

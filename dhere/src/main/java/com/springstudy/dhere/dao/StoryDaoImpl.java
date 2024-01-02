@@ -73,4 +73,10 @@ public class StoryDaoImpl implements StoryDao {
 	public void insertTagPost(Tag tag) {
 		sqlSession.insert(NAME_SPACE+"insertTagPost", tag);
 	}
+
+	// 직종별 게시물 리스트 출력
+	@Override
+	public List<Story> storyList(String selectedJob) {
+		return sqlSession.selectList(NAME_SPACE + ".storyList", selectedJob);
+	}
 }

@@ -24,7 +24,6 @@
 			</if>
 		</where>
 		ORDER BY product_no
-		
 	</select>
 	
 	<select id="productDetail" resultType="Product" >
