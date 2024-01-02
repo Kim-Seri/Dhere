@@ -97,51 +97,69 @@
 
 	<!-- 스토리 디테일 쿼리 -->
 	<select id="getStoryDetail" resultType="Story">
-		SELECT
-		s.story_no AS storyNo,
-		s.title,
-		s.content1,
-		s.content2,
-		s.content3,
-		s.content4,
-		s.email,
-		s.reg_date AS regDate,
-		s.category_no AS categoryNo,
-		s.read_count AS readCount,
-		s.thank,
-		s.nickname,
-		m.picture
+	    SELECT
+		    s.story_no AS storyNo,
+		    s.title,
+		    s.content1,
+		    s.content2,
+		    s.content3,
+		    s.content4,
+		    s.email,
+		    s.reg_date AS regDate,
+		    s.category_no AS categoryNo,
+		    s.read_count AS readCount,
+		    s.thank,
+		    s.nickname,
+		    m.picture,
+		    j.category_name AS categoryName
 		FROM
-		story s
+		    story s
 		JOIN
-		member m ON s.email = m.email
+		    member m ON s.email = m.email
+		JOIN
+		    job j ON s.category_no = j.category_no
 		WHERE
-		s.story_no = #{storyNo}
+		    s.story_no = #{storyNo};
 	</select>
 
-
-	<!-- 스토리 디테일_이미지 가져오기 쿼리 -->
+		
+	<!-- 스토리 디테일_이미지 가져오기 쿼리 -->	
 	<select id="getStoryDetailImage" resultType="Image">
-		SELECT
-		image_no as imageNo,
-		file_name as fileName,
-		story_no as storyNo
-		FROM image
-		WHERE story_no = #{storyNo}
+	    	SELECT 
+		        image_no as imageNo,
+				file_name as fileName,
+				story_no as storyNo
+		    FROM 
+		    	image
+		    WHERE 
+		    	story_no = #{storyNo}
 	</select>
-
-
-	<!-- 스토리 디테일_이미지 가져오기 쿼리 -->
+	
+	
+	<!-- 스토리 디테일_태그 가져오기 쿼리 -->	
 	<select id="getStoryDetailTag" resultType="Tag">
-		SELECT tp.story_no AS storyNo, t.tag_name AS tagName
-		FROM tag_post tp
-		JOIN tag t ON tp.tag_no = t.tag_no
-		WHERE tp.story_no = #{storyNo}
+	    SELECT 
+	    	tp.story_no AS storyNo, 
+	    	t.tag_name AS tagName
+	    FROM 
+	    	tag_post tp
+	    JOIN 
+	    	tag t ON tp.tag_no = t.tag_no
+	    WHERE 
+	    	tp.story_no = #{storyNo}
 	</select>
-
-
-
-
+	
+	<!-- 조회수 증가 쿼리 추가 -->
+	<update id="increaseReadCount" parameterType="Story">
+	    UPDATE 
+	    	story 
+	    SET 
+	    	read_count = read_count + 1 
+	    WHERE 
+	    	story_no = #{storyNo}
+	</update>
+	
+		
 	<!-- 직종 조회 쿼리 -->
 	<select id="getJobList" resultType="Job"
 		resultMap="JobResultMap">

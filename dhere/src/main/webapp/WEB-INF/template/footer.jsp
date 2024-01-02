@@ -56,17 +56,17 @@
 				</div>
 				<div class="row">
 					<div class="col" id="footer_category_link_area">
-						<a href="/footerMenu" target="_blank" id="footer_category_link">Webinars</a>
+						<a href="footerMenu" target="_blank" id="footer_category_link">Webinars</a>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col" id="footer_category_link_area">
-						<a href="/footerMenu" target="_blank" id="footer_category_link">Demos</a>
+						<a href="footerMenu" target="_blank" id="footer_category_link">Demos</a>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col" id="footer_category_link_area">
-						<a href="/footerMenu" target="_blank" id="footer_category_link">Guides</a>
+						<a href="footerMenu" target="_blank" id="footer_category_link">Guides</a>
 					</div>
 				</div>
 			</div>
@@ -80,17 +80,17 @@
 				</div>
 				<div class="row">
 					<div class="col" id="footer_category_link_area">
-						<a href="/footerMenu" target="_blank" id="footer_category_link">About</a>
+						<a href="footerMenu" target="_blank" id="footer_category_link">About</a>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col" id="footer_category_link_area">
-						<a href="/footerMenu" target="_blank" id="footer_category_link">Careers</a>
+						<a href="footerMenu" target="_blank" id="footer_category_link">Careers</a>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col" id="footer_category_link_area">
-						<a href="/footerMenu" target="_blank" id="footer_category_link">Status</a>
+						<a href="footerMenu" target="_blank" id="footer_category_link">Status</a>
 					</div>
 				</div>
 			</div>

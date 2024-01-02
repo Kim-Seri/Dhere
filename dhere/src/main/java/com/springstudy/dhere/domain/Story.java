@@ -187,4 +187,12 @@ public class Story {
 		this.tagName = tagName;
 	}
 
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
 }

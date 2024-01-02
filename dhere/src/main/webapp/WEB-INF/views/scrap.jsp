@@ -56,8 +56,7 @@
             <div class="row" style="width:700px; height: 300px; border:10px solid rgb(49, 108, 244); border-radius: 20px">
             <div class="col my-5" style="margin-left: 80px">
             <div class="row">
-            <!-- 프사/사진컨텐츠 -->
-                <div class="col-4 text-center">
+                <div class="col-4">
                     <c:if test="${ empty sessionScope.member.picture }">기본프사 <!-- 귀여운그림 -->
                     </c:if>
                     <c:if test="${ not empty sessionScope.member.picture }">

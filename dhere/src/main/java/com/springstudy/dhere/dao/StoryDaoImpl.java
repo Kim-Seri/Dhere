@@ -49,6 +49,12 @@ public class StoryDaoImpl implements StoryDao {
 		return sqlSession.selectList(NAME_SPACE + ".getStoryDetailTag", storyNo);
 	}
 	
+	// 게시물 조회 수 증가시키기
+	@Override
+	public void increaseReadCount(int storyNo) {
+	    sqlSession.update(NAME_SPACE + ".increaseReadCount", storyNo);
+	}
+	
 	 // 직종 리스트 가져오기
 	@Override
 	public List<Job> getJobList(){

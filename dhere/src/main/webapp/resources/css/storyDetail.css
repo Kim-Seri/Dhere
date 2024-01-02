@@ -21,6 +21,7 @@
 	border-radius: 70%;
 	border: 0px solid #5E5E5E;
 	box-shadow: 0 0 5px 1px #5E5E5E;
+	cursor: pointer;
 }
 
 #title {
@@ -36,9 +37,10 @@
 #regDate {
 	font-size: 22px;
 	color: #5E5E5E;
+	width: 55%; 
 }
 
-#count_num, #heart_num {
+#count_num {
 	font-size: 30px;
 	font-weight: 500;
 	color: #5E5E5E;
@@ -55,8 +57,9 @@
 }
 
 #fileName {
-	width: 800px; 
-	height: 600px; 
+	width: 1000px; 
+	height: 800px; 
+	margin-top: 40px;
 	object-fit: contain;
 }
 /* 사진 끝 */

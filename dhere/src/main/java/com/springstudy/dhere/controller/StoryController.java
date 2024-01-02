@@ -58,7 +58,10 @@ public class StoryController {
 	
 // 게시물 디테일 
 	@RequestMapping("/storyDetail")
-	public String storyDetail(Model model, @RequestParam int storyNo) {
+	public String storyDetail(Model model, @RequestParam int storyNo, HttpSession session) {
+		
+		// 조회수 증가 로직 추가
+		storyService.increaseReadCount(storyNo);
 	    
 	    Story storyDetail = storyService.getStoryDetail(storyNo);
 	    model.addAttribute("storyDetail", storyDetail);
