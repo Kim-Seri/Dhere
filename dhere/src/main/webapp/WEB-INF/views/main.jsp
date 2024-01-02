@@ -118,8 +118,9 @@
 			<div class="col-3 m-4 rounded-4" style="background: #F3F3F3;">
 			
 				<!-- 데스크셋업 썸네일 -->
-				<div class="row rounded-top-4" style="height: 200px; background-size: cover; background-position: center; background-image: url('resources/images/desk/${s.fileName}');">
-				<div class="col">				
+				<div class="row rounded-top-4" style="height: 200px; background-size: cover; background-position: center; background-image: url('<c:url value="/resources/images/desk/${s.fileName}" />');">
+				<div class="col">	
+					${s.fileName}
 				</div>
 				</div>
 				
