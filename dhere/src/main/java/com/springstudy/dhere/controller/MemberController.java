@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -107,5 +108,25 @@ public class MemberController {
         memberService.addMember(m);
         return "redirect:main";
     }
+	
+	
+	// 회원 정보 수정 폼 요청을 처리하는 메서드
+	@RequestMapping("/mypageUpdateForm")
+	public String updateForm(Model model, HttpSession session) {
+		return "member/mypageUpdateForm";
+	}
+	
+	// 회원 수정폼에서 들어오는 요청을 처리하는 메서드
+//	@RequestMapping("/mypageUpdateResult")
+//	public String mypageUpdateInfo(Model model, Member member, 
+//			String pass1, String phone) {
+//		member.setPass(pass1);
+//		member.setPhone(phone);
+//		
+//		memberService.updateMember(member);
+//		model.addAttribute("member", member);
+//		
+//		return "redirect:scrap";
+//	}
 
 }

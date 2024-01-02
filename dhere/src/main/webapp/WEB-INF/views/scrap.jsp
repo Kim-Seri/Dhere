@@ -7,23 +7,27 @@
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width">
-         <title>마이페이지</title>
    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width">
+	<style>
+    	#scraping {
+    	margin-top : 100px;
+    	}
+    	
+    	#myInfo {
+    	margin-top : 100px;
+    	}
+    </style>
          <title>마이페이지</title>
 <link href="resources/bootstrap/bootstrap.min.css" rel="stylesheet">
 <script src="resources/js/member.js"></script>
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <script src="resources/js/formcheck.js"></script>
-	<style>
-    
-    </style>
    </head>
 <body>
-	<!-- 컨텐츠 메뉴시작 -->
-	<div class="container mt-5">
-	 <div class="d-flex justify-content-center">
+	<!-- 전체 컨테이너 시작 -->
+<div class="container mt-5">
+	 <!-- 탑 메뉴버튼 -->
+	 <div class="d-flex justify-content-center" id="myInfo">
 	    <ul class="nav nav-pills text-center">
 	        <li class="nav-item"  style="width: 140px; font-size: 18px">
 	            <a class="nav-link active text-center" id="tab1-tab" data-bs-toggle="pill" href="#tab1" 
@@ -31,6 +35,7 @@
 	        </li>
 	        <li class="nav-item"  style="width: 140px; font-size: 18px">
 	            <a class="nav-link text-center" id="tab2-tab" data-bs-toggle="pill" href="#tab2" 
+	            onclick="location.href='mypageUpdateProcess'"
 	            role="tab" aria-controls="tab2" aria-selected="false">회원정보수정</a>
 	        </li>
 	        <li class="nav-item"  style="width: 140px; font-size: 18px">
@@ -39,18 +44,19 @@
 	        </li>
 	        <li class="nav-item"  style="width: 140px; font-size: 18px">
 	            <a class="nav-link text-center" id="tab4-tab" data-bs-toggle="pill" 
-	            href='${ sessionScope.isLogin ? ".logout" : ".main" }'
+	            href="#tab4"
 	            role="tab" aria-controls="tab4" aria-selected="false">로그아웃</a>
 	        </li>
 	    </ul>
     </div>
-    <!-- 컨텐츠 메뉴 끝 -->
+    <!-- 탑 메뉴 끝 -->
     <!-- 컨텐츠 내용 시작 -->
     <div class="row tab-content">
         <div class="col tab-pane fade show active d-flex justify-content-center" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
             <div class="row" style="width:700px; height: 300px; border:10px solid rgb(49, 108, 244); border-radius: 20px">
             <div class="col my-5" style="margin-left: 80px">
             <div class="row">
+            <!-- 프사/사진컨텐츠 -->
                 <div class="col-4 text-center">
                     <c:if test="${ empty sessionScope.member.picture }">기본프사 <!-- 귀여운그림 -->
                     </c:if>
@@ -59,40 +65,48 @@
                         style="width: 150px; height: 150px; object-fit: cover; border-radius: 70%; border: 3px solid blue"></div>
                     </c:if>           
                 </div>
-                <div class="col-8">
+           <!-- 글자컨텐츠 -->
+           <div class="col-8">
+                <!-- 닉네임 -->
                 <div class="row">
                 <div class="col" style="font-size: 35px; color: rgb(49, 108, 244); font-weight: bold">
                     ${sessionScope.member.nickname}
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col" style="font-size: 25px; color: rgb(49, 108, 244)">
+                </div>
+                </div>
+                <!-- 이메일 -->
+                <div class="row">
+                <div class="col" style="font-size: 25px; color: rgb(49, 108, 244)">
                     (${sessionScope.member.email})
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col my-1" style="font-size: 25px; color: rgb(49, 108, 244)">
+                </div>
+                </div>
+                <!-- 직업 -->
+                <div class="row">
+                <div class="col my-1" style="font-size: 25px; color: rgb(49, 108, 244)">
                     ${sessionScope.member.job}
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col my-1" style="color: rgb(49, 108, 244)">
+                </div>
+                </div>
+                <!-- 하트 시작 -->
+                <div class="row">
+                <div class="col my-1" style="color: rgb(49, 108, 244)">
                     <img src="resources/images/icon/heart.png" style="width: 30px; height: 30px"> 00개
-                    </div>
+                </div>
+               	</div>
+                <!-- 하트 끝 -->
+          		 </div>
+                <!-- 글자컨텐츠 끝 -->
                 </div>
                 </div>
-                </div>
-                </div>
-            </div>
-        </div>
-      
+  	            </div>
+      			</div>
+ 
+ <!-- 탑 컨텐츠 정리태그 -->
     </div>
-</div>
+
    			  <!-- 내정보 끝 -->
 			
 			<!-- 게시물/스크랩/팔로잉 -->
               
-         <div class="d-flex justify-content-center">
+         <div class="d-flex justify-content-center" id="scraping">
          <ul class="nav nav-underline offset">
             <li class="nav-item text-center" style="width: 170px">
               <a class="nav-link categoryBtn"  style="font-size: 25px; color: gray" data-bs-toggle="pill">나의 게시물</a>
@@ -137,8 +151,8 @@
          
          
 	</div>
+	<!-- 전체 컨테이너 끝 -->
          <input type="button" value="morepage">
-      <%@ include file="/WEB-INF/template/footer.jsp"%>
       <script src="resources/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>
