@@ -22,7 +22,7 @@ public class Story {
 	private int imageNo;
 	private String fileName;
 	private String tagName;
-	
+	private String categoryName;
 	
 	public Story() {}
 	
@@ -195,4 +195,5 @@ public class Story {
 		this.categoryName = categoryName;
 	}
 
+	
 }
