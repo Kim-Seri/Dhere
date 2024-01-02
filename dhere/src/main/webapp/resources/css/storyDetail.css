@@ -21,6 +21,7 @@
 	border-radius: 70%;
 	border: 0px solid #5E5E5E;
 	box-shadow: 0 0 5px 1px #5E5E5E;
+	cursor: pointer;
 }
 
 #title {

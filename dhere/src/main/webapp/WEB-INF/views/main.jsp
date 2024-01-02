@@ -125,9 +125,31 @@
 				
 				<!-- 프로필, 닉네임, 날짜 -->
 				<div class="row">
-				<div class="col" style="color: #636363; margin-left: 2%; margin-top: 3%; font-weight: 700;">
-					<img src="resources/images/profile/${s.picture}" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 1px solid #5E5E5E;">&nbsp;
+				<div class="col" style="color: #636363; margin-left: 2%; margin-top: 5%; font-weight: 700;">
+					<img src="resources/upload/${s.picture}" 
+							id="main_picture"
+							tabindex="0" 
+							data-bs-html="true" 
+							data-bs-placement="bottom" 
+							data-bs-toggle="popover" 
+							data-bs-trigger="focus"
+							data-bs-title="${s.nickname}"
+							data-bs-content="
+					
+										<a href='otherScrap?email=${s.email}&nickname=${s.nickname}&picture=${s.picture}&job=${s.categoryName}'class='text-decoration-none text-dark'>프로필 보러가기</a>
+										<br>
+									    <br>
+									    <a href='scrap' class='text-decoration-none text-dark'>쪽지 보내기</a>
+										<br>
+									    <br>
+									    <a href='scrap' class='text-decoration-none text-dark'>1:1 대화</a>
+										<br>
+									    <br>
+									    <a href='scrap' class='text-decoration-none text-dark'>신고하기</a>
+							">
+					&nbsp;
 					${s.nickname}
+					${s.categoryName}
 				</div>
 				<div class="col text-end" style="color: #5E5E5E; margin-top: 2%;">
 					<fmt:formatDate value="${s.regDate}" pattern="yyyy-MM-dd" var="formattedDate"/>
@@ -208,7 +230,7 @@
 		</ul>
 		<div class="row justify-content-center" id="categoryList">
 		<c:forEach var="p" items="${pList}">
-		<div class="col-3 m-3 p-1 rounded-4" style="width: 350px; height: 380px; background: #F3F3F3; cursor: pointer" onclick="location.href='productDetail?productNo=${p.productNo}'">
+		<div class="col-3 m-3 p-1 rounded-4" style="width: 290px; height: 380px; background: #F3F3F3; cursor: pointer" onclick="location.href='productDetail?productNo=${p.productNo}'">
 			<div class="row">
 			    <div class="col d-flex justify-content-center align-items-center" style="height: 200px; overflow: hidden;">
 			        <img src="resources/images/products/${p.productImage}" id="preview" class="img-fluid rounded-top-4" alt="${p.productImage}" style="width: 100%; height: 100%;">

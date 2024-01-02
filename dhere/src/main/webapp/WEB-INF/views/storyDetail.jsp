@@ -19,14 +19,14 @@
 					<div class="row" id="category_view_btn">
 						<div class="col">
 							<button type="button" class="btn btn-primary fs-5 fw-bolder">
-							<img src="resources/images/icon/name_tag_white.png" id="icon_tag_category_view_btn">&nbsp;&nbsp;${storyDetail.categoryName }</button>
+							<img src="resources/images/icon/name_tag_white.png" id="icon_tag_category_view_btn">&nbsp;&nbsp;${storyDetail.categoryName}</button>
 						</div>
 					</div>
 					<!-- 직무 카테고리 끝 -->
 					<!-- 제목 시작 -->
 					<div class="row mt-3">
 						<div class="col border-bottom border-primary">
-							<h1 id="title">${ storyDetail.title }</h1>
+							<h1 id="title">${storyDetail.title}</h1>
 						</div>
 					</div>
 					<!-- 제목 끝 -->				
@@ -34,7 +34,28 @@
 					<div class="row mt-4">
 						<!-- 프로필 사진 시작 -->
 						<div class="col-1">
-							<img src="resources/images/profile/${ storyDetail.picture }" id="profile">
+							<img src="resources/upload/${storyDetail.picture}" 
+							id="profile"
+							tabindex="0" 
+							data-bs-html="true" 
+							data-bs-placement="bottom" 
+							data-bs-toggle="popover" 
+							data-bs-trigger="focus"
+							data-bs-title="${storyDetail.nickname}"
+							data-bs-content="
+							
+							<a href='otherScrap?email=${storyDetail.email}&nickname=${storyDetail.nickname}&picture=${storyDetail.picture}&job=${storyDetail.categoryName}'class='text-decoration-none text-dark'>프로필 보러가기</a>
+							<br>
+						    <br>
+						    <a href='scrap' class='text-decoration-none text-dark'>쪽지 보내기</a>
+							<br>
+						    <br>
+						    <a href='scrap' class='text-decoration-none text-dark'>1:1 대화</a>
+							<br>
+						    <br>
+						    <a href='scrap' class='text-decoration-none text-dark'>신고하기</a>
+						    
+						    " >
 						</div>
 						<!-- 프로필 사진 끝 -->
 						<!-- 닉네임 시작 -->

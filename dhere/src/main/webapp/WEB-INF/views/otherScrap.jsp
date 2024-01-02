@@ -52,27 +52,23 @@
             <div class="col my-5" style="margin-left: 80px">
             <div class="row">
                 <div class="col-4">
-                    <c:if test="${ empty sessionScope.member.picture }">기본프사 <!-- 귀여운그림 -->
-                    </c:if>
-                    <c:if test="${ not empty sessionScope.member.picture }">
-                        <div class="col"><img src="resources/upload/${sessionScope.member.picture}" alt="150*150 크기 이미지" 
-                        style="width: 150px; height: 150px; object-fit: cover; border-radius: 70%; border: 3px solid blue"></div>
-                    </c:if>           
+	               	<img src="resources/upload/${param.picture}" alt="150*150 크기 이미지" 
+	               		style="width: 150px; height: 150px; object-fit: cover; border-radius: 70%;">     
                 </div>
                 <div class="col-8">
                 <div class="row">
                 <div class="col" style="font-size: 35px; color: rgb(49, 108, 244); font-weight: bold">
-                    ${sessionScope.member.nickname}
+                    ${param.nickname}
                     </div>
                     </div>
                     <div class="row">
                     <div class="col" style="font-size: 25px; color: rgb(49, 108, 244)">
-                    (${sessionScope.member.email})
+                    (${param.email})
                     </div>
                     </div>
                     <div class="row">
                     <div class="col my-1" style="font-size: 25px; color: rgb(49, 108, 244)">
-                    ${sessionScope.member.job}
+                    ${param.job}
                     </div>
                     </div>
                     <div class="row">
