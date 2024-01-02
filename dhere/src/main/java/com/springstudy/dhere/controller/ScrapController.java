@@ -30,7 +30,7 @@ public class ScrapController {
 	private MemberService memberService;	
 	
 	// 회원정보 받기
-	@RequestMapping(value="/scrap", method=RequestMethod.GET)
+	@RequestMapping(value="/mypage", method=RequestMethod.GET)
 	public String email
 	(Model model,HttpSession session ,
 			@RequestParam (defaultValue="test") String email) {
@@ -44,4 +44,11 @@ public class ScrapController {
 		return "scrap";
 	}
 	
+	@RequestMapping(value="/mypageUpdateProcess", method=RequestMethod.GET)
+	public String mypageUpdateProcess
+	(Model model, HttpSession session, String email) {
+		
+		return "member/mypageUpdateProcess";
+	}
+
 }

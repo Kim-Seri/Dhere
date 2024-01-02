@@ -92,9 +92,9 @@ function joinFormCheck(elem) {
 	}
 }*/
 
-// DOM이 준비되면
+// DOM이 준비되면-----------로그아웃
 
-/*$(function() {
+$(function() {
 	$("#memberUpdateForm").on("submit", function() {
 		// 비밀번호 확인했는지 체크
 		if(!$("#btnPassCheck").prop("disabled")) {
@@ -102,9 +102,9 @@ function joinFormCheck(elem) {
 			return false;
 		}
 		
-		return joinFormCheck(this);
+		return joinFormCheck();
 	});
-});*/
+});
 
 $(function() {
 
@@ -303,4 +303,17 @@ $("#btnZipcode").on("click", findZipcode);
 		}
 	});*/
 	
+	
+	$("#mypageUpdateBtn").on("click", function(){
+		var pass10 = $("#pass10").val();
+		var pass1 = $("#pass1").val();
+		if(pass10 == pass1) {
+			alert("일치");
+			window.location.href="scrap";
+		} else {
+			alert("불일치");                       
+		}
+		
+		
+	});
 });
