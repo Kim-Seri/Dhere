@@ -78,25 +78,13 @@ public class StoryController {
 	    return "storyDetail";
 	}
 ///////////////////////////////////////////////////////////////////		
-	// 게시물 삭제하기(syj)
-//	@RequestMapping(value = "/deleteStory", method = RequestMethod.POST)
-//	public String deleteStory(@RequestParam("storyNo") int storyNo) {
-//	    storyService.deleteStory(storyNo);
-//	    
-//	    return "redirect:/main";
-//	}
-	
-	
-	
 	@RequestMapping("/deleteStory")
-	public String deleteStory(HttpServletResponse response, PrintWriter out, int storyNo, String pass) {
-		
+	public String deleteStory(HttpServletResponse response, int storyNo) {
 		
 		storyService.deleteStory(storyNo);
 		
 		return "redirect:main";
 	}
-
 ///////////////////////////////////////////////////////////////////			
 	
 	//게시글 쓰기

@@ -80,9 +80,25 @@
 					<!-- 팔로우, 스크랩 버튼 시작 -->
 					<div class="row text text-end mb-5">
 						<div class="col">
-							<button type="button" class="btn btn-outline-primary fs-5" id="followBtn">
-								${storyDetail.email eq sessionScope.member.email ? '수정하기' : '팔로우'}
-							</button>
+						
+						
+						
+							<c:choose>
+							    <c:when test="${storyDetail.email eq sessionScope.member.email}">
+							    <form action="updateStory" method="post">
+							    	<input type="hidden" name="storyNo" value="${storyDetail.storyNo}" />
+							        <button type="submit" class="btn btn-outline-primary fs-5" id="updateBtn">
+							            수정하기
+							        </button>
+						        </form>
+							    </c:when>
+							    <c:otherwise>
+							        <button type="button" class="btn btn-outline-primary fs-5" id="followBtn">
+							            팔로우
+							        </button>
+							    </c:otherwise>
+							</c:choose>
+							
 							
 							
 							
