@@ -126,7 +126,7 @@
 				<!-- 프로필, 닉네임, 날짜 -->
 				<div class="row">
 				<div class="col" style="color: #636363; margin-left: 2%; margin-top: 5%; font-weight: 700;">
-					<img src="resources/upload/${s.picture}" 
+					<img src="resources/images/profile/${s.picture}" 
 							id="main_picture"
 							tabindex="0" 
 							data-bs-html="true" 

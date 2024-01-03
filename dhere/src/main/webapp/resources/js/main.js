@@ -66,49 +66,76 @@ document.addEventListener("DOMContentLoaded", function () {
 					$(res.category).each(function(v,i) {
 						$("#jobSelectedCategory").append(`
 								
-								<div class="col-3 m-4 rounded-4" style="background: #F3F3F3;">
-								
-								<div class="row rounded-top-4" style="height: 200px; background-size: cover; background-position: center; background-image: url('resources/images/desk/`+i.fileName+`');">
-								<div class="col">				
-								</div>
-								</div>
-								
-								<div class="row">
-								<div class="col offset-1 p-3" style="color: #636363;">
-								<img src="resources/images/profile/`+i.picture+`" alt="50*50 size image" style="width: 50px; height: 50px; object-fit: cover; border-radius: 70%; border: 2px solid #5E5E5E;">&nbsp;&nbsp;&nbsp;
-								`+i.nickname+`
-								</div>
-								<div class="col text-end pt-1 pe-4" style="color:#5E5E5E; font-size: smaller;">
-								<fmt:formatDate value="`+i.regDate+`" pattern="yyyy-MM-dd" var="formattedDate" />
-								
-								</div>
-								</div>
-								
-								<div class="row">
-								<div class="col-10 offset-1 py-3" style="font-weight: bold; border-bottom: 2px solid #bfbfbf;">
-								<a href="storyDetail?storyNo=`+i.storyNo+`" class="link-dark link-underline-opacity-0">`+i.title+`</a>
-								</div>
-								</div>
-								
-								<div class="row">
-								<div class="col-11 offset-1 pt-3" style="color:#5E5E5E;">
-								<c:forEach var="tag" items=`+i.tags+` varStatus="loop">
-								#  여기 손봐야됨 !
-								</c:forEach>
-								</div>
-								</div>
-								
-								<div class="row">
-								<div class="col text-end pe-4 py-3" style="color:#5E5E5E; font-size: smaller;">
-								<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count" style="width: 20px;">
-								`+i.readCount+` &nbsp;&nbsp;
-								<img src="resources/images/icon/heart.png" id="icon_heart" style="width: 20px;">
-								`+i.thank+`
-								</div>
-								</div>
-								
-								
-								</div>
+				<div class="col-3 m-4 rounded-4" style="background: #F3F3F3; width: 29%;">
+			
+				<div class="row rounded-top-4" style="height: 200px; background-size: cover; background-position: center; background-image: url('resources/images/desk/`+i.fileName+`');">
+				<div class="col">				
+				</div>
+				</div>
+				
+				<div class="row">
+				<div class="col" style="color: #636363; margin-left: 2%; margin-top: 5%; font-weight: 700;">
+					<img src="resources/upload/`+i.picture+`" 
+							id="main_picture"
+							tabindex="0" 
+							data-bs-html="true" 
+							data-bs-placement="bottom" 
+							data-bs-toggle="popover" 
+							data-bs-trigger="focus"
+							data-bs-title=`+i.nickname+`"
+							data-bs-content="
+										<a href='otherScrap?email=`+i.email+`&nickname=`+i.nickname+`&picture=`+i.picture+`'class='text-decoration-none text-dark'>프로필 보러가기</a>
+										<br>
+									    <br>
+									    <a href='scrap' class='text-decoration-none text-dark'>쪽지 보내기</a>
+										<br>
+									    <br>
+									    <a href='scrap' class='text-decoration-none text-dark'>1:1 대화</a>
+										<br>
+									    <br>
+									    <a href='scrap' class='text-decoration-none text-dark'>신고하기</a>
+							">
+					&nbsp;
+					`+i.nickname+`
+				</div>
+				<div class="col text-end" style="color: #5E5E5E; margin-top: 2%;">
+					<fmt:formatDate value="`+i.regDate+`" pattern="yyyy-MM-dd" var="formattedDate" />
+				</div>
+				</div>
+
+				<div class="row">
+					<div class="col" style="font-weight: bold; margin-left: 2%; margin-top: 11%; font-size: 21px; font-weight: 800;">
+						<a href="storyDetail?storyNo=`+i.storyNo+`" class="link-dark link-underline-opacity-0">`+i.title+`</a>
+					</div>
+				</div>
+				<div class="row" style="width: 99%; border-bottom: 2px solid #bfbfbf; margin-left: 1%; margin-top: 20px;">
+					<div class="col justify-content-center">
+						
+					</div>
+				</div>
+				
+
+				<div class="row">
+				<div class="col mt-3 mb-4" style="color:#5E5E5E; margin-left: 2%;">
+					<c:forEach var="tag" items="`+i.tags+`" varStatus="loop">
+				            # 
+			        </c:forEach>
+				</div>
+				</div>
+				
+
+				<div class="row">
+				<div class="col text-end py-3" style="color:#5E5E5E; font-size: smaller;">
+					<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count" style="width: 20px;">
+					`+i.readCount+` &nbsp;&nbsp;
+					<img src="resources/images/icon/heart.png" id="icon_heart" style="width: 20px;">
+					`+i.thank+`
+				</div>
+				</div>
+
+			
+			</div>
+
 								`) 
 					});
 				}, error: function() {
@@ -157,3 +184,8 @@ function clearSelection(index) {
     job.parentElement.classList.remove('selected');
     closeButton.style.display = 'none';
 }
+
+
+
+
+

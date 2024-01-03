@@ -51,7 +51,7 @@
 	height: 40px;
 }
 
-#followBtn, #scrapBtn {
+#followBtn, #scrapBtn, #deleteBtn {
 	width: 110px; 
 	height: 50px; 
 }

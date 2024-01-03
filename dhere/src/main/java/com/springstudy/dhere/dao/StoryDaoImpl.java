@@ -31,28 +31,59 @@ public class StoryDaoImpl implements StoryDao {
 		return sqlSession.selectList(NAME_SPACE + ".getStoryList");
 	}
 
-	// 게시물 디테일 가져오기
+	// 게시물 디테일 가져오기(syj)
 	@Override
 	public Story getStoryDetail(int storyNo) {
 	    return sqlSession.selectOne(NAME_SPACE + ".getStoryDetail", storyNo);
 	}
 	
-	// 게시물 디테일_이미지 가져오기
+	// 게시물 디테일_이미지 가져오기(syj)
 	@Override
 	public List<Image> getStoryDetailImage(int storyNo) {
 		return sqlSession.selectList(NAME_SPACE + ".getStoryDetailImage", storyNo);
 	}
 	
-	// // 게시물 디테일_태그 가져오기
+	// // 게시물 디테일_태그 가져오기(syj)
 	@Override
 	public List<Tag> getStoryDetailTag(int storyNo) {
 		return sqlSession.selectList(NAME_SPACE + ".getStoryDetailTag", storyNo);
 	}
 	
-	// 게시물 조회 수 증가시키기
+	// 게시물 조회 수 증가시키기(syj)
 	@Override
 	public void increaseReadCount(int storyNo) {
 	    sqlSession.update(NAME_SPACE + ".increaseReadCount", storyNo);
+	}
+	
+	// 게시물 삭제하기(syj)
+	@Override
+	public void deleteStory(int storyNo) {
+		sqlSession.delete(NAME_SPACE + ".deleteStory", storyNo);
+	}
+	
+	@Override
+	public void deleteScrapByStoryNo(int storyNo) {
+		sqlSession.delete(NAME_SPACE + ".deleteScrapByStoryNo", storyNo);
+	}
+
+	@Override
+	public void deleteReplyByStoryNo(int storyNo) {
+		sqlSession.delete(NAME_SPACE + ".deleteReplyByStoryNo", storyNo);
+	}
+
+	@Override
+	public void deleteMarkerByStoryNo(int storyNo) {
+		sqlSession.delete(NAME_SPACE + ".deleteMarkerByStoryNo", storyNo);
+	}
+
+	@Override
+	public void deleteTagPostByStoryNo(int storyNo) {
+		sqlSession.delete(NAME_SPACE + ".deleteTagPostByStoryNo", storyNo);
+	}
+
+	@Override
+	public void deleteImageByStoryNo(int storyNo) {
+		sqlSession.delete(NAME_SPACE + ".deleteImageByStoryNo", storyNo);
 	}
 	
 	 // 직종 리스트 가져오기
@@ -85,4 +116,9 @@ public class StoryDaoImpl implements StoryDao {
 	public List<Story> storyList(String selectedJob) {
 		return sqlSession.selectList(NAME_SPACE + ".storyList", selectedJob);
 	}
+
+
+
+
+
 }

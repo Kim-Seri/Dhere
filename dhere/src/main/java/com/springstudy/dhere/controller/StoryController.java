@@ -1,6 +1,7 @@
 package com.springstudy.dhere.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springstudy.dhere.domain.Image;
 import com.springstudy.dhere.domain.Job;
@@ -56,7 +58,7 @@ public class StoryController {
 		return "main";
 	}
 	
-// 게시물 디테일 
+	// 게시물 디테일(syj)
 	@RequestMapping("/storyDetail")
 	public String storyDetail(Model model, @RequestParam int storyNo, HttpSession session) {
 		
@@ -75,6 +77,27 @@ public class StoryController {
 		
 	    return "storyDetail";
 	}
+///////////////////////////////////////////////////////////////////		
+	// 게시물 삭제하기(syj)
+//	@RequestMapping(value = "/deleteStory", method = RequestMethod.POST)
+//	public String deleteStory(@RequestParam("storyNo") int storyNo) {
+//	    storyService.deleteStory(storyNo);
+//	    
+//	    return "redirect:/main";
+//	}
+	
+	
+	
+	@RequestMapping("/deleteStory")
+	public String deleteStory(HttpServletResponse response, PrintWriter out, int storyNo, String pass) {
+		
+		
+		storyService.deleteStory(storyNo);
+		
+		return "redirect:main";
+	}
+
+///////////////////////////////////////////////////////////////////			
 	
 	//게시글 쓰기
 	@RequestMapping(value="/postWrite",method=RequestMethod.POST)
