@@ -25,11 +25,26 @@
  	 	left : 977px; 
     }
     
-    #addMarkerButton{
+    #addMarkerButton,#finishMarkerButton{
     	position: absolute;
   		top: 3px;
   		left : 860px;
     } 
+    
+    #marker{
+    	 position: "absolute"
+	 top: y + "px"
+	 left: x + "px";
+    	
+    }
+    
+    #search-box{
+   		position: "absolute";
+	 top: y + 20 + "px";  /* 마커 아래에 위치 */
+	 left: x + "px";
+	 display: "none"; /* 일단 숨김 */ 
+   
+    }
     
     
     

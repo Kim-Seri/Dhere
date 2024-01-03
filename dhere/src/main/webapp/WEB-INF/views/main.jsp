@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link rel="stylesheet" href="resources/css/main.css">
+ <script src="resources/js/main.js"></script>
 <%@ page session="false" %>
 
 <html>

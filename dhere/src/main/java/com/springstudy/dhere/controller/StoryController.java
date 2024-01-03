@@ -88,59 +88,59 @@ public class StoryController {
 ///////////////////////////////////////////////////////////////////			
 	
 	//게시글 쓰기
-	@RequestMapping(value="/postWrite",method=RequestMethod.POST)
-	public String postWrite(HttpServletRequest request , HttpServletResponse response , Model model ,String title,String content1, String content2, String content3, String content4 ,
-			@RequestParam(value="category",required=false)int categoryNo,HttpSession session,
-			@RequestParam(value="hashtag",required=false) List<Tag> tagList,
-			@RequestParam(value="additionalImages", required=false) List<MultipartFile> multipartFile) throws IOException{
-		
-		String nickname=(String) session.getAttribute("nickname");
-		Member member=(Member) session.getAttribute("member");
-		String email=member.getEmail();
-		
-		
-		
-		
-		Story story=new Story();
-		
-		story.setTitle(title);
-		story.setContent1(content1);
-		story.setContent2(content2);
-		story.setContent3(content3);
-		story.setContent4(content4);
-		story.setCategoryNo(categoryNo);
-		story.setEmail(email);
-		story.setNickname(nickname);
-		System.out.println(nickname);
-		
-		
-		storyService.postWrite(story);
-		
-		System.out.println(tagList);
-		
-		
-		//태그 리스트 추가
-		if(tagList != null &&! tagList.isEmpty()) {
-			for(Tag tList:tagList) {
-				Tag tag=new Tag();
-				tag.setTagName(tList.getTagName());
-				tag.setStoryNo(story.getStoryNo());
-				storyService.insertTag(tag);
-				storyService.insertTagPost(tag);
+		@RequestMapping(value="/postWrite",method=RequestMethod.POST)
+		public String postWrite(HttpServletRequest request , HttpServletResponse response , Model model ,String title,String content1, String content2, String content3, String content4 ,
+				@RequestParam(value="category",required=false)int categoryNo,HttpSession session,
+				@RequestParam(value="hashtag",required=false) List<String> tagList,
+				@RequestParam(value="additionalImages", required=false) List<MultipartFile> multipartFile) throws IOException{
+			
+			String nickname=(String) session.getAttribute("nickname");
+			Member member=(Member) session.getAttribute("member");
+			String email=member.getEmail();
+			
+			
+			
+			
+			Story story=new Story();
+			
+			story.setTitle(title);
+			story.setContent1(content1);
+			story.setContent2(content2);
+			story.setContent3(content3);
+			story.setContent4(content4);
+			story.setCategoryNo(categoryNo);
+			story.setEmail(email);
+			story.setNickname(nickname);
+			System.out.println(nickname);
+			
+			
+			storyService.postWrite(story);
+			
+			System.out.println(tagList);
+			
+			
+			//태그 리스트 추가
+			if(tagList != null &&! tagList.isEmpty()) {
+				for(String hashtag:tagList) {
+					Tag tag=new Tag();
+					tag.setTagName(hashtag);
+					tag.setStoryNo(story.getStoryNo());
+					storyService.insertTag(tag);
+					storyService.insertTagPost(tag);
+				}
 			}
+			
+			//이미지 리스트 추가
+			if(multipartFile != null &&! multipartFile.isEmpty()) {
+				for (MultipartFile imageFile : multipartFile) {
+	                Image image = new Image();
+	                image.setFileName(imageFile.getOriginalFilename());
+	                image.setStoryNo(story.getStoryNo());
+	                storyService.insertImage(image);
+	            }
+			}
+			return "redirect:main";
 		}
-		
-		//이미지 리스트 추가
-		if(multipartFile != null &&! multipartFile.isEmpty()) {
-			for (MultipartFile imageFile : multipartFile) {
-                Image image = new Image();
-                image.setFileName(imageFile.getOriginalFilename());
-                image.setStoryNo(story.getStoryNo());
-                storyService.insertImage(image);
-            }
-		}
-		return "redirect:main";
-	}
 	
 	@RequestMapping(value="/postWriteForm", method=RequestMethod.GET)
 	public String postWriteForm(Model model) {
