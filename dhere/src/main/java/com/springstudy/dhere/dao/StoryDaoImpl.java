@@ -72,12 +72,12 @@ public class StoryDaoImpl implements StoryDao {
 	//tag 추가하기
 	@Override
 	public void insertTag(Tag tag) {
-		sqlSession.insert(NAME_SPACE+"insertTag", tag);
+		sqlSession.insert(NAME_SPACE+".insertTag", tag);
 	}
 	//tagPost추가하기
 	@Override
 	public void insertTagPost(Tag tag) {
-		sqlSession.insert(NAME_SPACE+"insertTagPost", tag);
+		sqlSession.insert(NAME_SPACE+".insertTagPost", tag);
 	}
 
 	// 직종별 게시물 리스트 출력
