@@ -78,7 +78,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col" id="imageContainer">
+				<div class="col" id="imageContainer" >
 					
 				</div>
 			</div>

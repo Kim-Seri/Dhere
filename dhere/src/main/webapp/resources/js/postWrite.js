@@ -42,20 +42,31 @@ function addMarker(x, y) {
 	// 마커를 추가할 부모 컨테이너
     const markerContainer = $("<div class='marker-container'></div>");
     const marker = $("<div class='marker' id='marker'><button type='button' class='btn btn-primary rounded-circle' id='markerBtn'>+</button></div>");
-    const searchBox = $("<div class='search-box' id='search-box'>Search</div>");
+    const searchBox = $("<div class='row search-box' id='search-box'>"
+	    							+ "<div class='col'>"
+		    							+ "<div class='row'>"
+			    							+ "<div class='col'>"
+			    								+ "<input type='text' class='form-control'>"
+			    							+ "</div>"
+			    							+ "<div class='col'>"
+			    								+ "<button type='button' class='btn btn-danger' id='deleteMaker'>삭제</button> "
+			    							+ "</div>"
+			    						+ "</div>"
+		    						+ "</div>"
+    							+ "</div>");
 
 	
-	marker.css({
-	 position: "absolute",
-	 top: y + "px",
-	 left: x + "px",
-	});
+    marker.css({
+        position: "absolute", // 스크롤과 상관없이 화면에 고정
+        top: y + window.scrollY + "px", // 현재 스크롤 위치 고려
+        left: x + "px",
+      });
 	
 	searchBox.css({
 	 position: "absolute",
-	 top: y + 20 + "px", // 마커 아래에 위치
+	 top: y +window.scrollY + 20 + "px", // 마커 아래에 위치
 	 left: x + "px",
-	 display: "none", // 일단 숨김
+//	 display: "none", // 일단 숨김
 	});
 	
 	markerContainer.append(marker);
@@ -173,7 +184,7 @@ $(function () {
       });
 
       imageDivCol2.css({
-        position: "absolute",
+        position: "fixed",
         top: 0,
         left: 0,
         width: "100%",
