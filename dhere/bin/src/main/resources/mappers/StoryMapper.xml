@@ -82,7 +82,7 @@
     
     <insert id="insertTag" parameterType="Tag">
     	INSERT INTO tag (tag_name)
-    	VALUES(#{tag})
+    	VALUES(#{tagName})
     	<selectKey keyProperty="tagNo" order="AFTER"
 				resultType="int">
 				SELECT LAST_INSERT_ID()
@@ -91,7 +91,7 @@
     
     <insert id="insertTagPost" parameterType="Tag">
     	INSERT INTO tag_post (tag_no, story_no)
-    	VALUES(#{tag})
+    	VALUES(#{tagNo},#{storyNo})
     </insert>
 
 	<!-- 스토리 디테일 쿼리 -->
