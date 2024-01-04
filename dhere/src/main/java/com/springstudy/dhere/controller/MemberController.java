@@ -111,11 +111,13 @@ public class MemberController {
 	
 	
 	// 회원 정보 수정 폼 요청을 처리하는 메서드
-	@RequestMapping("/mypageUpdateForm")
-	public String updateForm(Model model, HttpSession session) {
-		return "member/mypageUpdateForm";
+	@RequestMapping(value="/mypageUpdateProcess")
+	public String updateForm(String email, HttpSession session) {
+		
+		return "member/mypageUpdateProcess";
 	}
 	
+
 	// 회원 수정폼에서 들어오는 요청을 처리하는 메서드
 //	@RequestMapping("/mypageUpdateResult")
 //	public String mypageUpdateInfo(Model model, Member member, 

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springstudy.dhere.domain.Member;
 import com.springstudy.dhere.domain.Scrap;
 
 
@@ -26,11 +27,16 @@ public class ScrapDaoImpl implements ScrapDao {
 	public Scrap getScrap(String email) {
 		return sqlSession.selectOne(NAME_SPACE + ".getScrap", email);
 	}
-
-	// 스크랩한 게시물 가져오기
-//	@Override
-//	public List<Scrap> getScrapList() {
-//		return sqlSession.selectList(NAME_SPACE + ".scrap");
+	
+	// 회원 정보 수정시에 기존 비밀번호가 맞는지 체크하는 메서드
+	public String memberPassCheck(String email, String Pass) {
+		return sqlSession.selectOne(NAME_SPACE + ".memberPassCheck", email);
+	}
+//	}
+//		
+//	// 회원 정보 DAO를 이용해 회원 테이블에서 수정하는 메서드
+//	public void updateMember(Member member) {
+//		sqlSession.update(NAME_SPACE + ".updateMember", member);
 //	}
 
 

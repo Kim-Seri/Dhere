@@ -57,10 +57,13 @@
             <div class="col my-5" style="margin-left: 80px">
             <div class="row">
                 <div class="col-4">
-                    <c:if test="${ empty sessionScope.member.picture }">기본프사 <!-- 귀여운그림 -->
+                    <c:if test="${ empty sessionScope.member.picture }">
+                    <img src="resources/images/icon/86683729.png" id="defaultPicture"
+                     style="width: 150px; height: 150px; object-fit: cover; border-radius: 70%; border: 3px solid blue" />
                     </c:if>
                     <c:if test="${ not empty sessionScope.member.picture }">
-                        <div class="col"><img src="resources/upload/${sessionScope.member.picture}" alt="150*150 크기 이미지" 
+                        <div class="col">
+                        <img src="resources/upload/${sessionScope.member.picture}" alt="150*150 크기 이미지" 
                         style="width: 150px; height: 150px; object-fit: cover; border-radius: 70%; border: 3px solid blue"></div>
                     </c:if>           
                 </div>
@@ -153,5 +156,6 @@
 	<!-- 전체 컨테이너 끝 -->
          <input type="button" value="morepage">
       <script src="resources/bootstrap/bootstrap.bundle.min.js"></script>
+      </div>
 </body>
 </html>

@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //		  } 
 //	})
 
-	console.log('s');
+//	console.log('s');
 	/*
 	document.querySelectorAll('.jobs').forEach(function (job, index) {
         job.addEventListener('click', function () {

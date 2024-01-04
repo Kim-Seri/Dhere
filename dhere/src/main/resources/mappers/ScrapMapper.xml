@@ -16,6 +16,13 @@
 			WHERE email = #{email}
 	</select>
 	
+	<select id="isPassCheck" resultType="String">
+			SELECT
+				pass
+			FROM member
+			WHERE no = #{no}
+	</select>
+	
 	
 	
 <!-- 스크랩 -->
@@ -39,10 +46,24 @@
 			ORDER by scrap_no
  	</select> -->
  		 
-	 <!-- 회원정보를 수정하는 sql -->
-	<update id="MypageUpdate" parameterType="member">
-		UPDATE * FROM member
-	</update>
+	 <!-- 이메일에 해당하는 비밀번호를 가져오는 맵핑 구문 -->
+<!-- 	<select id="memberPassCheck" resultType="String">
+		SELECT
+			pass
+		FROM member
+		WHERE email = #{email}
+	</select>
+	
+	회원정보를 수정하는 맵핑구문
+	<update id="updateMember" parameterType="Member">
+		UPDATE member
+			UPDATE member
+			SET pass=#{pass}, email=#{email}, phone=#{phone},
+			name=#{name}, nickname=#{nickname}, zipcode=#{zipcode},
+			address1=#{address1}, address2=#{address2}
+			job=#{job}, phone=#{phone}, picture=#{picture}
+		WHERE email=#{email}
+	</update> -->
 	
 	<resultMap id="ScrapResultMap" type="Scrap">
 		<id property="email" column="email" />
