@@ -74,7 +74,13 @@
 			    </c:forEach>
 			    
 			</div>
-
+	
+		<!-- 게시물 없음!!! -->
+		<!-- <div class="row m-5">
+		<div class="col text-center">
+			게시물이 없습니다.
+		</div>
+		</div> -->
 				
 		</div>
 		</div>

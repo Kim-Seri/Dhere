@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	$('.jobs').on("click", function(){
 		
 		let jobTxt = $(this).children().eq(0).text();
+		let jobVal = $(this).attr("value");
 		
 		// 필터가 선택되어 있는 상황에서 필터 해제하기
 		if($(this).children().eq(1).text() == 'X') {
@@ -50,9 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 type: "POST",
                 dataType: "json",
                 success: function (res) {
-            	
-            	console.log("필터뺀다!" + res.category);
 
+            	$("#jobSelectedCategory").empty();
+            	
                     $(res.category).each(function (v, i) {
                     	let tags = '';
 						i.tags.forEach(function (tag) {
@@ -159,9 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
             $(this).children().eq(0).css("color", "white");
             $(this).css("background-color", "#4370FF");
             $(this).attr("value","on");
-            
            
-
 				// ajax : 카테고리가 PD인 데이터를 서버에서 받기, 눌린 버튼은 배열에 들어가도록하고 그 배열을 넘겨
 				$.ajax ({
 					url : "jobSelectedCategory",
@@ -170,26 +169,19 @@ document.addEventListener("DOMContentLoaded", function () {
 					dataType: "json",
 					success: function(res) {
 					
-					console.log("필터건다!" + res.category);
-					console.log("필터건다!222" + JSON.stringify(res.category));
-					console.log($.trim($('.jobs').attr('value')));
-					
-					if (res.category.length === 0 && $.trim($('.jobs').attr('value'))== "off") {
-						console.log("빈 배열입니다.");
-//					    // 또는
-//					    $("#jobSelectedCategory").html("none");
-					    
-					    $("#jobSelectedCategory").empty();
-					    $("#jobSelectedCategory").append(`
-					    		
-					    		SDSDS
-					    		
-					    `);
+					   $("#jobSelectedCategory").empty();
+					if (res.category.length === 0 ) {
+		 
+					    $("#jobSelectedCategory").append("<div class=\"row m-5\">\r\n" + 
+					    		"		<div class=\"col text-center\">\r\n" + 
+					    		"			게시물이 없습니다.\r\n" + 
+					    		"		</div>\r\n" + 
+					    		"		</div>");
 					    
 					} else {
 			
 					
-					$("#jobSelectedCategory").empty();
+			
 
 					$(res.category).each(function(v,i) {
 						
