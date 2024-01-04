@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link rel="stylesheet" href="resources/css/main.css">
+<script src="resources/js/main.js"></script>
 <%@ page session="false" %>
 
 <html>
@@ -17,6 +18,12 @@
 	
 		 <!-- 글쓰기 버튼 -->
 		 <input type="button" class="btn btn-primary fixed-write-button" onclick="location.href='postWriteForm'" value="글쓰기" />
+		 
+		 <!-- 상단바 이동 버튼 -->
+		 <a href="#" class="goToTopBtn">
+		 	<img src="resources/images/icon/topbar.png" style="width: 35px;">
+		 </a>
+		 
 		<!-- 마이페이지 -->
 		<input type="button" class="btn btn-primary" onclick="location.href='scrap'" value="마이페이지" />
 		
@@ -54,17 +61,18 @@
 			
 			
 			<!-- 여기서 체크박스를 지우고, 라벨도 지우고, -->
-			<div class="job-categories-container">
+			<div class="job-categories-container justify-content-center">
 			    <c:forEach var="jList" items="${jList}" varStatus="status">
+			    
 			        <div class="jobs" data-category="${jList.categoryName}" style="cursor: pointer; position:relative; background-color: white;">
 			        	
 			        	<span >${jList.categoryName}</span>
-			        	
-			           <%--  <input type="checkbox" id="jobCategories-${status.index}">			     
-			            <label for="jobCategories-${status.index}" id="jobCategoriesLabel-${status.index}" >${jList.categoryName}</label> --%>
+
 			            <span class="close-btn" onclick="clearSelection(${status.index})"></span>
 			        </div>
+			    
 			    </c:forEach>
+			    
 			</div>
 
 				
@@ -87,14 +95,10 @@
 		</div>
 		</div>
 		
-		<!-- 게시글 타이틀, 필터, 정렬 -->
+		<!-- 게시글 타이틀, 정렬 -->
 		<div class="row align-items-center">
 		<div class="col-2" style="font-weight: bold; font-size: 2.0em;">
 			 ⎸ 전체 게시글
-		</div>
-		<div class="col align-items-center">
-			<button type="button" class="btn btn-outline-secondary btn-sm rounded-4">#데스크셋업	x</button>&nbsp;
-			<button type="button" class="btn btn-outline-secondary btn-sm rounded-4">#개발자		x</button>
 		</div>
 		<div class="col text-end">
 			<select class="selectBox" onchange="">
@@ -115,18 +119,27 @@
 			<!-- 게시물 한칸 -->
 			<div class="row d-flex justify-content-center" id="jobSelectedCategory">
 			<c:forEach var="s" items="${sList}">
+			
+			<c:if test="${empty sList}">
+				none
+			</c:if>
+			
+			<c:if test="${not empty sList}">
 			<div class="col-3 m-4 rounded-4" style="background: #F3F3F3; width: 29%;">
 			
+			
 				<!-- 데스크셋업 썸네일 -->
-				<div class="row rounded-top-4" style="height: 200px; background-size: cover; background-position: center; background-image: url('resources/images/desk/${s.fileName}');">
-				<div class="col">				
-				</div>
-				</div>
+				<a href="storyDetail?storyNo=${s.storyNo }">
+					<div class="row rounded-top-4" style="height: 200px; background-size: cover; background-position: center; background-image: url('resources/images/desk/${s.fileName}');">
+					<div class="col">				
+					</div>
+					</div>
+				</a>
 				
 				<!-- 프로필, 닉네임, 날짜 -->
 				<div class="row">
 				<div class="col" style="color: #636363; margin-left: 2%; margin-top: 5%; font-weight: 700;">
-					<img src="resources/upload/${s.picture}" 
+					<img src="resources/images/profile/${s.picture}" 
 							id="main_picture"
 							tabindex="0" 
 							data-bs-html="true" 
@@ -187,7 +200,14 @@
 
 			
 			</div>
+			</c:if>
 			</c:forEach>
+			</div>
+			
+			<div class="row">
+			<div class="col text-center">
+				<button id="moreBtn" onclick=""><span>더보기</span></button>
+			</div>
 			</div>
 			
 			</div>

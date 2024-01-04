@@ -34,7 +34,7 @@
 					<div class="row mt-4">
 						<!-- 프로필 사진 시작 -->
 						<div class="col-1">
-							<img src="resources/upload/${storyDetail.picture}" 
+							<img src="resources/images/profile/${storyDetail.picture}" 
 							id="profile"
 							tabindex="0" 
 							data-bs-html="true" 

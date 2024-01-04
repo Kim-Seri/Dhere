@@ -26,7 +26,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	private static final String DEFAULT_PATH = "/resources/upload/";
+	private static final String DEFAULT_PATH = "/resources/images/profile";
 
 	// 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)

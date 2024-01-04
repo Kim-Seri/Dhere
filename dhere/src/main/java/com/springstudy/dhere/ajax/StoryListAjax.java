@@ -22,11 +22,23 @@ public class StoryListAjax {
 	@RequestMapping("/jobSelectedCategory")
 	@ResponseBody
 	public Map<String, List<Story>> categoryStoryList(String selectedJob) {
-		System.out.println(selectedJob);
+		//System.out.println(selectedJob);
 
 		Map<String, List<Story>> map = new HashMap<>();
 		map.put("category", storyService.storyList(selectedJob));
 		
 		return map;
 	}
+	
+	@RequestMapping("/allJobSelectedCategory")
+	@ResponseBody
+	public Map<String, List<Story>> categoryAllStoryList() {
+		//System.out.println(selectedJob);
+
+		Map<String, List<Story>> map = new HashMap<>();
+		map.put("category", storyService.getStoryList());
+		
+		return map;
+	}
+	
 }

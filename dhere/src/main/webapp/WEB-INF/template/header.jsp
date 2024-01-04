@@ -23,7 +23,7 @@
  
         <img src="<c:choose>
 			        <c:when test='${not empty sessionScope.member}'>
-			            resources/upload/${sessionScope.member.picture}
+			            resources/images/profile/${sessionScope.member.picture}
 			        </c:when>
 			        <c:otherwise>
 			            resources/images/icon/profile_white.png
