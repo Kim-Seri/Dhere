@@ -11,8 +11,9 @@
         <img src="resources/images/icon/logo2.png" id="header_logo" onclick="location.href='main'">
     </div>
     <c:choose>
-        <c:when test='${not empty sessionScope.member}'>${sessionScope.member.email}</c:when>
-        <c:otherwise>너희들이 지금 로그인을 <br>한 상태인지, 아닌지 <br>구분하기 쉽게 해주려고 <br>내가 친히 만든 영역이야.</c:otherwise>
+        <c:when test='${not empty sessionScope.member}'>
+        </c:when>
+        
     </c:choose>
 
     <div class="col justify-content-end d-flex align-items-center">

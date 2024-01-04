@@ -59,6 +59,12 @@ public class StoryServiceImpl implements StoryService {
 	    storyDao.increaseReadCount(storyNo);
 	}
 	
+	// 게시물 좋아요 증가시키기(syj)
+	@Override
+    public int increaseThank(int storyNo) {
+        return storyDao.increaseThank(storyNo);
+    }
+	
 	// 게시물 삭제하기(syj)
 	@Transactional
 	@Override

@@ -12,8 +12,6 @@
 	<div class="row">
 		<div class="col">
 		
-		
-		
 					<input type="hidden" value="${sessionScope.member.email}">
 					<!-- 직무 카테고리 시작 -->
 					<div class="row" id="category_view_btn">
@@ -72,10 +70,10 @@
 						<!-- 날짜 끝 -->
 						<!-- 조회수, 좋아요 시작 -->
 						<div class="col-2 text-end justify-content-end" id="count_num">
-						<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count">
-							${ storyDetail.readCount }
-							<img src="resources/images/icon/heart.png" id="icon_heart">
-							${ storyDetail.thank }
+						    <img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count">
+						    ${storyDetail.readCount}
+						    <img src="resources/images/icon/heart.png" id="icon_heart">
+						    <span class="likes-count">${storyDetail.thank}</span>
 						</div>
 						<!-- 좋아요 끝 -->
 					</div>
@@ -116,37 +114,6 @@
 							        </button>
 							    </c:otherwise>
 							</c:choose>
-
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
-							
 							
 							
 							
@@ -253,9 +220,14 @@
 								<img src="resources/images/icon/shara_export.png" id="icon_share_btn">
 							</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn btn-outline-primary fs-4">
-								+<img src="resources/images/icon/heart.png" id="icon_heart_btn">
+							<button type="button" class="btn btn-outline-primary fs-4 increaseThankBtn" data-story-id="${storyDetail.storyNo}">
+							    +<img src="resources/images/icon/heart.png" id="icon_heart_btn">
+							    <span class="likes-count">${storyDetail.thank}</span>
 							</button>
+							
+							
+							
+							
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-outline-primary">
 								<img src="resources/images/icon/siren_police.png" id="icon_siren_btn">
@@ -377,7 +349,28 @@
 		</div>
 	</div>
 </div>
+<script>
+$(document).ready(function() {
+    $('.increaseThankBtn').click(function() {
+        var storyId = $(this).data('story-id'); // 게시물 ID를 가져옵니다.
 
-
+        console.log("storyId 값 : ", storyId); // 수정된 부분
+        
+        $.ajax({
+            url: 'increaseThank', // 서버의 URL로 요청을 보냅니다.
+            type: 'POST',
+            data: { storyNo: storyId },
+            success: function(response) {
+                // 성공적으로 좋아요가 반영되었다면 페이지의 모든 좋아요 수를 업데이트합니다.
+                $('.likes-count').text(response.likes);
+            },
+            error: function(xhr, status, error) {
+                // 오류 처리
+                console.log("Error: ", error); // 오류 메시지를 더 명확하게 출력하도록 수정
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

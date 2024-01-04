@@ -136,7 +136,7 @@
 							data-bs-trigger="focus"
 							data-bs-title="${s.nickname}"
 							data-bs-content="
-										<a href='otherScrap?email=${s.email}&nickname=${s.nickname}&picture=${s.picture}'class='text-decoration-none text-dark'>프로필 보러가기</a>
+										<a href='otherScrap?email=${s.email}&nickname=${s.nickname}&picture=${s.picture}&categoryName=${s.categoryName}'class='text-decoration-none text-dark'>프로필 보러가기</a>
 										<br>
 									    <br>
 									    <a href='scrap' class='text-decoration-none text-dark'>쪽지 보내기</a>
@@ -180,13 +180,14 @@
 				<!-- 조회수, 좋아요 -->
 				<div class="row">
 					<div class="col py-3" id="main_story_category_area">
+						&nbsp;
 						<img src="resources/images/icon/name_tag_full.png" id="main_story_category_btn">
-						
-							${s.categoryName}
+						&nbsp;
+						${s.categoryName}
 					</div>
 					<div class="col text-end py-3" style="color:#5E5E5E; font-size: smaller;">
 						<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count" style="width: 20px;">
-						${s.readCount} &nbsp;&nbsp;
+						${s.readCount}&nbsp;&nbsp;
 						<img src="resources/images/icon/heart.png" id="icon_heart" style="width: 20px;">
 						${s.thank}
 					</div>

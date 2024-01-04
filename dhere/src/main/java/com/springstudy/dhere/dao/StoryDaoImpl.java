@@ -55,6 +55,13 @@ public class StoryDaoImpl implements StoryDao {
 	    sqlSession.update(NAME_SPACE + ".increaseReadCount", storyNo);
 	}
 	
+	// 게시물 좋아요 증가시키기(syj)
+	@Override
+	public int increaseThank(int storyNo) {
+	    sqlSession.update(NAME_SPACE + ".increaseThank", storyNo);
+	    return sqlSession.selectOne(NAME_SPACE + ".selectThankCount", storyNo);
+	}
+	
 	// 게시물 삭제하기(syj)
 	@Override
 	public void deleteStory(int storyNo) {

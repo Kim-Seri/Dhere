@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -63,7 +65,7 @@ public class StoryController {
 
 		return "main";
 	}
-	
+///////////////////////////////////////////////////////////////////		
 	// 게시물 디테일(syj)
 	@RequestMapping("/storyDetail")
 	public String storyDetail(Model model, @RequestParam int storyNo, HttpSession session) {
@@ -82,6 +84,18 @@ public class StoryController {
 	    
 		
 	    return "storyDetail";
+	}
+///////////////////////////////////////////////////////////////////		
+	@RequestMapping(value = "/increaseThank", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> increaseThank(@RequestParam("storyNo") int storyNo) {
+	
+	    // 여기서 storyService.increaseThank(storyNo) 메서드는 데이터베이스에서 storyNo에 해당하는 게시물의 좋아요 수를 증가시키는 로직을 수행합니다.
+	    int newLikes = storyService.increaseThank(storyNo);
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("likes", newLikes);
+	    
+	    return response;
 	}
 ///////////////////////////////////////////////////////////////////		
 	// 게시물 삭제(syj)
