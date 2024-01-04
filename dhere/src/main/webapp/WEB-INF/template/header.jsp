@@ -60,9 +60,12 @@
 						            <a href='scrap' class='text-decoration-none text-dark'>마이페이지</a>
 						            <br>
 						            <br>
-						            <a href='logout' class='text-decoration-none text-dark'>로그아웃</a>
+						            <a href='logout' class='text-decoration-none text-dark'>로그아웃</a><br><br>
 						        </c:otherwise>
 						    </c:choose>
+						    	<c:if test="${sessionScope.member.role eq 'admin'}">
+						            <a href='adminInquiry' class='text-decoration-none text-dark'>전체 문의내역</a>
+						        </c:if>
 	    	">
     </div>
 </div>
