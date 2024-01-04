@@ -73,6 +73,18 @@ public class StoryServiceImpl implements StoryService {
 		storyDao.deleteStory(storyNo);
 	}
 	
+	// 게시물 수정하기 읽어오기(syj)
+	@Override
+	public void updateStory(Story story) {
+		storyDao.updateStory(story);
+	}
+	
+	// 게시물 수정하기(syj)
+	@Override
+	public void updateStoryProcess(Story story) {
+		storyDao.updateStoryProcess(story);
+	}
+	
 	//직종 리스트 가져오기
 	@Override
 	public List<Job> getJobList(){
@@ -104,5 +116,7 @@ public class StoryServiceImpl implements StoryService {
 	public List<Story> storyList(String selectedJob) {
 		return storyDao.storyList(selectedJob);
 	}
+
+	
 	
 }

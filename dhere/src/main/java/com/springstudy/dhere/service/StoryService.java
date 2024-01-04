@@ -32,6 +32,12 @@ public interface StoryService {
     
     // 게시물 삭제하기(syj)
     public abstract void deleteStory(int storyNo);
+    
+    // 게시물 수정하기 읽어오기(syj)
+    public abstract void updateStory(Story story);
+    
+    // 게시물 수정하기(syj)
+    public abstract void updateStoryProcess(Story story);
 	
 	//직종 리스트 가져오기
 	public abstract List<Job> getJobList();

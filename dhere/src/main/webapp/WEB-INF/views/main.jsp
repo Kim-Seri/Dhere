@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link rel="stylesheet" href="resources/css/main.css">
  <script src="resources/js/main.js"></script>
-<%@ page session="false" %>
+<%@ page session="true" %>
 
 <html>
 <head>
@@ -149,6 +149,7 @@
 							">
 					&nbsp;
 					${s.nickname}
+					
 				</div>
 				<div class="col text-end" style="color: #5E5E5E; margin-top: 2%;">
 					<fmt:formatDate value="${s.regDate}" pattern="yyyy-MM-dd" var="formattedDate"/>
@@ -178,12 +179,17 @@
 				
 				<!-- 조회수, 좋아요 -->
 				<div class="row">
-				<div class="col text-end py-3" style="color:#5E5E5E; font-size: smaller;">
-					<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count" style="width: 20px;">
-					${s.readCount} &nbsp;&nbsp;
-					<img src="resources/images/icon/heart.png" id="icon_heart" style="width: 20px;">
-					${s.thank}
-				</div>
+					<div class="col py-3" id="main_story_category_area">
+						<img src="resources/images/icon/name_tag_full.png" id="main_story_category_btn">
+						
+							${s.categoryName}
+					</div>
+					<div class="col text-end py-3" style="color:#5E5E5E; font-size: smaller;">
+						<img src="resources/images/icon/eye_eyes_view_count.png" id="icon_count" style="width: 20px;">
+						${s.readCount} &nbsp;&nbsp;
+						<img src="resources/images/icon/heart.png" id="icon_heart" style="width: 20px;">
+						${s.thank}
+					</div>
 				</div>
 
 			

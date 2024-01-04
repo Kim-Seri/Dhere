@@ -1,7 +1,9 @@
 package com.springstudy.dhere.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,11 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +44,8 @@ public class StoryController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	private static final String DEFAULT_PATH = "/resources/images/desk/";
 	
 	// 데스크 셋업 리스트 출력 (메인)
 	// 카테고리 별 제품 리스트 출력
@@ -78,6 +84,7 @@ public class StoryController {
 	    return "storyDetail";
 	}
 ///////////////////////////////////////////////////////////////////		
+	// 게시물 삭제(syj)
 	@RequestMapping("/deleteStory")
 	public String deleteStory(HttpServletResponse response, int storyNo) {
 		
@@ -85,7 +92,39 @@ public class StoryController {
 		
 		return "redirect:main";
 	}
-///////////////////////////////////////////////////////////////////			
+///////////////////////////////////////////////////////////////////	
+	// 게시물 수정하기 읽어오기(syj)
+	@RequestMapping("/updateStory")
+	public String updateStory(Model model, HttpServletResponse response, int storyNo) {
+
+		Story story = storyService.getStoryDetail(storyNo);
+
+		model.addAttribute("story", story);
+
+		return "updateStory";
+	}
+///////////////////////////////////////////////////////////////////
+	// 게시물 수정하기(syj)
+	@RequestMapping(value="updateStoryProcess", method=RequestMethod.POST)
+	public String updateStoryProcess(HttpServletResponse response, PrintWriter out, @ModelAttribute Story story) {
+	
+		// storyService 클래스를 이용해 게시물을 수정한다.
+		storyService.updateStoryProcess(story);
+		
+		return "redirect:main";
+	}
+///////////////////////////////////////////////////////////////////		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//게시글 쓰기
 		@RequestMapping(value="/postWrite",method=RequestMethod.POST)
@@ -130,14 +169,26 @@ public class StoryController {
 				}
 			}
 			
-			//이미지 리스트 추가
-			if(multipartFile != null &&! multipartFile.isEmpty()) {
+			// 이미지 리스트 추가
+			if (multipartFile != null && !multipartFile.isEmpty()) {
+				 
 				for (MultipartFile imageFile : multipartFile) {
-	                Image image = new Image();
-	                image.setFileName(imageFile.getOriginalFilename());
-	                image.setStoryNo(story.getStoryNo());
-	                storyService.insertImage(image);
-	            }
+					Image image = new Image();
+					 // Request 객체를 이용해 파일이 저장될 실제 경로를 구한다.
+		            String filePath = request.getServletContext().getRealPath(DEFAULT_PATH);
+		          
+		            UUID uid = UUID.randomUUID();
+		            
+		            String saveName = uid.toString() + "_" + imageFile.getOriginalFilename();
+		            String encodedFileName = URLEncoder.encode(saveName, "UTF-8");
+		            File file = new File(filePath, encodedFileName);         
+		            
+		            // 업로드 되는 파일을 upload 폴더로 저장한다.
+		            imageFile.transferTo(file);
+		            image.setFileName(encodedFileName);
+					image.setStoryNo(story.getStoryNo());
+					storyService.insertImage(image);
+				}
 			}
 			return "redirect:main";
 		}

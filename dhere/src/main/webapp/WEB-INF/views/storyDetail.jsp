@@ -19,7 +19,9 @@
 					<div class="row" id="category_view_btn">
 						<div class="col">
 							<button type="button" class="btn btn-primary fs-5 fw-bolder">
-							<img src="resources/images/icon/name_tag_white.png" id="icon_tag_category_view_btn">&nbsp;&nbsp;${storyDetail.categoryName}</button>
+							<img src="resources/images/icon/name_tag_white.png" 
+								id="icon_tag_category_view_btn">&nbsp;&nbsp;${storyDetail.categoryName}
+							</button>
 						</div>
 					</div>
 					<!-- 직무 카테고리 끝 -->
@@ -82,15 +84,12 @@
 						<div class="col">
 						
 						
-						
 							<c:choose>
 							    <c:when test="${storyDetail.email eq sessionScope.member.email}">
-							    <form action="updateStory" method="post">
-							    	<input type="hidden" name="storyNo" value="${storyDetail.storyNo}" />
-							        <button type="submit" class="btn btn-outline-primary fs-5" id="updateBtn">
+							    <button type="button" class="btn btn-outline-primary fs-5" id="updateBtn" 
+							    		onclick="location.href='/dhere/updateStory?storyNo=${storyDetail.storyNo}'">
 							            수정하기
-							        </button>
-						        </form>
+							    </button>
 							    </c:when>
 							    <c:otherwise>
 							        <button type="button" class="btn btn-outline-primary fs-5" id="followBtn">

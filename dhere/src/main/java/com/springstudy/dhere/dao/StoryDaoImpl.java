@@ -60,30 +60,42 @@ public class StoryDaoImpl implements StoryDao {
 	public void deleteStory(int storyNo) {
 		sqlSession.delete(NAME_SPACE + ".deleteStory", storyNo);
 	}
-	
 	@Override
 	public void deleteScrapByStoryNo(int storyNo) {
 		sqlSession.delete(NAME_SPACE + ".deleteScrapByStoryNo", storyNo);
 	}
-
 	@Override
 	public void deleteReplyByStoryNo(int storyNo) {
 		sqlSession.delete(NAME_SPACE + ".deleteReplyByStoryNo", storyNo);
 	}
-
 	@Override
 	public void deleteMarkerByStoryNo(int storyNo) {
 		sqlSession.delete(NAME_SPACE + ".deleteMarkerByStoryNo", storyNo);
 	}
-
 	@Override
 	public void deleteTagPostByStoryNo(int storyNo) {
 		sqlSession.delete(NAME_SPACE + ".deleteTagPostByStoryNo", storyNo);
 	}
-
 	@Override
 	public void deleteImageByStoryNo(int storyNo) {
 		sqlSession.delete(NAME_SPACE + ".deleteImageByStoryNo", storyNo);
+	}
+	
+	// 게시물 수정하기 읽어오기(syj)
+	@Override
+	public void updateStory(Story story) {
+		sqlSession.update(NAME_SPACE + ".updateStory", story);
+	}
+	
+	// 게시물 수정하기(syj)
+	@Override
+	public void updateStoryProcess(Story story) {
+ 		sqlSession.update(NAME_SPACE + ".updateStoryProcess", story);
+ 		System.out.println(story.getTitle());
+ 		System.out.println(story.getContent1());
+ 		System.out.println(story.getContent2());
+ 		System.out.println(story.getContent3());
+ 		System.out.println(story.getContent4());
 	}
 	
 	 // 직종 리스트 가져오기
@@ -116,6 +128,8 @@ public class StoryDaoImpl implements StoryDao {
 	public List<Story> storyList(String selectedJob) {
 		return sqlSession.selectList(NAME_SPACE + ".storyList", selectedJob);
 	}
+
+
 
 
 

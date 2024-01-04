@@ -26,12 +26,17 @@ public interface StoryDao {
     
     // 게시물 삭제하기(syj)
     public abstract void deleteStory(int storyNo);
-    
     void deleteScrapByStoryNo(int storyNo);
     void deleteReplyByStoryNo(int storyNo);
     void deleteMarkerByStoryNo(int storyNo);
     void deleteTagPostByStoryNo(int storyNo);
     void deleteImageByStoryNo(int storyNo);
+    
+    // 게시물 수정하기 읽어오기(syj)
+    public abstract void updateStory(Story story);
+    
+    // 게시물 수정하기(syj)
+    public abstract void updateStoryProcess(Story story);
 
     // 게시물 쓰기
 	public abstract void postWrite(Story story);

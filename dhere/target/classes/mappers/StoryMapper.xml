@@ -21,9 +21,12 @@
 		s.nickname,
 		i.file_name,
 		m.picture,
-		t.tag_name  
+		t.tag_name,
+		j.category_name
+		
 		FROM
 		story s
+		
 		LEFT JOIN
 		image i ON s.story_no = i.story_no
 		LEFT JOIN
@@ -32,6 +35,9 @@
 		tag_post tp ON s.story_no = tp.story_no
 		LEFT JOIN
 		tag t ON tp.tag_no = t.tag_no
+		LEFT JOIN
+		job j ON s.category_no = j.category_no
+		
 		WHERE
 		i.image_no = (SELECT MIN(image_no) FROM image WHERE story_no = s.story_no)
 	</select>
@@ -52,7 +58,8 @@
 		<result property="nickname" column="nickname" />
 		<result property="fileName" column="file_name" />
 		<result property="picture" column="picture" />
-
+		<result property="categoryName" column="category_name" />
+	    
 		<collection property="tags" ofType="Tag">
 			<id property="tagNo" column="tag_no" />
 			<result property="tagName" column="tag_name" />
@@ -93,105 +100,100 @@
 		VALUES(#{tagNo},#{storyNo})
 	</insert>
 
-	<!-- 스토리 디테일 쿼리(syj) -->
+	<!-- storyDetail_기본 정보 가져오기 쿼리(syj) -->
 	<select id="getStoryDetail" resultType="Story">
-	    SELECT
-		    s.story_no AS storyNo,
-		    s.title,
-		    s.content1,
-		    s.content2,
-		    s.content3,
-		    s.content4,
-		    s.email,
-		    s.reg_date AS regDate,
-		    s.category_no AS categoryNo,
-		    s.read_count AS readCount,
-		    s.thank,
-		    s.nickname,
-		    m.picture,
-		    j.category_name AS categoryName
-		FROM
-		    story s
-		JOIN
-		    member m ON s.email = m.email
-		JOIN
-		    job j ON s.category_no = j.category_no
-		WHERE
-		    s.story_no = #{storyNo};
+	    SELECT	s.story_no AS storyNo,
+		    	s.title,
+		   	 	s.content1,
+		   		s.content2,
+		   		s.content3,
+		   		s.content4,
+		    	s.email,
+		    	s.reg_date AS regDate,
+		    	s.category_no AS categoryNo,
+		    	s.read_count AS readCount,
+		    	s.thank,
+		    	s.nickname,
+		    	m.picture,
+		    	j.category_name AS categoryName
+		FROM	story s
+		JOIN	member m ON s.email = m.email
+		JOIN	job j ON s.category_no = j.category_no
+		WHERE	s.story_no = #{storyNo};
 	</select>
-
 		
-	<!-- 스토리 디테일_이미지 가져오기 쿼리(syj) -->	
+	<!-- storyDetail_이미지 가져오기 쿼리(syj) -->	
 	<select id="getStoryDetailImage" resultType="Image">
-	    	SELECT 
-		        image_no as imageNo,
-				file_name as fileName,
+    	SELECT	image_no as imageNo,
+    			file_name as fileName,
 				story_no as storyNo
-		    FROM 
-		    	image
-		    WHERE 
-		    	story_no = #{storyNo}
+	    FROM	image
+	    WHERE	story_no = #{storyNo}
 	</select>
 	
-	
-	<!-- 스토리 디테일_태그 가져오기 쿼리(syj) -->	
+	<!-- storyDetail_태그 가져오기 쿼리(syj) -->	
 	<select id="getStoryDetailTag" resultType="Tag">
-	    SELECT 
-	    	tp.story_no AS storyNo, 
-	    	t.tag_name AS tagName
-	    FROM 
-	    	tag_post tp
-	    JOIN 
-	    	tag t ON tp.tag_no = t.tag_no
-	    WHERE 
-	    	tp.story_no = #{storyNo}
+	    SELECT tp.story_no AS storyNo, 
+	    		t.tag_name AS tagName
+	    FROM 	tag_post tp
+	    JOIN 	tag t ON tp.tag_no = t.tag_no
+	    WHERE 	tp.story_no = #{storyNo}
 	</select>
 	
-	<!-- 조회수 증가 쿼리 추가(syj) -->
+	<!-- storyDetail_조회수 증가 쿼리(syj) -->
 	<update id="increaseReadCount" parameterType="Story">
-	    UPDATE 
-	    	story 
-	    SET 
-	    	read_count = read_count + 1 
-	    WHERE 
-	    	story_no = #{storyNo}
+	    UPDATE	story 
+	    SET		read_count = read_count + 1 
+	    WHERE	story_no = #{storyNo}
 	</update>
 	
-	<!-- 게시물 삭제 쿼리 추가(syj) -->
+	<!-- storyDetail_삭제 쿼리 추가(syj) -->
 	<delete id="deleteStory">
-		DELETE FROM story
-		WHERE story_no = #{story_no}
+		DELETE 
+		FROM 	story
+		WHERE 	story_no = #{story_no}
 	</delete>
 	<delete id="deleteScrapByStoryNo">
-		DELETE FROM scrap
-		WHERE story_no = #{story_no}
+		DELETE 
+		FROM 	scrap
+		WHERE 	story_no = #{story_no}
 	</delete>	
 	<delete id="deleteReplyByStoryNo">
-		DELETE FROM reply
-		WHERE story_no = #{story_no}
+		DELETE 
+		FROM 	reply
+		WHERE 	story_no = #{story_no}
 	</delete>	
 	<delete id="deleteMarkerByStoryNo">
-		DELETE FROM marker
-		WHERE story_no = #{story_no}
+		DELETE 
+		FROM 	marker
+		WHERE 	story_no = #{story_no}
 	</delete>	
 	<delete id="deleteTagPostByStoryNo">
-		DELETE FROM tag_post
-		WHERE story_no = #{story_no}
-		
+		DELETE 
+		FROM 	tag_post
+		WHERE 	story_no = #{story_no}
 		<!-- DELETE FROM `Dhere`.`tag_post` 
 		WHERE story_no = #{story_no} -->
-		
 	</delete>	
 	<delete id="deleteImageByStoryNo">
-		DELETE FROM image
-		WHERE story_no = #{story_no}
-	</delete>	
+		DELETE 
+		FROM 	image
+		WHERE 	story_no = #{story_no}
+	</delete>
+		
+	<!-- storyDetail_수정 쿼리(syj) -->
+	<update id="updateStoryProcess" parameterType="Story">
+	    UPDATE	story
+	    SET		title = #{title}, 
+	    		content1 = #{content1},
+	    		content2 = #{content2},
+	    		content3 = #{content3},
+	    		content4 = #{content4}
+		WHERE 	story_no = #{storyNo}
+	</update>
 		
 		
-		
-		
-		
-		
+
 		
 	<!-- 직종 조회 쿼리 -->
 	<select id="getJobList" resultType="Job"
