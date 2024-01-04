@@ -26,8 +26,9 @@
         <%@ include file="template/footer.jsp" %>         
    
     
+    
 
-
+<script src="resources/bootstrap/bootstrap.bundle.min.js"></script>
 
 	
 <!-- 링크 공유 모달 -->

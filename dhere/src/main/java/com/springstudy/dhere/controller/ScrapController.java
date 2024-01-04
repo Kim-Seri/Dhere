@@ -1,7 +1,9 @@
 package com.springstudy.dhere.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +45,23 @@ public class ScrapController {
 		
 		return "scrap";
 	}
+
 	
-	@RequestMapping(value="/mypageUpdateProcess", method=RequestMethod.GET)
-	public String mypageUpdateProcess
-	(Model model, HttpSession session, String email) {
+	@RequestMapping(value="/mypageupdateProcess", method=RequestMethod.POST)
+	public String updateMember(HttpServletResponse response, PrintWriter out, Member member) {
+		boolean result = memberService.memberPassCheck(member.getEmail(), member.getPass());
 		
-		return "member/mypageUpdateProcess";
+		if(! result) {
+			response.setContentType("text/html; charset=utf-8");
+			out.println("<script>");
+			out.println("alert('비밀번호가 맞지 않습니다.')");
+			out.println("history.back()");
+			out.println("</script>");
+			
+			return null;
+		}
+		memberService.updateMember(member);
+		return "redirect:scrap";
 	}
 
 }

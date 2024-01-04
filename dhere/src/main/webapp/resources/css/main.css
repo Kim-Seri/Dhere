@@ -6,7 +6,7 @@
 	display: none;
 	position: fixed;
 	width: 400px;
-	bottom: 60px;
+	bottom: 15px;
 	left: 50%;
  	transform: translateX(-50%);
 }
@@ -72,6 +72,28 @@ input[type="checkbox"] {
 	border: 1px solid #5E5E5E; 
 	cursor: pointer;
 }
+
+.close-btn {
+	color: white;
+}
+
+.goToTopBtn {
+	position: fixed;
+	width: 400px;
+	bottom: 15px;
+	right: 10%;
+ 	transform: translateX(120%);
+}
+
+#moreBtn {
+	width: 150px;
+	height: 30px;
+	border: 1px solid blue;
+	background-color: #4370FF;
+	color: white;
+	border-radius: 10px;
+}
+
 
 #main_story_category_area{
 	color: #5E5E5E;

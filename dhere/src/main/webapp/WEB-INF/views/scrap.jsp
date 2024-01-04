@@ -39,7 +39,8 @@
 	            role="tab" aria-controls="tab2" aria-selected="false">회원정보수정</a>
 	        </li>
 	        <li class="nav-item"  style="width: 140px; font-size: 18px">
-	            <a class="nav-link text-center" id="tab3-tab" data-bs-toggle="pill" href="#tab3" 
+	            <a class="nav-link text-center" id="tab3-tab" data-bs-toggle="pill" href="inquiry" 
+	            onclick="location.href='inquiryWrite'"
 	            role="tab" aria-controls="tab3" aria-selected="false">1:1문의하기</a>
 	        </li>
 	        <li class="nav-item"  style="width: 140px; font-size: 18px">
@@ -57,7 +58,9 @@
             <div class="col my-5" style="margin-left: 80px">
             <div class="row">
                 <div class="col-4">
-                    <c:if test="${ empty sessionScope.member.picture }">기본프사 <!-- 귀여운그림 -->
+                    <c:if test="${ empty sessionScope.member.picture }">
+                    <img src="resources/images/icon/86683729.png" id="defaultPicture"
+                     style="width: 150px; height: 150px; object-fit: cover; border-radius: 70%; border: 3px solid blue" />
                     </c:if>
                     <c:if test="${ not empty sessionScope.member.picture }">
                         <div class="col"><img src="resources/images/profile/${sessionScope.member.picture}" alt="150*150 크기 이미지" 
@@ -154,6 +157,8 @@
 	</div>
 	<!-- 전체 컨테이너 끝 -->
          <input type="button" value="morepage">
+         <input type="button" value="내 문의사항 내역 리스트" onclick="location.href='iList'">
       <script src="resources/bootstrap/bootstrap.bundle.min.js"></script>
+      </div>
 </body>
 </html>

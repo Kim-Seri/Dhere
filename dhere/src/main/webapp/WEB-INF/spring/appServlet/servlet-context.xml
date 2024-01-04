@@ -39,6 +39,11 @@
 	<view-controller path="/mainNotice" view-name="mainNotice"/>
 	<view-controller path="/footerMenu" view-name="footerMenu"/>
 	<view-controller path="/otherScrap" view-name="otherScrap"/>
+	<view-controller path="/inquiryWrite" view-name="inquiryWrite"/>
+	<view-controller path="/iList" view-name="iList"/>
+	<view-controller path="/inquiryDetail" view-name="inquiryDetail"/>
+	<view-controller path="/adminInquiry" view-name="adminInquiry"/>
+	<view-controller path="/answerWirte" view-name="answerWirte"/>
 	
 	
 </beans:beans>
