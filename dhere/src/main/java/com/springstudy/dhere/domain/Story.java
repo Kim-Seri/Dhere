@@ -26,25 +26,6 @@ public class Story {
 	
 	public Story() {}
 	
-	public Story(int storyNo, String title, String content1, String content2, String content3, String content4, String email, Timestamp regDate, int categoryNo, 
-			int readCount, int thank, String nickname, int imageNo, String fileName, String tagName) {
-		
-	    this.storyNo = storyNo;
-	    this.title = title;
-	    this.content1 = content1;
-	    this.content2 = content2;
-	    this.content3 = content3;
-	    this.content4 = content4;
-	    this.email = email;
-	    this.regDate = regDate;
-	    this.categoryNo = categoryNo;
-	    this.readCount = readCount;
-	    this.thank = thank;
-	    this.nickname = nickname;
-	    this.imageNo = imageNo;
-	    this.fileName = fileName;
-	    this.tagName = tagName;
-	}
 
 	public int getStoryNo() {
 		return storyNo;
@@ -194,6 +175,4 @@ public class Story {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-
-	
 }

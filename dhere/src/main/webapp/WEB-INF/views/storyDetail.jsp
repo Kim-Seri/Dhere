@@ -19,7 +19,9 @@
 					<div class="row" id="category_view_btn">
 						<div class="col">
 							<button type="button" class="btn btn-primary fs-5 fw-bolder">
-							<img src="resources/images/icon/name_tag_white.png" id="icon_tag_category_view_btn">&nbsp;&nbsp;${storyDetail.categoryName}</button>
+							<img src="resources/images/icon/name_tag_white.png" 
+								id="icon_tag_category_view_btn">&nbsp;&nbsp;${storyDetail.categoryName}
+							</button>
 						</div>
 					</div>
 					<!-- 직무 카테고리 끝 -->
@@ -80,11 +82,74 @@
 					<!-- 팔로우, 스크랩 버튼 시작 -->
 					<div class="row text text-end mb-5">
 						<div class="col">
-							<button type="button" class="btn btn-outline-primary fs-5" id="followBtn">
-								${storyDetail.email eq sessionScope.member.email ? '수정하기' : '팔로우'}
-							</button>
-							<button type="button" class="btn btn-outline-primary fs-5" id="scrapBtn">
-								${storyDetail.email eq sessionScope.member.email ? '삭제하기' : '스크랩'}</button>
+						
+						
+							<c:choose>
+							    <c:when test="${storyDetail.email eq sessionScope.member.email}">
+							    <button type="button" class="btn btn-outline-primary fs-5" id="updateBtn" 
+							    		onclick="location.href='/dhere/updateStory?storyNo=${storyDetail.storyNo}'">
+							            수정하기
+							    </button>
+							    </c:when>
+							    <c:otherwise>
+							        <button type="button" class="btn btn-outline-primary fs-5" id="followBtn">
+							            팔로우
+							        </button>
+							    </c:otherwise>
+							</c:choose>
+							
+							
+							
+							
+							<c:choose>
+							    <c:when test="${storyDetail.email eq sessionScope.member.email}">
+							    <form action="deleteStory" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
+							    	<input type="hidden" name="storyNo" value="${storyDetail.storyNo}" />
+							        <button type="submit" class="btn btn-outline-primary fs-5" id="deleteBtn">
+							            삭제하기
+							        </button>
+						        </form>
+							    </c:when>
+							    <c:otherwise>
+							        <button type="button" class="btn btn-outline-primary fs-5" id="scrapBtn">
+							            스크랩
+							        </button>
+							    </c:otherwise>
+							</c:choose>
+
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
 							</div>
 					</div>
 					<!-- 팔로우, 스크랩 버튼 끝 -->
@@ -308,26 +373,11 @@
 							<input type="submit">
 						</div>
 					</form>
-	<!--############################# 댓글 작성 영역 끝 ############################-->						
-					
-					
-					
-					
-					
-					
-					
-					
-			
-		
-		
+	<!--############################# 댓글 작성 영역 끝 ############################-->				
 		</div>
 	</div>
 </div>
 
 
-
-
-	
-	
 </body>
 </html>

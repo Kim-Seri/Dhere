@@ -6,6 +6,8 @@ public class Tag {
 	private int tagNo;
 	private String tagName;
 	
+	
+	
 	public int getStoryNo() {
 		return storyNo;
 	}

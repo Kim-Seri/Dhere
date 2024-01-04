@@ -86,10 +86,12 @@ function enterkey() {
 }
 
 //해시태그 삭제
+//해시태그 삭제
 function removeHashtag(hashtag) {
   document.getElementById(hashtag).remove();
 }
 
+//해시태그 추가
 //해시태그 추가
 function addHashtag() {
   let hashtag = $("#hashtag").val();
@@ -99,10 +101,13 @@ function addHashtag() {
 }
 
 //해시태크 부분 동적 생성 코드
+//해시태크 부분 동적 생성 코드
 function getHashtagItem(hashtag) {
   let item = `<div class="col-auto hashtag" id="${hashtag}">
 			<div class="row my-3">
 				<div class="col border border-primary-subtle pe-0">
+					<span class="hashtag-value text-primary"  value="${hashtag}">#${hashtag}</span>&nbsp;
+		  			<input type="hidden" name="hashtag" value="${hashtag}">
 					<span class="hashtag-value text-primary"  value="${hashtag}">#${hashtag}</span>&nbsp;
 		  			<input type="hidden" name="hashtag" value="${hashtag}">
 					<button type="button" class="btn btn-outline-primary border border-0 " onclick="removeHashtag('${hashtag}')">×</button>
@@ -113,6 +118,9 @@ function getHashtagItem(hashtag) {
   return item;
 }
 
+$(function () {
+  //폼 엔터키 눌러도 자동으로submit 안되게 제한
+  $("form").keydown(function () {
 $(function () {
   //폼 엔터키 눌러도 자동으로submit 안되게 제한
   $("form").keydown(function () {
@@ -127,6 +135,8 @@ $(function () {
     // 새로운 이미지 입력 필드를 생성하고 파일 선택 다이얼로그를 띄웁니다.
 	var postNumber=0;
 	postNumber=postNumber+1;
+	var postNumber=0;
+	postNumber=postNumber+1;
     var imageInput = $(
       "<input type='file' class='form-control' name='additionalImages' style='display:none'>"
     );
@@ -135,6 +145,10 @@ $(function () {
 
     // 이미지 업로드 인풋이 변경됐을 때의 이벤트 핸들러
     imageInput.on("change", function () {
+      if (!this.files.length) {
+        return;
+      }
+
       if (!this.files.length) {
         return;
       }
@@ -148,7 +162,12 @@ $(function () {
       var imageDivCol = $("<div class='col my-3 position-relative'></div>");
       var imageDivRow2 = $("<div class='row my-3'></div>");
       var imageDivCol2 = $( "<div class='col my-3 text-center position-relative'></div>");
+      var imageDivCol2 = $( "<div class='col my-3 text-center position-relative'></div>");
       var imageDivRow3 = $("<div class='row my-3'></div>");
+      var imageDivCol3 = $( "<div class='col my-3 text-center position-relative'></div>");
+      var deleteButton = $("<button type='button' class='btn btn-secondary' id='deleteImageButton'>삭제하기</button>");
+      var markerButton = $("<button type='button' class='btn btn-secondary' id='addMarkerButton'>마커 편집</button>");
+
       var imageDivCol3 = $( "<div class='col my-3 text-center position-relative'></div>");
       var deleteButton = $("<button type='button' class='btn btn-secondary' id='deleteImageButton'>삭제하기</button>");
       var markerButton = $("<button type='button' class='btn btn-secondary' id='addMarkerButton'>마커 편집</button>");
@@ -157,6 +176,7 @@ $(function () {
       imageDivCol.append(imageDivRow2);
       imageDivRow2.append(imageDivCol2);
 
+
       imageDivCol2.append(imagePreview);
       imageDivCol2.append(markerButton);
       imageDivCol2.append(deleteButton);
@@ -164,17 +184,22 @@ $(function () {
       imageDivCol.append(imageDivRow3);
       imageDivRow3.append(imageDivCol3);
 //      imageDivCol3.append(changeButton);
+//      imageDivCol3.append(changeButton);
       $("#imageContainer").append(imageDivRow);
 
       displayImagePreview(this, imagePreview);
+
 
       // 이미지 미리보기와 버튼을 감싸는 부모 요소에 CSS 적용
       imageDivCol.css({
         position: "relative",
         overflow: "hidden",
+        position: "relative",
+        overflow: "hidden",
       });
 
       imageDivCol2.css({
+        position: "absolute",
         position: "absolute",
         top: 0,
         left: 0,
@@ -188,7 +213,30 @@ $(function () {
     });
   });
 
+
   //이미지 삭제하기 버튼 눌렸을 때
+  $("#imageContainer").on("click", "#deleteImageButton", function () {
+    $(this).parent().parent().parent().parent().prev().remove();
+    $(this).parent().parent().parent().parent().remove();
+    isAddingMarker=false;
+    console.log(isAddingMarker);
+  });
+
+  //마커 추가 버튼 클릭 시
+  $("#imageContainer").on("click", "#addMarkerButton", function () {
+    startAddingMarker();
+  });
+  
+  $(document).on("click", "#postImg", function(event) {
+	    if (isAddingMarker) {
+	        addMarker(event.clientX, event.clientY);
+	    }
+	});
+  
+  //마커 편집 완료 버튼 클릭 시
+  $("#imageContainer").on("click", "#finishMarkerButton", function () {
+	  finishAddingMarker();
+  });
   $("#imageContainer").on("click", "#deleteImageButton", function () {
     $(this).parent().parent().parent().parent().prev().remove();
     $(this).parent().parent().parent().parent().remove();

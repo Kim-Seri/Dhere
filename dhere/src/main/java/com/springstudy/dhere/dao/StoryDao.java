@@ -12,17 +12,31 @@ public interface StoryDao {
     // 게시물 리스트 가져오기
     public abstract List<Story> getStoryList();
 
-    // 게시물 디테일 가져오기
+    // 게시물 디테일 가져오기(syj)
     public abstract Story getStoryDetail(int storyNo);
     
-    // 게시물 디테일_이미지 가져오기
+    // 게시물 디테일_이미지 가져오기(syj)
     public abstract List<Image> getStoryDetailImage(int storyNo);
     
-    // 게시물 디테일_태그 가져오기
+    // 게시물 디테일_태그 가져오기(syj)
     public abstract List<Tag> getStoryDetailTag(int storyNo);
     
-    // 게시물 조회 수 증가시키기
+    // 게시물 조회 수 증가시키기(syj)
     public abstract void increaseReadCount(int storyNo);
+    
+    // 게시물 삭제하기(syj)
+    public abstract void deleteStory(int storyNo);
+    void deleteScrapByStoryNo(int storyNo);
+    void deleteReplyByStoryNo(int storyNo);
+    void deleteMarkerByStoryNo(int storyNo);
+    void deleteTagPostByStoryNo(int storyNo);
+    void deleteImageByStoryNo(int storyNo);
+    
+    // 게시물 수정하기 읽어오기(syj)
+    public abstract void updateStory(Story story);
+    
+    // 게시물 수정하기(syj)
+    public abstract void updateStoryProcess(Story story);
 
     // 게시물 쓰기
 	public abstract void postWrite(Story story);

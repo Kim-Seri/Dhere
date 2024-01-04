@@ -93,3 +93,16 @@ input[type="checkbox"] {
 	color: white;
 	border-radius: 10px;
 }
+
+
+#main_story_category_area{
+	position: relative;
+}
+
+#main_story_category_btn {
+	position: absolute;
+	top: 0;
+	left: 10%;
+	width: 70px; 
+	height: 50px;
+}

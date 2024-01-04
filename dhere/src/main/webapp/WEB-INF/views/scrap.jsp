@@ -24,8 +24,8 @@
 <script src="resources/js/formcheck.js"></script>
    </head>
 <body>
-	<!-- 전체 컨테이너 시작 -->
-<div class="container mt-5">
+
+
 	 <!-- 탑 메뉴버튼 -->
 	 <div class="d-flex justify-content-center" id="myInfo">
 	    <ul class="nav nav-pills text-center">
@@ -108,7 +108,9 @@
          <div class="d-flex justify-content-center" id="scraping">
          <ul class="nav nav-underline offset">
             <li class="nav-item text-center" style="width: 170px">
-              <a class="nav-link categoryBtn"  style="font-size: 25px; color: gray" data-bs-toggle="pill">나의 게시물</a>
+              <a class="nav-link categoryBtn"  style="font-size: 25px; color: gray" data-bs-toggle="pill">
+            	
+              </a>
             </li>
             <li class="nav-item text-center" style="width: 170px">
               <a class="nav-link categoryBtn"  
@@ -128,22 +130,22 @@
             </div>
    
             <div class="row">
-               <div class="col p-3">
-                  <div class="row">
-                <div class="col d-flex justify-content  mb-3" style="overflow: hidden; font-size: 15px; color: #5E5E5E">
-                   ${p.brandName}
-               </div>
-            </div>
+				<div class="col p-3">
+					<div class="row">
+						<div class="col d-flex justify-content  mb-3" style="overflow: hidden; font-size: 15px; color: #5E5E5E">
+							${p.brandName}
+						</div>
+					</div>
             
-            <div style="width: 100%; height: 2px; background-color: #5E5E5E"></div>
+            	<div style="width: 100%; height: 2px; background-color: #5E5E5E"></div>
             
-            <div class="row">
-                <div class="col mt-3 d-flex justify-content" style="overflow: hidden; font-size: 23px">
-                    <b>${p.productName}</b>
-                </div>
-            </div>
-               </div>
-            </div>
+		            <div class="row">
+		                <div class="col mt-3 d-flex justify-content" style="overflow: hidden; font-size: 23px">
+		                    <b>${p.productName}</b>
+		                </div>
+		            </div>
+            	</div>
+			</div>
          </div>
          </c:forEach>
          </div>
