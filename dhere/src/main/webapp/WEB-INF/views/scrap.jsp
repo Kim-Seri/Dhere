@@ -112,7 +112,7 @@
          <ul class="nav nav-underline offset">
             <li class="nav-item text-center" style="width: 170px">
               <a class="nav-link categoryBtn"  style="font-size: 25px; color: gray" data-bs-toggle="pill">
-            	
+            	나의 게시물
               </a>
             </li>
             <li class="nav-item text-center" style="width: 170px">
