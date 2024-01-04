@@ -45,21 +45,8 @@ function findZipcode() {
     }).open();
 }
 
-function PassCheck() {
-	var pass1 = $("#pass1").val();
-    var pass2 = $("#pass2").val();
-
-    // 비밀번호 일치 여부 확인
-    if (pass1 === pass2) {
-        alert("비밀번호가 일치합니다.", true);
-    } else {
-        alert("비밀번호가 일치하지 않습니다.", false);
-    }
-}
-
 $(function() {
 	$("#btnZipcode").on("click", findZipcode);
-	$("#btnOverlapPass").on("click", PassCheck);
 });
 
 /*function inputCharReplace() {
@@ -302,6 +289,17 @@ $("#btnZipcode").on("click", findZipcode);
 			return false;
 		}
 	});*/
+	
+	$("#btnOverlapPass").on("click",function(){
+		var pass1=$("#pass1").val()
+		var pass2=$("#pass2").val()
+			if(pass1 == pass2) {
+	    		$("#label2").css("color", "black").text("비밀번호가 일치합니다.");
+	    		return false;
+	    	} else {
+	    		$("#label2").css("color", "red").text("비밀번호가 일치하지 않습니다.");
+	    	}
+	});
 	
 	
 	$("#mypageUpdateBtn").on("click", function(){
