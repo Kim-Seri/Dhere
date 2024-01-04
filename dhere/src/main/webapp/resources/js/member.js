@@ -62,35 +62,7 @@ $(function() {
 	$("#btnOverlapPass").on("click", PassCheck);
 });
 
-/*function inputCharReplace() {
-	let regExp = /[^A-Za-z0-9]/gi;
-	
-	// 입력 값이 숫자 또는 영문자인지 판단 - 정규표현식
-	if(regExp.test($(this).val())) {
-		alert("영문 대소문자와 숫자만 입력할 수 있습니다.");
-		$(this).val($(this).val().replace(regExp, ""));
-	}
-}
 
-function inputEmailDomainReplace() {
-	let regExp = /^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$/gi;
-	
-	if(regExp.test($(this).val())) {
-		alert("영문 대소문자와 숫자만 입력할 수 있습니다.");
-		$(this).val($(this).val().replace(regExp, ""));
-	}
-}
-
-function joinFormCheck(elem) {
-	if($("#id").val().length == 0) {
-		alert("아이디를 입력해 주세요");
-		return false;
-	}
-	if($("#name").val().length == 0) {
-		alert("이름을 입력해 주세요");
-		return false;
-	}
-}*/
 
 // DOM이 준비되면-----------로그아웃
 
@@ -197,123 +169,53 @@ $(function() {
 		
 	
 	
-	/*$("#btnPassCheck").on("click", function() {
-		
-		let id = $("#id").val();
-		let pass = $("#oldPass").val();
-		
-		if(pass.length == 0) {
-			alert("기존 비밀번호를 입력해 주세요");
-			return;
-		}
-		
-		let data = "id=" + id + "&pass=" + pass;
-		
-		$.ajax({
-			"url" : "passCheck.ajax", "data" : data, "type" : "post", "dataType" : "json", "success" : function(resData) {
-			console.log(resData.result);
-			// 비밀번호가 맞으면
-			if(resData.result) {
-				alert("비밀번호가 확인 되었습니다.");
-				$("#btnPassCheck").prop("disabled", true);
-				$("#oldPass").prop("readonly", true);
-				$("#btnZipcode").focus();
-			} else { // 비밀번호가 틀리면
-				alert("비밀번호가 틀립니다.");
-				$("#oldPass").val("").focus();
-			}
-			
-			
-		}, "error" : function(xhr, statusText, err) {
-			console.error("error ....");
-		}
-		});
-	});
-	
-$("#btnZipcode").on("click", findZipcode);
-	
-	$("#pass1").on("keyup", inputCharReplace);
-	$("#pass2").on("keyup", inputCharReplace);
-	
-	$("#id").on("keyup", function() {
-		
-		let id = $(this).val();
-		let regExp = /[^A-Za-z0-9]/gi;
-		
-		// 입력 값이 숫자 또는 영문자인지 판단 - 정규표현식
-		if(regExp.test(id)) {
-			alert("영문 대소문자와 숫자만 입력할 수 있습니다.");
-			$(this).val($(this).val().replace(regExp, ""));
-		}
-	});
-	
-	$("#btnIdCheckClose").on("click", (e) => {
-		let id = $(e.target).attr("data-id-value");
-		opener.document.joinForm.id.value = id;
-		opener.document.joinForm.isIdCheck.value = true;
-		window.close();
-	});
-	
-	$("#idCheckForm").submit(() => {
-		let id = $("#checkId").val();
-		
-		if(id.length == 0) {
-			alert("아이디를 입력해 주세요");
-			return false;
-		}
-		
-		if(id.length < 5) {
-			alert("아이디를 5자 이상 입력해주세요");
-			return false;
-		}
-	});
-	
-	// 회원 아이디 중복 확인 버튼이 클릭되면
-	$("#btnOverlapId").on("click", () => {
-		let id = $("#id").val();
-		url = "overlapIdCheck?id=" + id;
-		if(id.length == 0) {
-			alert("아이디를 입력해 주세요");
-			return false;
-		}
-		
-		if(id.length < 5) {
-			alert("아이디를 5자 이상 입력해주세요");
-			return false;
-		}
-		
-		window.open(url, "idCheck", "toolbar=no, location=no, status=no, menubar=no, width=400, height=400");
-		
-	});
-	
-	$("#loginForm").submit(() => {
-		var id = $("#userId").val();
-		var pass = $("#userPass").val();
-		
-		if(id.length <= 0) {
-			alert("아이디가 입력되지 않았습니다.");
-			$("#userId").focus();
-			return false;
-		}
-		
-		if(pass.length <= 0) {
-			alert("비밀번호가 입력되지 않았습니다.");
-			$("#userPass").focus();
-			return false;
-		}
-	});*/
 	
 	
-	$("#mypageUpdateBtn").on("click", function(){
-		var pass10 = $("#pass10").val();
-		var pass1 = $("#pass1").val();
-		if(pass10 == pass1) {
-			alert("일치");
-			window.location.href="scrap";
+	
+	$("#btnPassCheck").click(function() {
+	var oldEamil = $("#email").val();
+	var pass10 = $("#pass10").val();
+	console.log(pass10);
+	
+	if(pass10.length == 0) {
+	alert("기존 비밀번호가 입력되지 않았습니다.\n기존 비밀번호를 입력해주세요"); 
+	return false;
+	}
+	var data = "pass="+oldPass; 
+	console.log("data : " + data);
+	
+	$.ajax({
+		"url": "passCheck.ajax", 
+		"type": "POST",
+		"data": data,
+		"dataType": "json",
+		"success": function(resData) {
+		
+		if(resData.result) {
+		alert("비밀번호가 확인되었습니다.\n비밀번호를 수정해주세요"); 
+		$("#btnPassCheck").prop("disabled", true); 
+		$("#oldPass").prop("readonly", true);
+		$("#pass1").focus();
 		} else {
-			alert("불일치");                       
-		}
-		
-		
+		alert("비밀번호가 다릅니다.\n비밀번호를 다시 확인해주세요"); 
+		$("#oldPass").val("").focus();
+		} },
+		"error": function() { console.log("error");
+		} 
 	});
+});
+
+	
+	
+	
+
+	// 회원정보 수정 폼에서 수정하기 버튼이 클릭되면 유효성 검사를 하는 함수
+	$("#memberUpdateForm").on("submit", function() {
+		if(! $("#btnPassCheck").prop("disabled")) {
+		alert("기존 비밀번호를 확인해야 비밀번호를 수정할 수 있습니다.\n"
+		+ "기존 비밀번호를 입력하고 비밀번호 확인 버튼을 클릭해 주세요"); return false;
+		}
+		return joinF(); 
+	});	
+
 });

@@ -78,14 +78,15 @@
 						<div class="col-8 offset-2">
 							<label for="name" class="form-label" style="color:white">이름 </label>
 							<input type="text" class="form-control border border-3" name="name" id="name" 
-							value="${ sessionScope.member.name}" readonly
+							value="${ sessionScope.member.name}"
 							style="background: transparent; border-radius: 15px; color: white;">
 						</div>
 					</div>
 					<div class="row my-3">
 						<div class="col-8 offset-2">
 							<label for="nickname" class="form-label" style="color:white">닉네임 </label>
-							<input type="text" class="form-control border border-3" name="nickname" id="nickname" style="background: transparent; border-radius: 15px; color: white;">
+							<input type="text" class="form-control border border-3" name="nickname" id="nickname" 
+							style="background: transparent; border-radius: 15px; color: white;" >
 						</div>
 					</div>
 					<div class="row my-3">

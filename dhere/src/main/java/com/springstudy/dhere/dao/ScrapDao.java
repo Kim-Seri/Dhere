@@ -20,10 +20,7 @@ public interface ScrapDao {
 //	public abstract void insertCounselor(Scrap scrap);
 	
 	// 회원정보 수정할 때 비밀번호 체크에서 호출되는 메서드
-//	public String isPassCheck(String email, String pass);
-	
-	// 회원정보 수정 요청 시에 호출되는 메서드
-//	public abstract void updateProfile(Member member);
+	public String memberPassCheck(String email, String pass);
 		
 	// 1:1문의하기 수정삭제
 	
