@@ -43,6 +43,7 @@
 	<view-controller path="/iList" view-name="iList"/>
 	<view-controller path="/inquiryDetail" view-name="inquiryDetail"/>
 	<view-controller path="/adminInquiry" view-name="adminInquiry"/>
+	<view-controller path="/answerWirte" view-name="answerWirte"/>
 	
 	
 </beans:beans>
