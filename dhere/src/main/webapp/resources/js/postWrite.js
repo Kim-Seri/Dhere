@@ -132,9 +132,6 @@ function getHashtagItem(hashtag) {
 $(function () {
   //폼 엔터키 눌러도 자동으로submit 안되게 제한
   $("form").keydown(function () {
-$(function () {
-  //폼 엔터키 눌러도 자동으로submit 안되게 제한
-  $("form").keydown(function () {
     if (event.keyCode === 13) {
       event.preventDefault();
     }
