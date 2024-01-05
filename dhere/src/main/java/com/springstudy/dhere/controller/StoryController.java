@@ -1,7 +1,6 @@
 package com.springstudy.dhere.controller;
 
 import java.io.File;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
@@ -34,10 +33,12 @@ import com.springstudy.dhere.domain.Job;
 import com.mysql.cj.Session;
 import com.springstudy.dhere.domain.Member;
 import com.springstudy.dhere.domain.Product;
+import com.springstudy.dhere.domain.Reply;
 import com.springstudy.dhere.domain.Story;
 import com.springstudy.dhere.domain.Tag;
 import com.springstudy.dhere.service.ProductService;
 import com.springstudy.dhere.service.StoryService;
+import com.springstudy.dhere.service.ReplyService;
 
 @Controller
 public class StoryController {
@@ -47,6 +48,9 @@ public class StoryController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private ReplyService replyService;
 	
 	private static final String DEFAULT_PATH = "/resources/images/desk/";
 	
@@ -69,8 +73,12 @@ public class StoryController {
 ///////////////////////////////////////////////////////////////////		
 	// 게시물 디테일(syj)
 	@RequestMapping("/storyDetail")
-	public String storyDetail(Model model, @RequestParam int storyNo, HttpSession session) {
+	public String storyDetail(@RequestParam("storyNo") int storyNo, Model model, HttpSession session) {
 		
+		// 댓글 출력 로직 추가
+		List<Reply> rList = replyService.getReply(storyNo);
+		model.addAttribute("rList", rList.isEmpty() ? null : rList);
+
 		// 조회수 증가 로직 추가
 		storyService.increaseReadCount(storyNo);
 	    
@@ -83,10 +91,10 @@ public class StoryController {
 		List<Tag> tList = storyService.getStoryDetailTag(storyNo);
 		model.addAttribute("tList", tList);
 	    
-		
 	    return "storyDetail";
 	}
-///////////////////////////////////////////////////////////////////		
+///////////////////////////////////////////////////////////////////	
+	// 게시물 좋아요 증가시키기(syj)
 	@RequestMapping(value = "/increaseThank", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> increaseThank(@RequestParam("storyNo") int storyNo) {
@@ -128,85 +136,73 @@ public class StoryController {
 		
 		return "redirect:main";
 	}
-///////////////////////////////////////////////////////////////////		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+///////////////////////////////////////////////////////////////////
 	//게시글 쓰기
-		@RequestMapping(value="/postWrite",method=RequestMethod.POST)
-		public String postWrite(HttpServletRequest request , HttpServletResponse response , Model model ,String title,String content1, String content2, String content3, String content4 ,
-				@RequestParam(value="category",required=false)int categoryNo,HttpSession session,
-				@RequestParam(value="hashtag",required=false) List<String> tagList,
-				@RequestParam(value="additionalImages", required=false) List<MultipartFile> multipartFile) throws IOException{
-			
-			String nickname=(String) session.getAttribute("nickname");
-			Member member=(Member) session.getAttribute("member");
-			String email=member.getEmail();
-			
-			
-			
-			
-			Story story=new Story();
-			
-			story.setTitle(title);
-			story.setContent1(content1);
-			story.setContent2(content2);
-			story.setContent3(content3);
-			story.setContent4(content4);
-			story.setCategoryNo(categoryNo);
-			story.setEmail(email);
-			story.setNickname(nickname);
-			System.out.println(nickname);
-			
-			
-			storyService.postWrite(story);
-			
-			System.out.println(tagList);
-			
-			
-			//태그 리스트 추가
-			if(tagList != null &&! tagList.isEmpty()) {
-				for(String hashtag:tagList) {
-					Tag tag=new Tag();
-					tag.setTagName(hashtag);
-					tag.setStoryNo(story.getStoryNo());
-					storyService.insertTag(tag);
-					storyService.insertTagPost(tag);
-				}
+	@RequestMapping(value="/postWrite",method=RequestMethod.POST)
+	public String postWrite(HttpServletRequest request , HttpServletResponse response , Model model ,String title,String content1, String content2, String content3, String content4 ,
+			@RequestParam(value="category",required=false)int categoryNo,HttpSession session,
+			@RequestParam(value="hashtag",required=false) List<String> tagList,
+			@RequestParam(value="additionalImages", required=false) List<MultipartFile> multipartFile) throws IOException{
+		
+		String nickname=(String) session.getAttribute("nickname");
+		Member member=(Member) session.getAttribute("member");
+		String email=member.getEmail();
+		
+		
+		
+		
+		Story story=new Story();
+		
+		story.setTitle(title);
+		story.setContent1(content1);
+		story.setContent2(content2);
+		story.setContent3(content3);
+		story.setContent4(content4);
+		story.setCategoryNo(categoryNo);
+		story.setEmail(email);
+		story.setNickname(nickname);
+		System.out.println(nickname);
+		
+		
+		storyService.postWrite(story);
+		
+		System.out.println(tagList);
+		
+		
+		//태그 리스트 추가
+		if(tagList != null &&! tagList.isEmpty()) {
+			for(String hashtag:tagList) {
+				Tag tag=new Tag();
+				tag.setTagName(hashtag);
+				tag.setStoryNo(story.getStoryNo());
+				storyService.insertTag(tag);
+				storyService.insertTagPost(tag);
 			}
-			
-			// 이미지 리스트 추가
-			if (multipartFile != null && !multipartFile.isEmpty()) {
-				 
-				for (MultipartFile imageFile : multipartFile) {
-					Image image = new Image();
-					 // Request 객체를 이용해 파일이 저장될 실제 경로를 구한다.
-		            String filePath = request.getServletContext().getRealPath(DEFAULT_PATH);
-		          
-		            UUID uid = UUID.randomUUID();
-		            
-		            String saveName = uid.toString() + "_" + imageFile.getOriginalFilename();
-		            String encodedFileName = URLEncoder.encode(saveName, "UTF-8");
-		            File file = new File(filePath, encodedFileName);         
-		            
-		            // 업로드 되는 파일을 upload 폴더로 저장한다.
-		            imageFile.transferTo(file);
-		            image.setFileName(encodedFileName);
-					image.setStoryNo(story.getStoryNo());
-					storyService.insertImage(image);
-				}
-			}
-			return "redirect:main";
 		}
+		
+		// 이미지 리스트 추가
+		if (multipartFile != null && !multipartFile.isEmpty()) {
+			 
+			for (MultipartFile imageFile : multipartFile) {
+				Image image = new Image();
+				 // Request 객체를 이용해 파일이 저장될 실제 경로를 구한다.
+	            String filePath = request.getServletContext().getRealPath(DEFAULT_PATH);
+	          
+	            UUID uid = UUID.randomUUID();
+	            
+	            String saveName = uid.toString() + "_" + imageFile.getOriginalFilename();
+	            String encodedFileName = URLEncoder.encode(saveName, "UTF-8");
+	            File file = new File(filePath, encodedFileName);         
+	            
+	            // 업로드 되는 파일을 upload 폴더로 저장한다.
+	            imageFile.transferTo(file);
+	            image.setFileName(encodedFileName);
+				image.setStoryNo(story.getStoryNo());
+				storyService.insertImage(image);
+			}
+		}
+		return "redirect:main";
+	}
 	
 	@RequestMapping(value="/postWriteForm", method=RequestMethod.GET)
 	public String postWriteForm(Model model) {

@@ -9,7 +9,7 @@ public interface InquiryDao {
 	// 문의하기
 	public abstract void insertInquiry(Inquiry inquiry);
 	
-	// 내 문의 내역
+	// 나의 문의 내역
 	public abstract List<Inquiry> iList(String email);
 	
 	// 문의 내역 상세보기

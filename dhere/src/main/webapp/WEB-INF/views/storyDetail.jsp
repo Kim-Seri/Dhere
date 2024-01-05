@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="resources/css/storyDetail.css">
 <%@ page session="true" %>
 <html>
@@ -43,7 +44,6 @@
 							data-bs-trigger="focus"
 							data-bs-title="${storyDetail.nickname}"
 							data-bs-content="
-							
 							<a href='otherScrap?email=${storyDetail.email}&nickname=${storyDetail.nickname}&picture=${storyDetail.picture}&job=${storyDetail.categoryName}'class='text-decoration-none text-dark'>프로필 보러가기</a>
 							<br>
 						    <br>
@@ -54,7 +54,6 @@
 							<br>
 						    <br>
 						    <a href='scrap' class='text-decoration-none text-dark'>신고하기</a>
-						    
 						    " >
 						</div>
 						<!-- 프로필 사진 끝 -->
@@ -65,7 +64,11 @@
 						<!-- 닉네임 끝 -->
 						<!-- 날짜 시작 -->
 						<div class="col-7 text-end" id="regDate">
-							${ storyDetail.regDate }
+							<fmt:formatDate value="${storyDetail.regDate}" pattern="yyyy년 MM월 dd일" var="formattedAAA"/>
+							<fmt:formatDate value="${storyDetail.regDate}" pattern="HH시 mm분 ss초" var="formattedBBB"/>
+							${formattedAAA}
+							<br>
+							${formattedBBB}
 						</div>
 						<!-- 날짜 끝 -->
 						<!-- 조회수, 좋아요 시작 -->
@@ -80,8 +83,6 @@
 					<!-- 팔로우, 스크랩 버튼 시작 -->
 					<div class="row text text-end mb-5">
 						<div class="col">
-						
-						
 							<c:choose>
 							    <c:when test="${storyDetail.email eq sessionScope.member.email}">
 							    <button type="button" class="btn btn-outline-primary fs-5" id="updateBtn" 
@@ -95,10 +96,6 @@
 							        </button>
 							    </c:otherwise>
 							</c:choose>
-							
-							
-							
-							
 							<c:choose>
 							    <c:when test="${storyDetail.email eq sessionScope.member.email}">
 							    <form action="deleteStory" method="post" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
@@ -114,10 +111,7 @@
 							        </button>
 							    </c:otherwise>
 							</c:choose>
-							
-							
-							
-							</div>
+						</div>
 					</div>
 					<!-- 팔로우, 스크랩 버튼 끝 -->
 	<!--################################## 사진 출력 영역 시작 ##################################-->
@@ -224,10 +218,6 @@
 							    +<img src="resources/images/icon/heart.png" id="icon_heart_btn">
 							    <span class="likes-count">${storyDetail.thank}</span>
 							</button>
-							
-							
-							
-							
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<button type="button" class="btn btn-outline-primary">
 								<img src="resources/images/icon/siren_police.png" id="icon_siren_btn">
@@ -255,94 +245,100 @@
 						</div>
 					</div>
 	<!--############################# 구분 선, products list 끝 ############################-->						
-	<!--############################# 댓글 출력 영역 시작 ############################-->						
-					<div class="row" id="storyDetail_reply_area">
-						<div class="col-3">
-							<div class="row">
-								<div class="col text-center">
-									<img src="" alt="다른 유저의 사진">
+	<!--############################# 댓글 출력 영역 시작 ############################-->	
+					<c:choose>
+					    <c:when test="${not empty rList}">
+					        <c:forEach items="${rList}" var="r">
+						        <fmt:formatDate value="${r.replyDate}" pattern="yyyy년 MM월 dd일" var="formattedDate"/>
+						        <fmt:formatDate value="${r.replyDate}" pattern="HH시 mm분 ss초" var="formattedTime"/>
+								<div class="row mb-5" id="storyDetail_reply_area">
+									<div class="col-3">
+										<div class="row">
+											<div class="col text-center">
+												<img src="resources/images/profile/${r.picture}" 
+												id="replyOtherUserPicture"
+												tabindex="0" 
+												data-bs-html="true" 
+												data-bs-placement="left" 
+												data-bs-toggle="popover" 
+												data-bs-trigger="focus"
+												data-bs-title="${r.nickname}"
+												data-bs-content="
+												<a href='otherScrap?email=${r.email}&nickname=${r.nickname}&picture=${r.picture}&job=${storyDetail.categoryName}'class='text-decoration-none text-dark'>프로필 보러가기</a>
+												<br>
+											    <br>
+											    <a href='scrap' class='text-decoration-none text-dark'>쪽지 보내기</a>
+												<br>
+											    <br>
+											    <a href='scrap' class='text-decoration-none text-dark'>1:1 대화</a>
+												<br>
+											    <br>
+											    <a href='scrap' class='text-decoration-none text-dark'>신고하기</a>
+											    " >
+											</div>
+										</div>
+										<div class="row">
+											<div class="col text-center">
+												${r.nickname}
+											</div>
+										</div>
+									</div>
+									<div class="col-8">
+										<div class="row">
+											<div class="col" id="storyDetail_reply_content">
+												${r.replyContent}
+											</div>
+										</div>
+										<div class="row">
+											<div class="col text-end" id="storyDetail_reply_regDate">
+												${formattedDate}<br>${formattedTime}
+											</div>
+										</div>
+									</div>
+									<div class="col-1">
+										<img src="resources/images/icon/siren_police.png" id="storyDetail_reply_siren">
+									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="col text-center">
-									닉네임
-								</div>
-							</div>
-						</div>
-						<div class="col-8">
-							<div class="row">
-								<div class="col" id="storyDetail_reply_content">
-									너무 유익한 내잉용입ㄴ디
-									<br>
-									앞으로도 자주 글 올려주세요!!!
-									<br>
-									좋아요 남기고 갈게요~~~ ㅎㅎ
-									<br>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col text-end" id="storyDetail_reply_regDate">
-									2013-22-12 55:52
-								</div>
-							</div>
-						</div>
-						<div class="col-1">
-							<img src="resources/images/icon/siren_police.png" id="storyDetail_reply_siren">
-						</div>
-					</div>
-					<!--  -->
-					<div class="row" id="storyDetail_reply_area">
-						<div class="col-3">
-							<div class="row">
-								<div class="col text-center">
-									<img src="" alt="다른 유저의 사진">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col text-center">
-									닉네임
-								</div>
-							</div>
-						</div>
-						<div class="col-8">
-							<div class="row">
-								<div class="col" id="storyDetail_reply_content">
-									너무 유익한 내잉용입ㄴ디... 앞으로도 자주 글 올려주세요!!!
-									<br>
-									날씨가 많이 추워졌죠?? 항상 따뜻하게 입고 다니세요 ㅜㅠㅜ 감기 걸리지 마셔요 ㅠㅜㅠㅜㅠ
-									<br>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col text-end" id="storyDetail_reply_regDate">
-									2013-22-12 55:52
-								</div>
-							</div>
-						</div>
-						<div class="col-1">
-							<img src="resources/images/icon/siren_police.png" id="storyDetail_reply_siren">
-						</div>
-					</div>
+					        </c:forEach>
+					    </c:when>
+					    <c:otherwise>
+					        <h1 class="text-center mb-5">
+					        	등록 된 댓글이 없습니다.
+					        </h1>
+					    </c:otherwise>
+					</c:choose>
 	<!--############################# 댓글 출력 영역 끝 ############################-->						
 	<!--############################# 댓글 작성 영역 끝 ############################-->		
-					<form class="row" id="storyDetail_reply_write_area">
+					<form class="row" action="replyWrite" method="post" id="storyDetail_reply_write_area">
+					<input type="hidden" name="storyNo" value="${storyDetail.storyNo}">
 						<div class="col-3">
 							<div class="row">
 								<div class="col text-center">
-									<img src="resources/images/profile/${ storyDetail.picture }" id="profile">
+									<c:choose>
+									    <c:when test="${not empty sessionScope.member.email}">
+											<img src="resources/images/profile/${sessionScope.member.picture}" id="profile">
+											</c:when>
+									    <c:otherwise>
+									        로그인을 해야 댓글 기능을
+									        <br>
+									        이용하실 수 있습니다.
+									    </c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col text-center" id="nickname">
-									${ storyDetail.nickname }
+									${sessionScope.member.nickname}
 								</div>
 							</div>
 						</div>
 						<div class="col-7 text-center">
-							<textarea rows="4" cols="40" id="storyDetail_reply_write_content">test</textarea>
+							<textarea rows="4" cols="40" name="replyContent" 
+										id="storyDetail_reply_write_content" 
+										placeholder="무분별한 욕설/비방은 제재 대상이므로 삭제 및 이용정지 대상이 될 수 있습니다."></textarea>
 						</div>
 						<div class="col-2 text-center text-bottom">
-							<input type="submit">
+							<input type="submit" class="btn btn-warning">
 						</div>
 					</form>
 	<!--############################# 댓글 작성 영역 끝 ############################-->				

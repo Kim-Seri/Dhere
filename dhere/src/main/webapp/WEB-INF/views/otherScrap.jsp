@@ -29,19 +29,6 @@
 	            <a class="nav-link active text-center" id="tab1-tab" data-bs-toggle="pill" href="#tab1" 
 	            role="tab" aria-controls="tab1" aria-selected="true">회원정보</a>
 	        </li>
-	        <li class="nav-item"  style="width: 140px; font-size: 18px">
-	            <a class="nav-link text-center" id="tab2-tab" data-bs-toggle="pill" href="#tab2" 
-	            role="tab" aria-controls="tab2" aria-selected="false">회원정보수정</a>
-	        </li>
-	        <li class="nav-item"  style="width: 140px; font-size: 18px">
-	            <a class="nav-link text-center" id="tab3-tab" data-bs-toggle="pill" href="#tab3" 
-	            role="tab" aria-controls="tab3" aria-selected="false">1:1문의하기</a>
-	        </li>
-	        <li class="nav-item"  style="width: 140px; font-size: 18px">
-	            <a class="nav-link text-center" id="tab4-tab" data-bs-toggle="pill" 
-	            href='${ sessionScope.isLogin ? ".logout" : ".main" }'
-	            role="tab" aria-controls="tab4" aria-selected="false">로그아웃</a>
-	        </li>
 	    </ul>
     </div>
     <!-- 컨텐츠 메뉴 끝 -->
