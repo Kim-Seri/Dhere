@@ -41,31 +41,46 @@ function addMarker(x, y) {
 	
 	// 마커를 추가할 부모 컨테이너
     const markerContainer = $("<div class='marker-container'></div>");
-    const marker = $("<div class='marker' id='marker'><button type='button' class='btn btn-primary rounded-circle' id='markerBtn'>+</button></div>");
-    const searchBox = $("<div class='row search-box' id='search-box'>"
-	    							+ "<div class='col'>"
-		    							+ "<div class='row'>"
-			    							+ "<div class='col'>"
-			    								+ "<input type='text' class='form-control'>"
-			    							+ "</div>"
-			    							+ "<div class='col'>"
-			    								+ "<button type='button' class='btn btn-danger' id='deleteMaker'>삭제</button> "
-			    							+ "</div>"
-			    						+ "</div>"
-		    						+ "</div>"
-    							+ "</div>");
+    const marker = $(`<div class='marker' id='marker'><button type='button' class='btn btn-primary rounded-circle' id='markerBtn'>+</button></div>`);
+    const searchBox = $(`
+    							<div class='row search-box bg-white border border-primary-subtle rounded ' id='search-box '>
+	    							<div class='col text-center'>
+		    							<div class='row my-3'>
+			    							<div class='col-8'>
+			    								<input type='text' class='form-control'>
+			    							</div>
+			    							<div class='col text-end'>
+			    								<button type='button' class='btn btn-danger' id='deleteMaker'>삭제</button> 
+			    							</div>
+			    						</div>
+		    						</div>
+    							</div>`);
+    
+    // 이미지의 크기
+    const imageWidth = $('body').width();
+    const bodyHeight = $("body").height();
+
+    // 스크롤 위치
+    const scrollY = window.scrollY;
 
 	
+ // 마커의 위치 조절
+    const adjustedX = (x / imageWidth) * 100; // 이미지의 가로 방향 상대 위치
+    const adjustedY = ((y + scrollY) / bodyHeight) * 100; // body의 세로 방향 상대 위치
+    
+
+    // 마커의 위치를 설정
     marker.css({
-        position: "absolute", // 스크롤과 상관없이 화면에 고정
-        top: y + window.scrollY + "px", // 현재 스크롤 위치 고려
-        left: x + "px",
-      });
+      position: "absolute",
+//      top: y +window.scrollY + "px", 
+      top: y +window.scrollY + "px", 
+      left: `${adjustedX}%`,
+    });
 	
 	searchBox.css({
 	 position: "absolute",
-	 top: y +window.scrollY + 20 + "px", // 마커 아래에 위치
-	 left: x + "px",
+	 top: y +window.scrollY + 30 + "px", // 마커 아래에 위치
+	  left: `${adjustedX}%`,
 //	 display: "none", // 일단 숨김
 	});
 	
@@ -82,9 +97,9 @@ function addMarker(x, y) {
 	});
 	
 	// 마커에서 마우스 나갈 시 검색 상자 숨김
-	marker.on("mouseout", function () {
-	 searchBox.hide();
-	});
+//	marker.on("mouseout", function () {
+//	 searchBox.hide();
+//	});
 }
 
 //엔터 누르면 해시태그 추가
@@ -156,9 +171,9 @@ $(function () {
       var imageDivRow = $("<div class='row my-3'></div>");
       var imageDivCol = $("<div class='col my-3 position-relative'></div>");
       var imageDivRow2 = $("<div class='row my-3'></div>");
-      var imageDivCol2 = $( "<div class='col my-3 text-center position-relative'></div>");
+      var imageDivCol2 = $( "<div class='col text-center position-relative' id='ImgDiv'></div>");
       var imageDivRow3 = $("<div class='row my-3'></div>");
-      var imageDivCol3 = $( "<div class='col my-3 text-center position-relative'></div>");
+      var imageDivCol3 = $( "<div class='col text-center '></div>");
       var deleteButton = $("<button type='button' class='btn btn-secondary' id='deleteImageButton'>삭제하기</button>");
       var markerButton = $("<button type='button' class='btn btn-secondary' id='addMarkerButton'>마커 편집</button>");
 
@@ -177,23 +192,7 @@ $(function () {
 
       displayImagePreview(this, imagePreview);
 
-      // 이미지 미리보기와 버튼을 감싸는 부모 요소에 CSS 적용
-      imageDivCol.css({
-        position: "relative",
-        overflow: "hidden",
-      });
 
-      imageDivCol2.css({
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "center",
-      });
     });
   });
 
@@ -209,6 +208,12 @@ $(function () {
   $("#imageContainer").on("click", "#addMarkerButton", function () {
     startAddingMarker();
   });
+  
+  //마커 삭제버튼 눌렀을 시
+  $("#imageContainer").on("click", "#deleteMaker", function () {
+	    $(this).parent().parent().parent().parent().prev().remove()
+	    $(this).parent().parent().parent().parent().remove()
+	  });
   
   $(document).on("click", "#postImg", function(event) {
 	    if (isAddingMarker) {
